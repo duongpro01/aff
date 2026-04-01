@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "name": "Vợt Pickleball Joola Ben Johns Perseus CFS 16mm",
+    "slug": "vot-pickleball-joola-ben-johns-perseus-cfs-16mm",
+    "price": 4990000,
+    "originalPrice": 5490000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
+    "category": "vot",
+    "brand": "joola",
+    "productLineId": "joola-ben-johns-perseus",
+    "description": "Vợt pickleball Joola Ben Johns Perseus CFS 16mm - dòng vợt signature của tay vợt số 1 thế giới Ben Johns.",
+    "fullDescription": "Joola Ben Johns Perseus CFS 16mm là dòng vợt cao cấp được thiết kế dành riêng cho Ben Johns - tay vợt số 1 thế giới. Với công nghệ Carbon Friction Surface (CFS) mang lại khả năng spin vượt trội, cùng lõi polymer dày 16mm cho cảm giác kiểm soát tuyệt vời.",
+    "features": [
+      "Công nghệ Carbon Friction Surface (CFS)",
+      "Lõi Reactive Polymer Honeycomb 16mm",
+      "Thiết kế cân bằng giữa power và control",
+      "USAPA Approved"
+    ],
+    "specs": {
+      "surface": "Carbon Friction Surface",
+      "core": "Reactive Polymer Honeycomb",
+      "thickness": "16mm",
+      "control": 9,
+      "power": 8,
+      "weight": "220-240g",
+      "usapaApproved": true
+    },
+    "params": {
+      "brand": "Joola",
+      "origin": "Trung Quốc",
+      "supplier": "YeuPick",
+      "material": "Carbon Fiber, Polymer",
+      "warranty": "6 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviews": 24
+  },
+  {
+    "id": 2,
+    "name": "Vợt Pickleball Selkirk Vanguard Power Air Invikta",
+    "slug": "vot-pickleball-selkirk-vanguard-power-air-invikta",
+    "price": 4500000,
+    "originalPrice": 4900000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
+    "category": "vot",
+    "brand": "selkirk",
+    "productLineId": "selkirk-vanguard",
+    "description": "Vợt Selkirk Vanguard Power Air Invikta - thiết kế elongated cho power tối đa.",
+    "fullDescription": "Selkirk Vanguard Power Air Invikta là mẫu vợt cao cấp với thiết kế elongated (dài) giúp tăng tầm với và tạo đòn bẩy cho những cú đánh mạnh mẽ. Công nghệ Air Dynamic Throat giảm lực cản gió, mang lại tốc độ swing nhanh hơn.",
+    "features": [
+      "Thiết kế Elongated tăng tầm với",
+      "Công nghệ Air Dynamic Throat",
+      "Bề mặt QuadCarbon Face",
+      "USAPA Approved"
+    ],
+    "specs": {
+      "surface": "QuadCarbon Face",
+      "core": "Polymer X5 Honeycomb",
+      "thickness": "16mm",
+      "control": 7,
+      "power": 9,
+      "weight": "225-240g",
+      "usapaApproved": true
+    },
+    "params": {
+      "brand": "Selkirk",
+      "origin": "Mỹ",
+      "supplier": "YeuPick",
+      "material": "Carbon Fiber, Polymer",
+      "warranty": "6 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviews": 18
+  },
+  {
+    "id": 3,
+    "name": "Vợt Pickleball CRBN 1X Power Series",
+    "slug": "vot-pickleball-crbn-1x-power-series",
+    "price": 3900000,
+    "originalPrice": 4200000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
+    "category": "vot",
+    "brand": "crbn",
+    "productLineId": "",
+    "description": "Vợt CRBN 1X Power Series - raw carbon face cho spin cực đại.",
+    "fullDescription": "CRBN 1X Power Series sử dụng bề mặt raw carbon T700 không phủ lớp sơn, giúp tạo ma sát tối đa với bóng. Thiết kế dài 16.5 inch kết hợp lõi polymer 16mm mang lại sự cân bằng hoàn hảo giữa power và control.",
+    "features": [
+      "Bề mặt Raw Carbon T700",
+      "Thiết kế Elongated 16.5 inch",
+      "Lõi Polymer Rev Core 16mm",
+      "USAPA Approved"
+    ],
+    "specs": {
+      "surface": "Raw Carbon T700",
+      "core": "Polymer Rev Core",
+      "thickness": "16mm",
+      "control": 8,
+      "power": 9,
+      "weight": "220-235g",
+      "usapaApproved": true
+    },
+    "params": {
+      "brand": "CRBN",
+      "origin": "Trung Quốc",
+      "supplier": "YeuPick",
+      "material": "Carbon T700, Polymer",
+      "warranty": "6 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviews": 12
+  },
+  {
+    "id": 4,
+    "name": "Vợt Pickleball Head Radical Tour CO",
+    "slug": "vot-pickleball-head-radical-tour-co",
+    "price": 3500000,
+    "originalPrice": 3800000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
+    "category": "vot",
+    "brand": "head",
+    "productLineId": "",
+    "description": "Vợt Head Radical Tour CO - dòng vợt chuyên nghiệp từ thương hiệu hàng đầu thế giới.",
+    "fullDescription": "Head Radical Tour CO là dòng vợt chuyên nghiệp với công nghệ Optimized Tubular Construction (OTC) mang lại độ cứng và ổn định tuyệt vời. Bề mặt Dynamic Power Shape giúp mở rộng sweet spot, phù hợp cho người chơi trung cấp đến chuyên nghiệp.",
+    "features": [
+      "Công nghệ Optimized Tubular Construction",
+      "Bề mặt Dynamic Power Shape",
+      "Sweet spot mở rộng",
+      "USAPA Approved"
+    ],
+    "specs": {
+      "surface": "Fiberglass Composite",
+      "core": "Polypropylene Honeycomb",
+      "thickness": "16mm",
+      "control": 8,
+      "power": 8,
+      "weight": "225-240g",
+      "usapaApproved": true
+    },
+    "params": {
+      "brand": "Head",
+      "origin": "Trung Quốc",
+      "supplier": "YeuPick",
+      "material": "Fiberglass, Polypropylene",
+      "warranty": "6 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 9
+  },
+  {
+    "id": 5,
+    "name": "Bóng Pickleball Franklin X-40 Outdoor (Hộp 12 quả)",
+    "slug": "bong-pickleball-franklin-x40-outdoor-hop-12-qua",
+    "price": 650000,
+    "originalPrice": 750000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg"],
+    "category": "bong",
+    "brand": "joola",
+    "productLineId": "",
+    "description": "Bóng Franklin X-40 - bóng thi đấu outdoor chính hãng, USAPA Approved.",
+    "fullDescription": "Franklin X-40 là loại bóng pickleball outdoor được sử dụng phổ biến nhất trong các giải đấu chuyên nghiệp. Thiết kế 40 lỗ chuẩn, độ nảy ổn định, độ bền cao, phù hợp cho thi đấu và luyện tập ngoài trời.",
+    "features": [
+      "40 lỗ thiết kế chuẩn outdoor",
+      "Độ nảy ổn định",
+      "Độ bền cao",
+      "USAPA Approved cho thi đấu"
+    ],
+    "specs": {
+      "usapaApproved": true
+    },
+    "params": {
+      "brand": "Franklin",
+      "origin": "Mỹ",
+      "supplier": "YeuPick",
+      "material": "Nhựa cứng",
+      "warranty": "Không bảo hành",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviews": 35
+  },
+  {
+    "id": 6,
+    "name": "Giày Pickleball Head Motion Pro Padel",
+    "slug": "giay-pickleball-head-motion-pro-padel",
+    "price": 2800000,
+    "originalPrice": 3200000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
+    "category": "giay",
+    "brand": "head",
+    "productLineId": "",
+    "description": "Giày Head Motion Pro - thiết kế chuyên dụng cho pickleball và padel.",
+    "fullDescription": "Head Motion Pro Padel là đôi giày được thiết kế chuyên dụng cho các môn thể thao trên sân cứng như pickleball và padel. Đế Hybrasion cung cấp độ bám tuyệt vời, đệm TRI-NRG hấp thụ chấn động hiệu quả, giúp bảo vệ khớp gối khi di chuyển nhanh.",
+    "features": [
+      "Đế Hybrasion siêu bám",
+      "Đệm TRI-NRG hấp thụ chấn động",
+      "Trọng lượng nhẹ",
+      "Thoáng khí"
+    ],
+    "specs": {},
+    "params": {
+      "brand": "Head",
+      "origin": "Việt Nam",
+      "supplier": "YeuPick",
+      "material": "Mesh, Cao su tổng hợp",
+      "warranty": "3 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.4,
+    "reviews": 7
+  },
+  {
+    "id": 7,
+    "name": "Túi Đựng Vợt Pickleball Joola Tour Elite Pro Bag",
+    "slug": "tui-dung-vot-pickleball-joola-tour-elite-pro-bag",
+    "price": 1800000,
+    "originalPrice": 2100000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg"],
+    "category": "phu-kien",
+    "brand": "joola",
+    "productLineId": "",
+    "description": "Túi Joola Tour Elite Pro - chứa được 4 vợt, nhiều ngăn tiện lợi.",
+    "fullDescription": "Joola Tour Elite Pro Bag là túi đựng vợt pickleball cao cấp với thiết kế nhiều ngăn, chứa được tối đa 4 vợt cùng phụ kiện. Chất liệu polyester 600D bền bỉ, chống nước, có ngăn đựng giày riêng biệt và ngăn giữ nhiệt cho đồ uống.",
+    "features": [
+      "Chứa tối đa 4 vợt",
+      "Ngăn đựng giày riêng biệt",
+      "Chất liệu chống nước",
+      "Quai đeo êm ái"
+    ],
+    "specs": {},
+    "params": {
+      "brand": "Joola",
+      "origin": "Trung Quốc",
+      "supplier": "YeuPick",
+      "material": "Polyester 600D",
+      "warranty": "3 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.3,
+    "reviews": 5
+  },
+  {
+    "id": 8,
+    "name": "Áo Thể Thao Pickleball Selkirk Luxx Collection",
+    "slug": "ao-the-thao-pickleball-selkirk-luxx-collection",
+    "price": 1200000,
+    "originalPrice": 1500000,
+    "image": "/images/products/placeholder.jpg",
+    "images": ["/images/products/placeholder.jpg"],
+    "category": "quan-ao",
+    "brand": "selkirk",
+    "productLineId": "selkirk-luxx",
+    "description": "Áo thể thao Selkirk Luxx Collection - thoáng mát, co giãn 4 chiều.",
+    "fullDescription": "Áo thể thao Selkirk Luxx Collection được thiết kế chuyên dụng cho pickleball với chất liệu vải co giãn 4 chiều, thoáng khí và thấm hút mồ hôi nhanh. Kiểu dáng slim fit hiện đại, phù hợp cho thi đấu và tập luyện.",
+    "features": [
+      "Vải co giãn 4 chiều",
+      "Thấm hút mồ hôi nhanh",
+      "Chống tia UV UPF 50+",
+      "Kiểu dáng slim fit"
+    ],
+    "specs": {},
+    "params": {
+      "brand": "Selkirk",
+      "origin": "Việt Nam",
+      "supplier": "YeuPick",
+      "material": "Polyester, Spandex",
+      "warranty": "1 tháng",
+      "shipping": "Miễn phí toàn quốc"
+    },
+    "inStock": true,
+    "rating": 4.2,
+    "reviews": 3
+  }
+]

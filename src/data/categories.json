@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Vợt Pickleball",
+    "slug": "vot",
+    "image": "/images/categories/vot.jpg",
+    "description": "Vợt pickleball chính hãng từ các thương hiệu hàng đầu thế giới như Joola, Selkirk, Head, CRBN.",
+    "content": "Khám phá bộ sưu tập vợt pickleball đa dạng tại YeuPick. Chúng tôi cung cấp các dòng vợt từ phân khúc phổ thông đến cao cấp, phù hợp cho mọi trình độ từ người mới bắt đầu đến chuyên nghiệp. Tất cả vợt đều được USAPA phê duyệt và có bảo hành chính hãng."
+  },
+  {
+    "id": 2,
+    "name": "Bóng Pickleball",
+    "slug": "bong",
+    "image": "/images/categories/bong.jpg",
+    "description": "Bóng pickleball outdoor và indoor chính hãng, đạt chuẩn thi đấu USAPA.",
+    "content": "Bóng pickleball tại YeuPick bao gồm cả loại outdoor (40 lỗ) và indoor (26 lỗ), đáp ứng mọi nhu cầu tập luyện và thi đấu. Các thương hiệu bóng uy tín như Franklin X-40, Onix Dura Fast được cung cấp với giá tốt nhất."
+  },
+  {
+    "id": 3,
+    "name": "Giày Pickleball",
+    "slug": "giay",
+    "image": "/images/categories/giay.jpg",
+    "description": "Giày pickleball chuyên dụng, đế bám tốt trên sân cứng, bảo vệ khớp gối hiệu quả.",
+    "content": "Giày pickleball chuyên dụng được thiết kế với đế bám đặc biệt cho sân cứng, đệm hấp thụ chấn động bảo vệ khớp gối, và trọng lượng nhẹ giúp di chuyển nhanh nhẹn. YeuPick cung cấp giày từ các thương hiệu Head, ASICS, và K-Swiss."
+  },
+  {
+    "id": 4,
+    "name": "Phụ kiện",
+    "slug": "phu-kien",
+    "image": "/images/categories/phu-kien.jpg",
+    "description": "Phụ kiện pickleball đa dạng: túi đựng vợt, grip, overgrip, băng tay, mũ, kính thể thao.",
+    "content": "Phụ kiện pickleball đầy đủ tại YeuPick bao gồm túi đựng vợt, ba lô, grip và overgrip, băng tay, băng đầu, mũ thể thao, kính bảo hộ, và nhiều sản phẩm khác. Trang bị đầy đủ phụ kiện giúp bạn có trải nghiệm chơi pickleball thoải mái và chuyên nghiệp hơn."
+  },
+  {
+    "id": 5,
+    "name": "Quần áo",
+    "slug": "quan-ao",
+    "image": "/images/categories/quan-ao.jpg",
+    "description": "Quần áo thể thao pickleball thoáng mát, co giãn, thấm hút mồ hôi nhanh.",
+    "content": "Bộ sưu tập quần áo thể thao pickleball tại YeuPick với chất liệu cao cấp, thoáng khí, co giãn 4 chiều và thấm hút mồ hôi nhanh. Thiết kế hiện đại, phù hợp cho cả thi đấu và tập luyện hàng ngày."
+  }
+]

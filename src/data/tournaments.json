@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "YeuPick Open 2026 - Hà Nội",
+    "date": "2026-05-15",
+    "location": "Sân thể thao Mỹ Đình, Hà Nội",
+    "teams": ["Đôi Nam", "Đôi Nữ", "Đôi Nam Nữ"],
+    "format": "Vòng bảng + Loại trực tiếp",
+    "status": "upcoming"
+  },
+  {
+    "id": 2,
+    "name": "Saigon Pickleball Championship 2026",
+    "date": "2026-04-20",
+    "location": "Nhà thi đấu Phú Thọ, TP.HCM",
+    "teams": ["Đơn Nam", "Đơn Nữ", "Đôi Nam", "Đôi Nữ"],
+    "format": "Loại trực tiếp",
+    "status": "upcoming"
+  },
+  {
+    "id": 3,
+    "name": "Đà Nẵng Pickleball Festival 2026",
+    "date": "2026-03-10",
+    "location": "Trung tâm TDTT Đà Nẵng",
+    "teams": ["Đôi Nam", "Đôi Nữ", "Đôi Nam Nữ", "U18"],
+    "format": "Vòng bảng + Loại trực tiếp",
+    "status": "completed"
+  }
+]

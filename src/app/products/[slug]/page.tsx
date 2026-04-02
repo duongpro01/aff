@@ -1,14 +1,24 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import products from '@/data/products.json';
 import ProductDetailClient from './ProductDetailClient';
+import fs from 'fs';
+import path from 'path';
+
+// Always render dynamically - products.json changes at runtime via import
+export const dynamic = 'force-dynamic';
 
 type Props = { params: Promise<{ slug: string }> };
 
+function getProducts() {
+  const file = path.join(process.cwd(), 'src/data/products.json');
+  return JSON.parse(fs.readFileSync(file, 'utf-8'));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const products = getProducts();
   const product = products.find((p: any) => p.slug === slug);
-  if (!product) return { title: 'Khong tim thay san pham' };
+  if (!product) return { title: 'Product not found' };
   return {
     title: product.name,
     description: product.description,
@@ -16,12 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  return products.map((p: any) => ({ slug: p.slug }));
-}
-
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
+  const products = getProducts();
   const product = products.find((p: any) => p.slug === slug);
   if (!product) notFound();
 
@@ -39,10 +46,9 @@ export default async function ProductDetailPage({ params }: Props) {
         "offers": {
           "@type": "Offer",
           "price": product.price,
-          "priceCurrency": "VND",
+          "priceCurrency": "AUD",
           "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
-        },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": product.rating, "reviewCount": product.reviews }
+        }
       })}} />
       <ProductDetailClient product={product} relatedProducts={relatedProducts} />
     </>

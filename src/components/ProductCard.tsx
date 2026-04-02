@@ -23,8 +23,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+const formatPrice = (price: number) => 'A$' + price.toFixed(2);
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
@@ -98,7 +97,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               fontWeight: 600,
               fontSize: 14,
             }}>
-              Het hang
+              Out of Stock
             </div>
           )}
         </div>
@@ -166,7 +165,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           }}
         >
           <ShoppingCart size={16} />
-          Them gio hang
+          Add to Cart
         </button>
       </div>
     </div>

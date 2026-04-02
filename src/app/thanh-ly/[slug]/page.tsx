@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import listingsData from '@/data/listings.json';
+import { getListings } from '@/lib/data';
+const listingsData = getListings();
 
 interface ListingItem {
   id: number;

@@ -1,12 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Minus, Plus, ShoppingCart, Check, Star } from 'lucide-react';
+import { ChevronRight, Minus, Plus, ShoppingCart, Check, Truck, Shield, RotateCcw, CreditCard } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
-import StarRating from '@/components/StarRating';
-import ProductSpecs from '@/components/ProductSpecs';
-import ProductParams from '@/components/ProductParams';
 import ProductCard from '@/components/ProductCard';
 
 interface Product {
@@ -22,30 +20,21 @@ interface Product {
   description: string;
   fullDescription?: string;
   features?: string[];
-  specs?: any;
-  params?: any;
+  specs?: Record<string, string>;
+  params?: Record<string, string>;
   inStock: boolean;
   rating: number;
   reviews: number;
 }
 
-interface ProductDetailClientProps {
+interface Props {
   product: Product;
   relatedProducts: Product[];
 }
 
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+const formatPrice = (price: number) => '$' + price.toFixed(2);
 
-const gradientColors = [
-  'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-  'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-  'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-  'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-];
-
-export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+export default function ProductDetailClient({ product, relatedProducts }: Props) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
@@ -55,379 +44,246 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : 0;
 
-  const galleryImages = (product.images && product.images.length > 0)
-    ? product.images
-    : [product.image];
-
-  // Generate placeholder thumbnails
-  const thumbnailCount = Math.max(galleryImages.length, 4);
+  const galleryImages = product.images?.length ? product.images : [product.image];
 
   const handleAddToCart = () => {
     if (!product.inStock) return;
-    addToCart({
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      image: product.image,
-    }, quantity);
+    addToCart({ id: product.id, name: product.name, slug: product.slug, price: product.price, image: product.image }, quantity);
   };
 
+  const isOnSale = product.params?.isOnSale === 'true';
+  const saveAmount = product.params?.saveAmount || '';
+  const rewardDollars = product.params?.rewardDollars || '';
+  const brandDisplay = product.params?.brand || product.brand;
+  const material = product.params?.material || product.specs?.Material || '';
+  const itemCode = product.params?.code || '';
+  const sourceUrl = product.params?.sourceUrl || '';
+
+  // Build specs table from specs + params
+  const specsEntries = Object.entries(product.specs || {}).filter(([, v]) => v);
+  const hasSpecs = specsEntries.length > 0;
+
   const tabs = [
-    { label: 'Mo ta' },
-    { label: 'Thong so ky thuat' },
-    { label: 'Danh gia' },
+    { label: 'Description', show: true },
+    { label: 'Features & Specs', show: (product.features?.length || 0) > 0 || hasSpecs },
+    { label: 'Shipping', show: true },
   ];
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 16px' }}>
       {/* Breadcrumb */}
-      <nav style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 4,
-        padding: '16px 0',
-        fontSize: 14,
-        color: '#6b7280',
-        flexWrap: 'wrap',
-      }}>
-        <Link href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Trang chu</Link>
+      <nav style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '16px 0', fontSize: 13, color: '#6b7280', flexWrap: 'wrap' }}>
+        <Link href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</Link>
         <ChevronRight size={14} />
-        <Link href="/products" style={{ color: '#6b7280', textDecoration: 'none' }}>San pham</Link>
+        <Link href="/products" style={{ color: '#6b7280', textDecoration: 'none' }}>Products</Link>
         <ChevronRight size={14} />
         <span style={{ color: '#111827', fontWeight: 500 }}>{product.name}</span>
       </nav>
 
-      {/* Product Main Section */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: 40,
-        marginBottom: 48,
-      }} className="product-detail-grid">
-        {/* Left: Image Gallery */}
+      {/* Product Main */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, marginBottom: 48 }} className="product-detail-grid">
+
+        {/* ===== LEFT: Image Gallery ===== */}
         <div>
           {/* Main Image */}
           <div style={{
-            position: 'relative',
-            aspectRatio: '1',
-            borderRadius: 12,
-            overflow: 'hidden',
-            marginBottom: 12,
-            background: gradientColors[activeImage % gradientColors.length],
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            position: 'relative', aspectRatio: '1', borderRadius: 12, overflow: 'hidden',
+            marginBottom: 12, backgroundColor: '#f3f4f6',
           }}>
-            <div style={{
-              color: '#fff',
-              fontSize: 20,
-              fontWeight: 700,
-              textAlign: 'center',
-              padding: 24,
-              textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-            }}>
-              {product.name}
-            </div>
+            {galleryImages[activeImage] ? (
+              <Image
+                src={galleryImages[activeImage]}
+                alt={product.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            ) : (
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', fontSize: 18 }}>
+                No Image
+              </div>
+            )}
             {discount > 0 && (
               <span style={{
-                position: 'absolute',
-                top: 12,
-                left: 12,
-                backgroundColor: '#ef4444',
-                color: '#fff',
-                fontSize: 14,
-                fontWeight: 700,
-                padding: '4px 10px',
-                borderRadius: 6,
+                position: 'absolute', top: 12, left: 12, backgroundColor: '#dc2626', color: '#fff',
+                fontSize: 14, fontWeight: 700, padding: '6px 12px', borderRadius: 8,
               }}>
-                -{discount}%
+                -{discount}% OFF
+              </span>
+            )}
+            {isOnSale && (
+              <span style={{
+                position: 'absolute', top: 12, right: 12, backgroundColor: '#f59e0b', color: '#fff',
+                fontSize: 12, fontWeight: 700, padding: '4px 10px', borderRadius: 6,
+              }}>
+                SALE
               </span>
             )}
           </div>
 
           {/* Thumbnails */}
-          <div style={{
-            display: 'flex',
-            gap: 8,
-          }}>
-            {Array.from({ length: thumbnailCount }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveImage(index)}
-                style={{
-                  width: 72,
-                  height: 72,
-                  borderRadius: 8,
-                  border: activeImage === index ? '2px solid #2563eb' : '2px solid #e5e7eb',
-                  background: gradientColors[index % gradientColors.length],
-                  cursor: 'pointer',
-                  padding: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'border-color 0.2s ease',
-                  flexShrink: 0,
-                }}
-              >
-                <span style={{
-                  color: '#fff',
-                  fontSize: 10,
-                  fontWeight: 600,
-                  textAlign: 'center',
-                  padding: 4,
-                  textShadow: '0 1px 4px rgba(0,0,0,0.3)',
-                }}>
-                  {index + 1}
-                </span>
-              </button>
-            ))}
-          </div>
+          {galleryImages.length > 1 && (
+            <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 4 }}>
+              {galleryImages.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveImage(index)}
+                  style={{
+                    width: 72, height: 72, borderRadius: 8, overflow: 'hidden', padding: 0,
+                    border: activeImage === index ? '3px solid #7c3aed' : '2px solid #e5e7eb',
+                    cursor: 'pointer', flexShrink: 0, position: 'relative', backgroundColor: '#f3f4f6',
+                  }}
+                >
+                  <Image src={img} alt={`${index + 1}`} fill sizes="72px" style={{ objectFit: 'cover' }} />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Right: Product Info */}
+        {/* ===== RIGHT: Product Info ===== */}
         <div>
           {/* Brand */}
-          <Link
-            href={`/${product.brand}`}
-            style={{
-              display: 'inline-block',
-              fontSize: 14,
-              color: '#2563eb',
-              textDecoration: 'none',
-              marginBottom: 8,
-              fontWeight: 500,
-            }}
-          >
-            {product.params?.brand || product.brand}
-          </Link>
+          <div style={{ fontSize: 13, color: '#7c3aed', fontWeight: 600, marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>
+            {brandDisplay}
+          </div>
 
-          {/* Product Name */}
-          <h1 style={{
-            fontSize: 24,
-            fontWeight: 700,
-            color: '#111827',
-            lineHeight: 1.3,
-            margin: '0 0 12px',
-          }}>
+          {/* Name */}
+          <h1 style={{ fontSize: 24, fontWeight: 700, color: '#111827', lineHeight: 1.3, margin: '0 0 16px' }}>
             {product.name}
           </h1>
 
-          {/* Rating */}
-          <div style={{ marginBottom: 16 }}>
-            <StarRating rating={product.rating} reviews={product.reviews} size="md" />
-          </div>
+          {/* Item Code */}
+          {itemCode && (
+            <div style={{ fontSize: 12, color: '#9ca3af', marginBottom: 12 }}>
+              Item Code: {itemCode}
+            </div>
+          )}
 
           {/* Price */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            gap: 12,
-            marginBottom: 16,
-          }}>
-            <span style={{
-              fontSize: 28,
-              fontWeight: 700,
-              color: '#dc2626',
-            }}>
-              {formatPrice(product.price)}
-            </span>
+          <div style={{ marginBottom: 20, padding: '16px 20px', backgroundColor: '#faf5ff', borderRadius: 12, border: '1px solid #e9d5ff' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 4 }}>
+              <span style={{ fontSize: 32, fontWeight: 800, color: '#7c3aed' }}>
+                {formatPrice(product.price)}
+              </span>
+              {product.originalPrice && product.originalPrice > product.price && (
+                <span style={{ fontSize: 18, color: '#9ca3af', textDecoration: 'line-through' }}>
+                  {formatPrice(product.originalPrice)}
+                </span>
+              )}
+            </div>
             {product.originalPrice && product.originalPrice > product.price && (
-              <span style={{
-                fontSize: 18,
-                color: '#9ca3af',
-                textDecoration: 'line-through',
-              }}>
-                {formatPrice(product.originalPrice)}
-              </span>
+              <div style={{ fontSize: 14, color: '#dc2626', fontWeight: 600 }}>
+                {saveAmount ? `Save ${saveAmount}` : `Save ${formatPrice(product.originalPrice - product.price)} (${discount}% off)`}
+              </div>
             )}
-            {discount > 0 && (
-              <span style={{
-                backgroundColor: '#fef2f2',
-                color: '#dc2626',
-                fontSize: 14,
-                fontWeight: 600,
-                padding: '2px 8px',
-                borderRadius: 4,
-              }}>
-                -{discount}%
-              </span>
+            {rewardDollars && (
+              <div style={{ fontSize: 12, color: '#6b7280', marginTop: 6 }}>
+                Earn ${rewardDollars} Reward Dollars
+              </div>
             )}
           </div>
 
-          {/* Stock Badge */}
+          {/* Stock */}
           <div style={{ marginBottom: 20 }}>
             {product.inStock ? (
-              <span style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 4,
-                fontSize: 14,
-                fontWeight: 500,
-                color: '#059669',
-                backgroundColor: '#ecfdf5',
-                padding: '4px 12px',
-                borderRadius: 20,
-                border: '1px solid #a7f3d0',
-              }}>
-                <Check size={14} />
-                Con hang
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 14, fontWeight: 500, color: '#059669', backgroundColor: '#ecfdf5', padding: '4px 12px', borderRadius: 20, border: '1px solid #a7f3d0' }}>
+                <Check size={14} /> In Stock
               </span>
             ) : (
-              <span style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 4,
-                fontSize: 14,
-                fontWeight: 500,
-                color: '#dc2626',
-                backgroundColor: '#fef2f2',
-                padding: '4px 12px',
-                borderRadius: 20,
-                border: '1px solid #fecaca',
-              }}>
-                Het hang
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 14, fontWeight: 500, color: '#dc2626', backgroundColor: '#fef2f2', padding: '4px 12px', borderRadius: 20, border: '1px solid #fecaca' }}>
+                Out of Stock
               </span>
             )}
           </div>
 
-          {/* Quantity Selector */}
-          <div style={{ marginBottom: 20 }}>
-            <div style={{ fontSize: 14, fontWeight: 500, color: '#374151', marginBottom: 8 }}>
-              So luong
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-              <button
-                onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                style={{
-                  width: 40,
-                  height: 40,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '8px 0 0 8px',
-                  backgroundColor: '#f9fafb',
-                  cursor: 'pointer',
-                  color: '#374151',
-                }}
-              >
+          {/* Quantity + Add to Cart */}
+          <div style={{ display: 'flex', gap: 12, marginBottom: 20, alignItems: 'stretch' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button onClick={() => setQuantity(q => Math.max(1, q - 1))} style={{ width: 40, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #d1d5db', borderRadius: '8px 0 0 8px', backgroundColor: '#f9fafb', cursor: 'pointer' }}>
                 <Minus size={16} />
               </button>
-              <div style={{
-                width: 56,
-                height: 40,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderTop: '1px solid #d1d5db',
-                borderBottom: '1px solid #d1d5db',
-                fontSize: 16,
-                fontWeight: 600,
-                color: '#111827',
-                backgroundColor: '#fff',
-              }}>
+              <div style={{ width: 48, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', borderTop: '1px solid #d1d5db', borderBottom: '1px solid #d1d5db', fontSize: 16, fontWeight: 600, backgroundColor: '#fff' }}>
                 {quantity}
               </div>
-              <button
-                onClick={() => setQuantity(q => q + 1)}
-                style={{
-                  width: 40,
-                  height: 40,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '0 8px 8px 0',
-                  backgroundColor: '#f9fafb',
-                  cursor: 'pointer',
-                  color: '#374151',
-                }}
-              >
+              <button onClick={() => setQuantity(q => q + 1)} style={{ width: 40, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #d1d5db', borderRadius: '0 8px 8px 0', backgroundColor: '#f9fafb', cursor: 'pointer' }}>
                 <Plus size={16} />
               </button>
             </div>
+            <button
+              onClick={handleAddToCart}
+              disabled={!product.inStock}
+              style={{
+                flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                padding: '12px 24px', borderRadius: 10, border: 'none',
+                backgroundColor: product.inStock ? '#7c3aed' : '#d1d5db', color: '#fff',
+                fontSize: 16, fontWeight: 700, cursor: product.inStock ? 'pointer' : 'not-allowed',
+              }}
+            >
+              <ShoppingCart size={20} />
+              Add to Cart
+            </button>
           </div>
 
-          {/* Add to Cart Button */}
-          <button
-            onClick={handleAddToCart}
-            disabled={!product.inStock}
-            style={{
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 8,
-              padding: '14px 24px',
-              borderRadius: 10,
-              border: 'none',
-              backgroundColor: product.inStock ? '#2563eb' : '#d1d5db',
-              color: '#fff',
-              fontSize: 16,
-              fontWeight: 700,
-              cursor: product.inStock ? 'pointer' : 'not-allowed',
-              transition: 'background-color 0.2s ease',
-              marginBottom: 24,
-            }}
-          >
-            <ShoppingCart size={20} />
-            Them vao gio hang
-          </button>
+          {/* Free Shipping Banner */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', backgroundColor: '#f0fdf4', borderRadius: 8, border: '1px solid #bbf7d0', marginBottom: 20, fontSize: 13, color: '#166534', fontWeight: 500 }}>
+            <Truck size={16} />
+            Free discreet shipping on orders over $69
+          </div>
 
-          {/* Features List */}
+          {/* Features Quick List */}
           {product.features && product.features.length > 0 && (
-            <div style={{
-              padding: '16px 20px',
-              backgroundColor: '#f9fafb',
-              borderRadius: 10,
-              border: '1px solid #e5e7eb',
-            }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 10 }}>
-                Dac diem noi bat
-              </div>
-              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {product.features.map((feature: string, index: number) => (
-                  <li key={index} style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 8,
-                    fontSize: 14,
-                    color: '#374151',
-                  }}>
-                    <Check size={16} style={{ color: '#059669', flexShrink: 0, marginTop: 2 }} />
+            <div style={{ padding: '16px 20px', backgroundColor: '#f9fafb', borderRadius: 10, border: '1px solid #e5e7eb', marginBottom: 20 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 10 }}>Key Features</div>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {product.features.slice(0, 8).map((feature, index) => (
+                  <li key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: '#374151' }}>
+                    <Check size={14} style={{ color: '#7c3aed', flexShrink: 0, marginTop: 2 }} />
                     {feature}
                   </li>
                 ))}
               </ul>
             </div>
           )}
+
+          {/* Trust Badges */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+            {[
+              { icon: Shield, text: '100% Authentic' },
+              { icon: Truck, text: 'Discreet Packaging' },
+              { icon: RotateCcw, text: '30-Day Returns' },
+              { icon: CreditCard, text: 'Afterpay Available' },
+            ].map(({ icon: Icon, text }) => (
+              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#6b7280', padding: '8px 12px', backgroundColor: '#f9fafb', borderRadius: 8 }}>
+                <Icon size={14} style={{ color: '#7c3aed' }} /> {text}
+              </div>
+            ))}
+          </div>
+
+          {/* Source Link */}
+          {sourceUrl && (
+            <div style={{ marginTop: 16, fontSize: 12 }}>
+              <a href={sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'underline' }}>
+                View on Wild Secrets
+              </a>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Tabs Section */}
+      {/* ===== TABS SECTION ===== */}
       <div style={{ marginBottom: 48 }}>
-        {/* Tab Headers */}
-        <div style={{
-          display: 'flex',
-          borderBottom: '2px solid #e5e7eb',
-          marginBottom: 24,
-        }}>
-          {tabs.map((tab, index) => (
+        <div style={{ display: 'flex', borderBottom: '2px solid #e5e7eb', marginBottom: 24, overflowX: 'auto' }}>
+          {tabs.filter(t => t.show).map((tab, index) => (
             <button
               key={index}
               onClick={() => setActiveTab(index)}
               style={{
-                padding: '12px 24px',
-                fontSize: 15,
-                fontWeight: activeTab === index ? 700 : 500,
-                color: activeTab === index ? '#2563eb' : '#6b7280',
-                backgroundColor: 'transparent',
-                border: 'none',
-                borderBottom: activeTab === index ? '2px solid #2563eb' : '2px solid transparent',
-                cursor: 'pointer',
-                marginBottom: -2,
-                transition: 'all 0.2s ease',
+                padding: '12px 24px', fontSize: 15, fontWeight: activeTab === index ? 700 : 500,
+                color: activeTab === index ? '#7c3aed' : '#6b7280', backgroundColor: 'transparent',
+                border: 'none', borderBottom: activeTab === index ? '3px solid #7c3aed' : '3px solid transparent',
+                cursor: 'pointer', marginBottom: -2, whiteSpace: 'nowrap',
               }}
             >
               {tab.label}
@@ -435,88 +291,106 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
           ))}
         </div>
 
-        {/* Tab Content */}
         <div style={{ minHeight: 200 }}>
+          {/* Description Tab */}
           {activeTab === 0 && (
-            <div style={{ fontSize: 15, lineHeight: 1.7, color: '#374151' }}>
+            <div style={{ fontSize: 15, lineHeight: 1.8, color: '#374151' }}>
               {product.fullDescription ? (
                 <div dangerouslySetInnerHTML={{ __html: product.fullDescription }} />
+              ) : product.description ? (
+                product.description.split('\n\n').map((p, i) => (
+                  <p key={i} style={{ marginBottom: 16 }}>{p}</p>
+                ))
               ) : (
-                <p>{product.description}</p>
+                <p style={{ color: '#9ca3af' }}>No description available.</p>
               )}
             </div>
           )}
 
+          {/* Features & Specs Tab */}
           {activeTab === 1 && (
             <div>
-              {product.specs && (
-                <div style={{ marginBottom: 24 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 600, color: '#111827', marginBottom: 12 }}>
-                    Thong so ky thuat
-                  </h3>
-                  <ProductSpecs specs={product.specs} />
+              {/* Features */}
+              {product.features && product.features.length > 0 && (
+                <div style={{ marginBottom: 32 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#111827', marginBottom: 16 }}>Features</h3>
+                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {product.features.map((f, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 15, color: '#374151' }}>
+                        <Check size={18} style={{ color: '#7c3aed', flexShrink: 0, marginTop: 2 }} />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
-              {product.params && (
-                <div>
-                  <h3 style={{ fontSize: 16, fontWeight: 600, color: '#111827', marginBottom: 12 }}>
-                    Thong tin san pham
-                  </h3>
-                  <ProductParams params={product.params} />
+
+              {/* Specs Table */}
+              {hasSpecs && (
+                <div style={{ marginBottom: 32 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#111827', marginBottom: 16 }}>Specifications</h3>
+                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <tbody>
+                      {specsEntries.map(([key, value]) => (
+                        <tr key={key} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                          <td style={{ padding: '10px 16px', fontWeight: 600, fontSize: 14, color: '#374151', width: '40%', backgroundColor: '#f9fafb' }}>{key}</td>
+                          <td style={{ padding: '10px 16px', fontSize: 14, color: '#111827' }}>{value}</td>
+                        </tr>
+                      ))}
+                      {material && !product.specs?.Material && (
+                        <tr style={{ borderBottom: '1px solid #f3f4f6' }}>
+                          <td style={{ padding: '10px 16px', fontWeight: 600, fontSize: 14, color: '#374151', backgroundColor: '#f9fafb' }}>Material</td>
+                          <td style={{ padding: '10px 16px', fontSize: 14, color: '#111827' }}>{material}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
               )}
-              {!product.specs && !product.params && (
-                <p style={{ color: '#6b7280' }}>Chua co thong so ky thuat cho san pham nay.</p>
+
+              {!product.features?.length && !hasSpecs && (
+                <p style={{ color: '#9ca3af' }}>No specifications available for this product.</p>
               )}
             </div>
           )}
 
+          {/* Shipping Tab */}
           {activeTab === 2 && (
             <div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 16,
-                marginBottom: 24,
-                padding: 20,
-                backgroundColor: '#f9fafb',
-                borderRadius: 10,
-              }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 36, fontWeight: 700, color: '#111827' }}>{product.rating}</div>
-                  <StarRating rating={product.rating} size="md" />
-                  <div style={{ fontSize: 13, color: '#6b7280', marginTop: 4 }}>{product.reviews} danh gia</div>
-                </div>
-                <div style={{ flex: 1 }}>
-                  {[5, 4, 3, 2, 1].map(star => {
-                    const percentage = star === 5 ? 60 : star === 4 ? 25 : star === 3 ? 10 : star === 2 ? 3 : 2;
-                    return (
-                      <div key={star} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                        <span style={{ fontSize: 13, color: '#6b7280', width: 12 }}>{star}</span>
-                        <Star size={12} fill="#facc15" stroke="#facc15" />
-                        <div style={{
-                          flex: 1,
-                          height: 6,
-                          backgroundColor: '#e5e7eb',
-                          borderRadius: 3,
-                          overflow: 'hidden',
-                        }}>
-                          <div style={{
-                            width: `${percentage}%`,
-                            height: '100%',
-                            backgroundColor: '#facc15',
-                            borderRadius: 3,
-                          }} />
-                        </div>
-                        <span style={{ fontSize: 12, color: '#9ca3af', width: 30 }}>{percentage}%</span>
-                      </div>
-                    );
-                  })}
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: '#111827', marginBottom: 16 }}>Shipping Information</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 20px', backgroundColor: '#f0fdf4', borderRadius: 10, marginBottom: 20 }}>
+                <Truck size={20} style={{ color: '#059669' }} />
+                <div>
+                  <div style={{ fontWeight: 600, color: '#065f46', fontSize: 15 }}>Fast & Discreet Delivery</div>
+                  <div style={{ fontSize: 13, color: '#6b7280' }}>Orders shipped within 24 hours (excl. weekends & holidays)</div>
                 </div>
               </div>
-              <p style={{ color: '#6b7280', textAlign: 'center', padding: '20px 0' }}>
-                Chua co danh gia nao. Hay la nguoi dau tien danh gia san pham nay!
-              </p>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #e5e7eb' }}>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', fontSize: 14, fontWeight: 600, color: '#374151' }}>Destination</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', fontSize: 14, fontWeight: 600, color: '#374151' }}>Standard</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', fontSize: 14, fontWeight: 600, color: '#374151' }}>Express</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { dest: 'Australia', std: '2-7 business days', exp: '1-3 business days' },
+                    { dest: 'New Zealand', std: '10-15 business days', exp: '2-4 business days' },
+                    { dest: 'United States', std: '10-15 business days', exp: '-' },
+                    { dest: 'Other Countries', std: '5-10 business days', exp: '2-4 business days' },
+                  ].map(row => (
+                    <tr key={row.dest} style={{ borderBottom: '1px solid #f3f4f6' }}>
+                      <td style={{ padding: '10px 16px', fontSize: 14, fontWeight: 500 }}>{row.dest}</td>
+                      <td style={{ padding: '10px 16px', fontSize: 14, color: '#6b7280' }}>{row.std}</td>
+                      <td style={{ padding: '10px 16px', fontSize: 14, color: '#6b7280' }}>{row.exp}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div style={{ marginTop: 16, padding: '12px 16px', backgroundColor: '#fffbeb', borderRadius: 8, border: '1px solid #fde68a', fontSize: 13, color: '#92400e' }}>
+                <strong>Free shipping</strong> on all orders over $69 AUD. All packages are shipped in plain, unmarked packaging for your privacy.
+              </div>
             </div>
           )}
         </div>
@@ -525,19 +399,8 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <div style={{ marginBottom: 48 }}>
-          <h2 style={{
-            fontSize: 22,
-            fontWeight: 700,
-            color: '#111827',
-            marginBottom: 20,
-          }}>
-            San pham lien quan
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 20,
-          }} className="related-products-grid">
+          <h2 style={{ fontSize: 22, fontWeight: 700, color: '#111827', marginBottom: 20 }}>You May Also Like</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="related-products-grid">
             {relatedProducts.map((p: any) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -547,14 +410,8 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
       <style>{`
         @media (max-width: 768px) {
-          .product-detail-grid {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-          }
-          .related-products-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px !important;
-          }
+          .product-detail-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .related-products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
         }
       `}</style>
     </div>

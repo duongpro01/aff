@@ -1,35 +1,34 @@
 import { MetadataRoute } from 'next';
-import products from '@/data/products.json';
-import brands from '@/data/brands.json';
-import posts from '@/data/posts.json';
+import { getProducts, getBrands, getPosts } from '@/lib/data';
+
+export const dynamic = 'force-dynamic';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://yeupick.com';
+  const products = getProducts();
+  const brands = getBrands();
+  const posts = getPosts();
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1 },
     { url: `${baseUrl}/products`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
-    { url: `${baseUrl}/tin-tuc`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.8 },
-    { url: `${baseUrl}/thanh-ly`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.7 },
-    { url: `${baseUrl}/so-sanh`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.6 },
-    { url: `${baseUrl}/ranking`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.7 },
   ];
 
-  const productPages = (products as any[]).map((p) => ({
+  const productPages = products.map((p: any) => ({
     url: `${baseUrl}/products/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  const brandPages = (brands as any[]).map((b) => ({
+  const brandPages = brands.map((b: any) => ({
     url: `${baseUrl}/${b.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
-  const postPages = (posts as any[]).map((p) => ({
+  const postPages = posts.map((p: any) => ({
     url: `${baseUrl}/tin-tuc/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

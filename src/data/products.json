@@ -1,292 +1,1200 @@
 [
   {
     "id": 1,
-    "name": "Vợt Pickleball Joola Ben Johns Perseus CFS 16mm",
-    "slug": "vot-pickleball-joola-ben-johns-perseus-cfs-16mm",
-    "price": 4990000,
-    "originalPrice": 5490000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
-    "category": "vot",
-    "brand": "joola",
-    "productLineId": "joola-ben-johns-perseus",
-    "description": "Vợt pickleball Joola Ben Johns Perseus CFS 16mm - dòng vợt signature của tay vợt số 1 thế giới Ben Johns.",
-    "fullDescription": "Joola Ben Johns Perseus CFS 16mm là dòng vợt cao cấp được thiết kế dành riêng cho Ben Johns - tay vợt số 1 thế giới. Với công nghệ Carbon Friction Surface (CFS) mang lại khả năng spin vượt trội, cùng lõi polymer dày 16mm cho cảm giác kiểm soát tuyệt vời.",
-    "features": [
-      "Công nghệ Carbon Friction Surface (CFS)",
-      "Lõi Reactive Polymer Honeycomb 16mm",
-      "Thiết kế cân bằng giữa power và control",
-      "USAPA Approved"
+    "name": "Wild Secrets Zest 4.5&quot; Wearable Vibrating Egg",
+    "slug": "Wild-Secrets-Zest-Wearable-Vibrating-Egg",
+    "price": 129.99,
+    "originalPrice": 129.99,
+    "image": "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/main.webp",
+    "images": [
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/main.webp",
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/1.webp",
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/2.webp",
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/3.webp",
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/4.webp",
+      "/images/products/Wild-Secrets-Zest-Wearable-Vibrating-Egg/5.webp"
     ],
-    "specs": {
-      "surface": "Carbon Friction Surface",
-      "core": "Reactive Polymer Honeycomb",
-      "thickness": "16mm",
-      "control": 9,
-      "power": 8,
-      "weight": "220-240g",
-      "usapaApproved": true
-    },
-    "params": {
-      "brand": "Joola",
-      "origin": "Trung Quốc",
-      "supplier": "YeuPick",
-      "material": "Carbon Fiber, Polymer",
-      "warranty": "6 tháng",
-      "shipping": "Miễn phí toàn quốc"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviews": 24
-  },
-  {
-    "id": 2,
-    "name": "Vợt Pickleball Selkirk Vanguard Power Air Invikta",
-    "slug": "vot-pickleball-selkirk-vanguard-power-air-invikta",
-    "price": 4500000,
-    "originalPrice": 4900000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
-    "category": "vot",
-    "brand": "selkirk",
-    "productLineId": "selkirk-vanguard",
-    "description": "Vợt Selkirk Vanguard Power Air Invikta - thiết kế elongated cho power tối đa.",
-    "fullDescription": "Selkirk Vanguard Power Air Invikta là mẫu vợt cao cấp với thiết kế elongated (dài) giúp tăng tầm với và tạo đòn bẩy cho những cú đánh mạnh mẽ. Công nghệ Air Dynamic Throat giảm lực cản gió, mang lại tốc độ swing nhanh hơn.",
-    "features": [
-      "Thiết kế Elongated tăng tầm với",
-      "Công nghệ Air Dynamic Throat",
-      "Bề mặt QuadCarbon Face",
-      "USAPA Approved"
-    ],
-    "specs": {
-      "surface": "QuadCarbon Face",
-      "core": "Polymer X5 Honeycomb",
-      "thickness": "16mm",
-      "control": 7,
-      "power": 9,
-      "weight": "225-240g",
-      "usapaApproved": true
-    },
-    "params": {
-      "brand": "Selkirk",
-      "origin": "Mỹ",
-      "supplier": "YeuPick",
-      "material": "Carbon Fiber, Polymer",
-      "warranty": "6 tháng",
-      "shipping": "Miễn phí toàn quốc"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviews": 18
-  },
-  {
-    "id": 3,
-    "name": "Vợt Pickleball CRBN 1X Power Series",
-    "slug": "vot-pickleball-crbn-1x-power-series",
-    "price": 3900000,
-    "originalPrice": 4200000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
-    "category": "vot",
-    "brand": "crbn",
+    "category": "adult-toys",
+    "brand": "wild-secrets",
     "productLineId": "",
-    "description": "Vợt CRBN 1X Power Series - raw carbon face cho spin cực đại.",
-    "fullDescription": "CRBN 1X Power Series sử dụng bề mặt raw carbon T700 không phủ lớp sơn, giúp tạo ma sát tối đa với bóng. Thiết kế dài 16.5 inch kết hợp lõi polymer 16mm mang lại sự cân bằng hoàn hảo giữa power và control.",
-    "features": [
-      "Bề mặt Raw Carbon T700",
-      "Thiết kế Elongated 16.5 inch",
-      "Lõi Polymer Rev Core 16mm",
-      "USAPA Approved"
-    ],
-    "specs": {
-      "surface": "Raw Carbon T700",
-      "core": "Polymer Rev Core",
-      "thickness": "16mm",
-      "control": 8,
-      "power": 9,
-      "weight": "220-235g",
-      "usapaApproved": true
-    },
+    "description": "Wild Secrets Zest 4.5&quot; Wearable Vibrating Egg - Wild Secrets",
+    "fullDescription": "",
+    "features": [],
+    "specs": {},
     "params": {
-      "brand": "CRBN",
-      "origin": "Trung Quốc",
-      "supplier": "YeuPick",
-      "material": "Carbon T700, Polymer",
-      "warranty": "6 tháng",
-      "shipping": "Miễn phí toàn quốc"
-    },
-    "inStock": true,
-    "rating": 4.6,
-    "reviews": 12
-  },
-  {
-    "id": 4,
-    "name": "Vợt Pickleball Head Radical Tour CO",
-    "slug": "vot-pickleball-head-radical-tour-co",
-    "price": 3500000,
-    "originalPrice": 3800000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
-    "category": "vot",
-    "brand": "head",
-    "productLineId": "",
-    "description": "Vợt Head Radical Tour CO - dòng vợt chuyên nghiệp từ thương hiệu hàng đầu thế giới.",
-    "fullDescription": "Head Radical Tour CO là dòng vợt chuyên nghiệp với công nghệ Optimized Tubular Construction (OTC) mang lại độ cứng và ổn định tuyệt vời. Bề mặt Dynamic Power Shape giúp mở rộng sweet spot, phù hợp cho người chơi trung cấp đến chuyên nghiệp.",
-    "features": [
-      "Công nghệ Optimized Tubular Construction",
-      "Bề mặt Dynamic Power Shape",
-      "Sweet spot mở rộng",
-      "USAPA Approved"
-    ],
-    "specs": {
-      "surface": "Fiberglass Composite",
-      "core": "Polypropylene Honeycomb",
-      "thickness": "16mm",
-      "control": 8,
-      "power": 8,
-      "weight": "225-240g",
-      "usapaApproved": true
-    },
-    "params": {
-      "brand": "Head",
-      "origin": "Trung Quốc",
-      "supplier": "YeuPick",
-      "material": "Fiberglass, Polypropylene",
-      "warranty": "6 tháng",
-      "shipping": "Miễn phí toàn quốc"
+      "brand": "Wild Secrets",
+      "code": "T0072WILD",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/235027/Wild-Secrets-Zest-Wearable-Vibrating-Egg"
     },
     "inStock": true,
     "rating": 4.5,
-    "reviews": 9
+    "reviews": 0
+  },
+  {
+    "id": 4,
+    "name": "nsnovelties Luxe Lillie Slim 7.4\" G Spot Vibrator",
+    "slug": "NS-Novelties-Luxe-Lillie-Slim-G-Spot-Vibrator",
+    "price": 69.99,
+    "originalPrice": 69.99,
+    "image": "/images/products/NS-Novelties-Luxe-Lillie-Slim-G-Spot-Vibrator/main.webp",
+    "images": [
+      "/images/products/NS-Novelties-Luxe-Lillie-Slim-G-Spot-Vibrator/main.webp",
+      "/images/products/NS-Novelties-Luxe-Lillie-Slim-G-Spot-Vibrator/1.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Lillie will take your breath away, one G-spot orgasm at a time!\n\nThis elegant and slim G-spot vibrator from NS Novelties' Luxe range will make finding your sweet spot easy. Lillie bends and flexes to fit your body, allowing you to explore a variety of sensations and pressures comfortably - and pleasurably! Lillie is lightly ribbed and has an angular tip so she is perfect for stimulating your g-spot, or other erogenous zones such as your clitoris, nipples or the shaft of a penis.\n\nCycle through ten toe-curling modes of pulsating, escalating vibration, and find the right one for you, whatever you're mood! Crafted from silicone and ABS plastic, Lillie is non-porous, body-safe and super easy to clean. Wash her in warm, soapy water and sanitise with anti-bacterial toy cleaner before and after use for best results. We also recommend using a touch of water-based lube to intensify her vibrations. Lillie is splash-proof, so can accompany you into the shower, but please do not fully submerge her in water.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Lillie will take your breath away, one G-spot orgasm at a time!</p><p>This elegant and slim G-spot vibrator from NS Novelties' Luxe range will make finding your sweet spot easy. Lillie bends and flexes to fit your body, allowing you to explore a variety of sensations and pressures comfortably - and pleasurably! Lillie is lightly ribbed and has an angular tip so she is perfect for stimulating your g-spot, or other erogenous zones such as your clitoris, nipples or the shaft of a penis. </p><p>Cycle through ten toe-curling modes of pulsating, escalating vibration, and find the right one for you, whatever you're mood! Crafted from silicone and ABS plastic, Lillie is non-porous, body-safe and super easy to clean. Wash her in warm, soapy water and sanitise with anti-bacterial toy cleaner before and after use for best results. We also recommend using a touch of water-based lube to intensify her vibrations. Lillie is splash-proof, so can accompany you into the shower, but please do not fully submerge her in water. </p> </div> </div> <div",
+    "features": [
+      "Slim and elegant design&nbsp;",
+      "Flexible body&nbsp;",
+      "Angular tip to hit your g-spot",
+      "10x vibration functions",
+      "Perfect for exploring other erogenous zones",
+      "Splashproof",
+      "USB Rechargeable&nbsp;",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "5.7\" (14.5cm)",
+      "Width": "1\" (2.5cm)"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1738NSN",
+      "sku": "279847",
+      "color": "Teal",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/234782/NS-Novelties-Luxe-Lillie-Slim-G-Spot-Vibrator",
+      "isOnSale": "false",
+      "saveAmount": "$18.00 - 20% Off",
+      "rewardDollars": "3.50"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
   },
   {
     "id": 5,
-    "name": "Bóng Pickleball Franklin X-40 Outdoor (Hộp 12 quả)",
-    "slug": "bong-pickleball-franklin-x40-outdoor-hop-12-qua",
-    "price": 650000,
-    "originalPrice": 750000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg"],
-    "category": "bong",
-    "brand": "joola",
+    "name": "Doc Johnson Girthmasterr Signature Cocks 8.5\" Realistic Dildo",
+    "slug": "Girthmasterr-doc-johnson",
+    "price": 109.99,
+    "originalPrice": 109.99,
+    "image": "/images/products/Girthmasterr-doc-johnson/main.webp",
+    "images": [
+      "/images/products/Girthmasterr-doc-johnson/main.webp",
+      "/images/products/Girthmasterr-doc-johnson/1.webp",
+      "/images/products/Girthmasterr-doc-johnson/2.webp",
+      "/images/products/Girthmasterr-doc-johnson/3.webp",
+      "/images/products/Girthmasterr-doc-johnson/4.webp",
+      "/images/products/Girthmasterr-doc-johnson/5.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "doc-johnson",
     "productLineId": "",
-    "description": "Bóng Franklin X-40 - bóng thi đấu outdoor chính hãng, USAPA Approved.",
-    "fullDescription": "Franklin X-40 là loại bóng pickleball outdoor được sử dụng phổ biến nhất trong các giải đấu chuyên nghiệp. Thiết kế 40 lỗ chuẩn, độ nảy ổn định, độ bền cao, phù hợp cho thi đấu và luyện tập ngoài trời.",
+    "description": "Experience the ultimate in lifelike pleasure with the Girthmasterr Signature Dildo.\n\nExpertly crafted from a mold of Girthmasterr himself, this dual-density Ultraskyn toy is designed to deliver a truly authentic experience. Every curve and vein has been captured in meticulous detail, giving you a realistic sensation that mimics real skin and naturally warms to your body temperature.\n\nThis impressive toy boasts a substantial 7-inch girth, making it perfect for those seeking a larger, more fulfilling experience. The signature curve adds to the realistic feel, enhancing every moment of use.\n\nEquipped with a removable Vac-U-Lock compatible suction cup, it can be used with a harness or adhered to any flat, smooth surface for versatile play.\n\nThe Girthmasterr Signature Dildo is perfect for anyone looking to dive headfirst into a world of satisfaction - because why settle for average when you can go big and... well, girthy?",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Experience the ultimate in lifelike pleasure with the Girthmasterr Signature Dildo. </p><p>Expertly crafted from a mold of Girthmasterr himself, this dual-density Ultraskyn toy is designed to deliver a truly authentic experience. Every curve and vein has been captured in meticulous detail, giving you a realistic sensation that mimics real skin and naturally warms to your body temperature. </p><p> This impressive toy boasts a substantial 7-inch girth, making it perfect for those seeking a larger, more fulfilling experience. The signature curve adds to the realistic feel, enhancing every moment of use. Equipped with a removable Vac-U-Lock compatible suction cup, it can be used with a harness or adhered to any flat, smooth surface for versatile play. </p><p>The Girthmasterr Signature Dildo is perfect for anyone looking to dive headfirst into a world of satisfaction - because why settle for average when you can go big and... well, girthy?<br></p> </div> </div> <div",
     "features": [
-      "40 lỗ thiết kế chuẩn outdoor",
-      "Độ nảy ổn định",
-      "Độ bền cao",
-      "USAPA Approved cho thi đấu"
+      "Realistic, true-to-life replica of the Girthmasterr himself",
+      "Exquisite detailing",
+      "Soft, real-feel material",
+      "Firm, yet flexible dual density design",
+      "Thick, curved shaft&nbsp;",
+      "Removable suction cup",
+      "Vac-u-lock system compatible",
+      "Compatible with most harnesses",
+      "Waterproof",
+      "Use with water-based lubricant"
     ],
     "specs": {
-      "usapaApproved": true
+      "Insertable Length": "7.25\" (18.4cm)",
+      "Width": "2\" (5.1cm)",
+      "Girth": "7\" (17.78cm)",
+      "Material": "* Firm, yet flexible dual density design"
     },
     "params": {
-      "brand": "Franklin",
-      "origin": "Mỹ",
-      "supplier": "YeuPick",
-      "material": "Nhựa cứng",
-      "warranty": "Không bảo hành",
-      "shipping": "Miễn phí toàn quốc"
+      "brand": "Doc Johnson",
+      "code": "T2021DOJ",
+      "sku": "283269",
+      "color": "Light",
+      "material": "* Firm, yet flexible dual density design",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/236795/Girthmasterr-doc-johnson",
+      "isOnSale": "false",
+      "saveAmount": "$28.00 - 20% Off",
+      "rewardDollars": "5.50"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviews": 35
+    "rating": 4.5,
+    "reviews": 0
   },
   {
     "id": 6,
-    "name": "Giày Pickleball Head Motion Pro Padel",
-    "slug": "giay-pickleball-head-motion-pro-padel",
-    "price": 2800000,
-    "originalPrice": 3200000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg", "/images/products/placeholder-2.jpg"],
-    "category": "giay",
-    "brand": "head",
-    "productLineId": "",
-    "description": "Giày Head Motion Pro - thiết kế chuyên dụng cho pickleball và padel.",
-    "fullDescription": "Head Motion Pro Padel là đôi giày được thiết kế chuyên dụng cho các môn thể thao trên sân cứng như pickleball và padel. Đế Hybrasion cung cấp độ bám tuyệt vời, đệm TRI-NRG hấp thụ chấn động hiệu quả, giúp bảo vệ khớp gối khi di chuyển nhanh.",
-    "features": [
-      "Đế Hybrasion siêu bám",
-      "Đệm TRI-NRG hấp thụ chấn động",
-      "Trọng lượng nhẹ",
-      "Thoáng khí"
+    "name": "Adam and Eve Sunset Dreams 7.5\" Realistic Dildo",
+    "slug": "adam-and-eve-7-5-sunset-dreams-dildo",
+    "price": 49.99,
+    "originalPrice": 49.99,
+    "image": "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/main.webp",
+    "images": [
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/main.webp",
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/1.webp",
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/2.webp",
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/3.webp",
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/4.webp",
+      "/images/products/adam-and-eve-7-5-sunset-dreams-dildo/5.webp"
     ],
-    "specs": {},
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Have you ever seen a more beautiful sunset?\n\nThis ombré-coloured dildo is inspired by the vivid shades of twilight!\n\nProduced with a fleshy-feel TPE rubber, this girthy boy moves with your body and features a realistic design and a firm, pronounced head and vein textures.\n\nThe strong suction cup offers hands-free play at any time, plus the life-like balls are squeezable for an extra thrill as you ride into the sunset on a wave of pleasure.\n\nFor best results use with water-based lubricant only, and cleanse with toy cleaner before and after use.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Have you ever seen a more beautiful sunset?</p><p>This ombré-coloured dildo is inspired by the vivid shades of twilight!</p><p>Produced with a fleshy-feel TPE rubber, this girthy boy moves with your body and features a realistic design and a firm, pronounced head and vein textures.</p><p>The strong suction cup offers hands-free play at any time, plus the life-like balls are squeezable for an extra thrill as you ride into the sunset on a wave of pleasure.</p><p>For best results use with water-based lubricant only, and cleanse with toy cleaner before and after use.<br></p> </div> </div> <div",
+    "features": [
+      "Real-feel, realistic dildo",
+      "Moves with your body",
+      "Purple-to-pink ombré design",
+      "Girthy shaft & firm balls",
+      "Life-like veined textures on shaft for extra stimulation",
+      "Powerful suction cup base",
+      "Harness compatible",
+      "Perfect for solo or couples play",
+      "Waterproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "5.25\" (13.3cm)",
+      "Width": "1.7\" (4.2cm)",
+      "Girth": "5.2\" (13.2cm)",
+      "Material": "TPE"
+    },
     "params": {
-      "brand": "Head",
-      "origin": "Việt Nam",
-      "supplier": "YeuPick",
-      "material": "Mesh, Cao su tổng hợp",
-      "warranty": "3 tháng",
-      "shipping": "Miễn phí toàn quốc"
+      "brand": "Adam and Eve",
+      "code": "T1162AEVE",
+      "sku": "280813",
+      "color": "Pink/Purple",
+      "material": "TPE",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/233469/adam-and-eve-7-5-sunset-dreams-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$10.00 - 16% Off",
+      "rewardDollars": "2.50"
     },
     "inStock": true,
-    "rating": 4.4,
-    "reviews": 7
+    "rating": 4.5,
+    "reviews": 0
   },
   {
     "id": 7,
-    "name": "Túi Đựng Vợt Pickleball Joola Tour Elite Pro Bag",
-    "slug": "tui-dung-vot-pickleball-joola-tour-elite-pro-bag",
-    "price": 1800000,
-    "originalPrice": 2100000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg"],
-    "category": "phu-kien",
-    "brand": "joola",
-    "productLineId": "",
-    "description": "Túi Joola Tour Elite Pro - chứa được 4 vợt, nhiều ngăn tiện lợi.",
-    "fullDescription": "Joola Tour Elite Pro Bag là túi đựng vợt pickleball cao cấp với thiết kế nhiều ngăn, chứa được tối đa 4 vợt cùng phụ kiện. Chất liệu polyester 600D bền bỉ, chống nước, có ngăn đựng giày riêng biệt và ngăn giữ nhiệt cho đồ uống.",
-    "features": [
-      "Chứa tối đa 4 vợt",
-      "Ngăn đựng giày riêng biệt",
-      "Chất liệu chống nước",
-      "Quai đeo êm ái"
+    "name": "Adam and Eve The Bedrocker 8.9\" Gyrating & Thrusting Vibrating Dildo with Remote Control",
+    "slug": "Adam-Eve-The-Bedrocker-Dildo",
+    "price": 174.99,
+    "originalPrice": 174.99,
+    "image": "/images/products/Adam-Eve-The-Bedrocker-Dildo/1.webp",
+    "images": [
+      "/images/products/Adam-Eve-The-Bedrocker-Dildo/1.webp",
+      "/images/products/Adam-Eve-The-Bedrocker-Dildo/2.webp"
     ],
-    "specs": {},
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Rock Your Bed with Powerful Thrusting, Gyration & Vibration!\n\nGet ready to shake things up — literally! The Thrusting & Gyrating Rechargeable Dildo delivers a mind-blowing combo of deep thrusts, circular gyration, and intense tip-focused vibrations.\n\nIts thick, realistically shaped shaft fills you up, while powerful motorized motion sends wave after wave of pleasure right where you want it. Use the built-in control button to activate preset combos or grab the remote to take full command with 5 thrusting/gyration modes and 7 vibration functions.\n\nWhether you grip it by the lifelike balls or ride it hands-free using the sturdy suction cup base, this toy is built to please — and built to last.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Rock Your Bed with Powerful Thrusting, Gyration &amp; Vibration! </p><p> Get ready to shake things up — literally! The Thrusting &amp; Gyrating Rechargeable Dildo delivers a mind-blowing combo of deep thrusts, circular gyration, and intense tip-focused vibrations.</p><p> Its thick, realistically shaped shaft fills you up, while powerful motorized motion sends wave after wave of pleasure right where you want it. Use the built-in control button to activate preset combos or grab the remote to take full command with 5 thrusting/gyration modes and 7 vibration functions. </p><p>Whether you grip it by the lifelike balls or ride it hands-free using the sturdy suction cup base, this toy is built to please — and built to last.</p> </div> </div> <div",
+    "features": [
+      "Large rechargeable dildo with thrusting, gyration & vibration",
+      "Realistically shaped shaft with tip-focused stimulation",
+      "Shaft thrusts and gyrates simultaneously for enhanced internal pleasure",
+      "Explore built-in combinations or use the remote control for full customization",
+      "Remote features 5 thrusting/gyration modes and 7 powerful vibration patterns",
+      "Firm suction cup base sticks securely to hard, smooth surfaces for hands-free fun",
+      "Control the action by hand using the shaft or the easy-to-use remote",
+      "Waterproof design for wet and wild play",
+      "USB rechargeable&nbsp;",
+      "Remote takes one 12V battery (included)"
+    ],
+    "specs": {
+      "Total Length": "8.9\" (22.6 cm)",
+      "Insertable Length": "6.5\" (16.5 cm)",
+      "Material": "Silicone, ABS plastic"
+    },
     "params": {
-      "brand": "Joola",
-      "origin": "Trung Quốc",
-      "supplier": "YeuPick",
-      "material": "Polyester 600D",
-      "warranty": "3 tháng",
-      "shipping": "Miễn phí toàn quốc"
+      "brand": "Adam and Eve",
+      "code": "T1429AEVE",
+      "sku": "284380",
+      "color": "Black/Red",
+      "material": "Silicone, ABS plastic",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/237513/Adam-Eve-The-Bedrocker-Dildo",
+      "isOnSale": "false",
+      "saveAmount": "$45.00 - 20% Off",
+      "rewardDollars": "8.75"
     },
     "inStock": true,
-    "rating": 4.3,
-    "reviews": 5
+    "rating": 4.5,
+    "reviews": 0
   },
   {
     "id": 8,
-    "name": "Áo Thể Thao Pickleball Selkirk Luxx Collection",
-    "slug": "ao-the-thao-pickleball-selkirk-luxx-collection",
-    "price": 1200000,
-    "originalPrice": 1500000,
-    "image": "/images/products/placeholder.jpg",
-    "images": ["/images/products/placeholder.jpg"],
-    "category": "quan-ao",
-    "brand": "selkirk",
-    "productLineId": "selkirk-luxx",
-    "description": "Áo thể thao Selkirk Luxx Collection - thoáng mát, co giãn 4 chiều.",
-    "fullDescription": "Áo thể thao Selkirk Luxx Collection được thiết kế chuyên dụng cho pickleball với chất liệu vải co giãn 4 chiều, thoáng khí và thấm hút mồ hôi nhanh. Kiểu dáng slim fit hiện đại, phù hợp cho thi đấu và tập luyện.",
-    "features": [
-      "Vải co giãn 4 chiều",
-      "Thấm hút mồ hôi nhanh",
-      "Chống tia UV UPF 50+",
-      "Kiểu dáng slim fit"
+    "name": "Calexotics Silicone Studs 9.5\" Gyrating & Thrusting Realistic Dildo with Suction Cup",
+    "slug": "california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo",
+    "price": 149.99,
+    "originalPrice": 149.99,
+    "image": "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/main.webp",
+    "images": [
+      "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/main.webp",
+      "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/1.webp",
+      "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/2.webp",
+      "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/3.webp",
+      "/images/products/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo/4.webp"
     ],
-    "specs": {},
+    "category": "adult-toys",
+    "brand": "calexotics",
+    "productLineId": "",
+    "description": "Take a wild ride on this Silicone Stud and enjoy an incredible blend of realism and fantasy.\n\nCrafted from premium, soft-touch liquid silicone, this large dildo is realistically sculpted with a detailed head, veined shaft and textured testicles, and is cast in a warm purple. A delight to touch and clench around, the Silicone Stud is a toy for the adventurous, featuring 10 modes of vibration, gyration and thrusting. Whether you're after a gentle ride or a true bucking bronco, this toy has a setting that's perfect for you. The suction cup base easily attaches to any smooth surface for hands free fun, and the waterproof design means you can take it into the shower, bath or spa with you if the mood strikes.\n\nFor best results, add plenty of water-based lube to yourself and your Stud before playtime, and clean before and after use with warm water and anti-bacterial toy cleaner, and allow your Stud to dry fully before storing him away for next time. If you're looking to travel, the Stud is ready to go with a secure travel lock to ensure he doesn't accidentally go off in your luggage, and he also has a smart memory function so he'll pick up on your last used setting when you turn him on again.\n\nTake charge of your pleasure with a Silicone Stud who's always willing to please...",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Take a wild ride on this Silicone Stud and enjoy an incredible blend of realism and fantasy.</p><p>Crafted from premium, soft-touch liquid silicone, this large dildo is realistically sculpted with a detailed head, veined shaft and textured testicles, and is cast in a warm purple. A delight to touch and clench around, the Silicone Stud is a toy for the adventurous, featuring 10 modes of vibration, gyration and thrusting. Whether you're after a gentle ride or a true bucking bronco, this toy has a setting that's perfect for you. The suction cup base easily attaches to any smooth surface for hands free fun, and the waterproof design means you can take it into the shower, bath or spa with you if the mood strikes.</p><p>For best results, add plenty of water-based lube to yourself and your Stud before playtime, and clean before and after use with warm water and anti-bacterial toy cleaner, and allow your Stud to dry fully before storing him away for next time. If you're looking to travel, the Stud is ready to go with a secure travel lock to ensure he doesn't accidentally go off in your luggage, and he also has a smart memory function so he'll pick up on your last used setting when you turn him on again.</p><p>Take charge of your pleasure with a Silicone Stud who's always willing to please...</p> </div> </div> <div",
+    "features": [
+      "Gyrating, thrusting & vibrating realistic dildo",
+      "10x pleasure functions",
+      "Realistic, sculpted design",
+      "Soft, plush liquid silicone",
+      "Suction cup base for hands free fun",
+      "Suitable for vaginal and anal use",
+      "Memory function resumes on last used setting",
+      "Travel lock",
+      "Waterproof (IPX7)",
+      "USB rechargeable",
+      "Use with water-based lubricant",
+      "17.8cm)"
+    ],
+    "specs": {
+      "Insertable Length": "7\" *17.8cm)",
+      "Width": "3.75\" (9.5cm)",
+      "Girth": "5\" (12.8cm)",
+      "Material": "Liquid silicone"
+    },
     "params": {
-      "brand": "Selkirk",
-      "origin": "Việt Nam",
-      "supplier": "YeuPick",
-      "material": "Polyester, Spandex",
-      "warranty": "1 tháng",
-      "shipping": "Miễn phí toàn quốc"
+      "brand": "Calexotics",
+      "code": "T2697CAEC",
+      "sku": "282955",
+      "color": "Purple",
+      "material": "Liquid silicone",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/236564/california-exotic-rechargeable-gyrating-and-thrusting-silicone-studs-realistic-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$38.00 - 20% Off",
+      "rewardDollars": "7.50"
     },
     "inStock": true,
-    "rating": 4.2,
-    "reviews": 3
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 9,
+    "name": "Adam and Eve True Feel Cock 7\" Realistic Dildo with Suction Cup Base",
+    "slug": "Adam-And-Eve-Adams-True-Feel-Cock",
+    "price": 27.99,
+    "originalPrice": 55.99,
+    "image": "/images/products/Adam-And-Eve-Adams-True-Feel-Cock/main.webp",
+    "images": [
+      "/images/products/Adam-And-Eve-Adams-True-Feel-Cock/main.webp",
+      "/images/products/Adam-And-Eve-Adams-True-Feel-Cock/1.webp",
+      "/images/products/Adam-And-Eve-Adams-True-Feel-Cock/2.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "If you're looking for an experience as close to the real thing as possible, get the True Feel Cock - a dual density, realistic dildo designed to and feel like the real thing!\n\nCrafted from soft, real feel TPE wrapped around a firm core, the True Feel Cock has the firmness of an actual erection with the softer, yielding texture that feels oh so natural as it slides into you. With a tapered, sculpted glans it slides in easily with a little water-based lube and the textured veins on the shaft add to both realism and sensation during play. A pair of balls provide a flared base for additional safety if you need it, and the built in, suction cup base sticks to most smooth surfaces so you can enjoy hands free play. It also makes the dildo compatible with most harnesses so you can enjoy some partnered strap-on or pegging play!\n\nOnce you're done, keep your dildo clean with warm, soapy water and anti-bacterial toy cleaner. Just let it dry fully before storing it away out of contact with your other toys.\n\nNeed a quality toy that won't break the bank? Try the True Feel Cock from Adam & Eve.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>If you're looking for an experience as close to the real thing as possible, get the True Feel Cock - a dual density, realistic dildo designed to and feel like the real thing!</p><p>Crafted from soft, real feel TPE wrapped around a firm core, the True Feel Cock has the firmness of an actual erection with the softer, yielding texture that feels oh so natural as it slides into you. With a tapered, sculpted glans it slides in easily with a little water-based lube and the textured veins on the shaft add to both realism and sensation during play. A pair of balls provide a flared base for additional safety if you need it, and the built in, suction cup base sticks to most smooth surfaces so you can enjoy hands free play. It also makes the dildo compatible with most harnesses so you can enjoy some partnered strap-on or pegging play!</p><p>Once you're done, keep your dildo clean with warm, soapy water and anti-bacterial toy cleaner. Just let it dry fully before storing it away out of contact with your other toys.</p><p>Need a quality toy that won't break the bank? Try the True Feel Cock from Adam &amp; Eve.</p> </div> </div> <div",
+    "features": [
+      "Realistic, dual-density dildo",
+      "Soft, realistic exterior with a firm core",
+      "Mimics and actual erection",
+      "Beginner friendly size",
+      "Realistically sculpted glans, shaft, and balls",
+      "Suction cup base for hands free play",
+      "Compatible with most harnesses",
+      "Waterproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "5.5\" (14cm)",
+      "Width": "1.5\" (3.8cm)",
+      "Material": "TPE"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1273AEVE",
+      "sku": "283487",
+      "color": "Dark Skin",
+      "material": "TPE",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/234748/Adam-And-Eve-Adams-True-Feel-Cock",
+      "isOnSale": "true",
+      "saveAmount": "$42.00 - 60% Off",
+      "rewardDollars": "1.40"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 10,
+    "name": "nsnovelties Colours Pleasures 5\" Vibrating Dildo",
+    "slug": "Colours-Pleasures-5-Inch-Vibrating-Dildo",
+    "price": 92.99,
+    "originalPrice": 92.99,
+    "image": "/images/products/Colours-Pleasures-5-Inch-Vibrating-Dildo/main.webp",
+    "images": [
+      "/images/products/Colours-Pleasures-5-Inch-Vibrating-Dildo/main.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Ready for more? We sure hope so...\n\nThe vibrating Colours Pleasures range of dildos from NS Novelties is the erection that never quits! These vibrant, smooth yet firm dildos feature a suction cup base for hands-free fun and can be mounted on a dry, flat surface or a compatible harness.\n\nExplore 3 powerful speeds of vibration and 7 patterns and let the fun begin!  For best results, apply a generous amount of  water-based lube before use. Once you're done wash in warm, soapy water and sanitise with antibacterial toy cleaner. Allow to dry fully before storage.\n\nNote that NS Novelties listed size refers to insertable length, not total toy length.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Ready for more? We sure hope so...</p><p> The vibrating Colours Pleasures range of dildos from NS Novelties is the erection that never quits! These vibrant, smooth yet firm dildos feature a suction cup base for hands-free fun and can be mounted on a dry, flat surface or a compatible harness. </p><p> Explore 3 powerful speeds of vibration and 7 patterns and let the fun begin! For best results, apply a generous amount of water-based lube before use. Once you're done wash in warm, soapy water and sanitise with antibacterial toy cleaner. Allow to dry fully before storage. </p><p> Note that NS Novelties listed size refers to insertable length, not total toy length.<br></p> </div> </div> <div",
+    "features": [
+      "Vibrant colours",
+      "Realistic design",
+      "Smooth yet firm",
+      "Suction cup base",
+      "3x speeds of vibrations",
+      "7x functions",
+      "USB rechargeable&nbsp;",
+      "Splashproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "5\" (12.7cm)&nbsp;&nbsp;",
+      "Width": "2.3\" (5.8cm)"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1741NSN",
+      "sku": "279852",
+      "color": "Pink",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/234785/Colours-Pleasures-5-Inch-Vibrating-Dildo",
+      "isOnSale": "false",
+      "saveAmount": "$22.00 - 19% Off",
+      "rewardDollars": "4.65"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 11,
+    "name": "Adam and Eve Dreams 3 Piece Textured Dildo Set",
+    "slug": "Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set",
+    "price": 39.99,
+    "originalPrice": 79.99,
+    "image": "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/main.webp",
+    "images": [
+      "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/main.webp",
+      "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/1.webp",
+      "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/2.webp",
+      "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/3.webp",
+      "/images/products/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set/4.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Discover endless ways to play with this colourful trio of dildos designed for pleasure, training, and shared adventures.\n\nEach piece offers a different size and sensation, giving you or your partner the freedom to explore at your own pace.\n\nStart with the smallest for a gentle introduction, move to the medium as you build confidence, and finish with the large for full satisfaction. Or just pick whatever you're feeling like on the day!\n\nThe firm yet flexible shafts feature stimulating textures and pleasure nubs that rub and tease against the clitoris for dual external and internal stimulation. Each dildo includes a suction cup base that sticks securely to most smooth surfaces, perfect for hands-free solo play or adventurous partner fun. Whether you take it to the shower, headboard, or floor, the Dreams Trio lights up every moment with colour and excitement.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Discover endless ways to play with this colourful trio of dildos designed for pleasure, training, and shared adventures. </p><p>Each piece offers a different size and sensation, giving you or your partner the freedom to explore at your own pace. Start with the smallest for a gentle introduction, move to the medium as you build confidence, and finish with the large for full satisfaction. Or just pick whatever you're feeling like on the day!</p><p>The firm yet flexible shafts feature stimulating textures and pleasure nubs that rub and tease against the clitoris for dual external and internal stimulation. Each dildo includes a suction cup base that sticks securely to most smooth surfaces, perfect for hands-free solo play or adventurous partner fun. Whether you take it to the shower, headboard, or floor, the Dreams Trio lights up every moment with colour and excitement.</p> </div> </div> <div",
+    "features": [
+      "3 piece dildo set&nbsp;",
+      "Ideal for training, sharing, and exploring together&nbsp;",
+      "3 graduated sizes: small, medium, and large",
+      "Easily inserted tapered tips",
+      "Flexible textured shafts with stimulating pleasure nubs",
+      "Suction cup bases for hands-free play",
+      "Comes in Sunset, Sunrise, and Seaside colour gradients.",
+      "Waterproof&nbsp;",
+      "Easy to clean",
+      "Use with water-based lubricant&nbsp;"
+    ],
+    "specs": {
+      "Insertable Length": "4.1″ (10.4cm)",
+      "Width": "1.6″ (4.1cm)",
+      "Girth": "3.1\" (8cm)"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1453AEVE",
+      "sku": "284654",
+      "color": "MULTI",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/237660/Adam-and-eve-Sunset-Dreams-3-Piece-Dildo-Set?cway=6010",
+      "isOnSale": "true",
+      "saveAmount": "$60.00 - 60% Off",
+      "rewardDollars": "2.00"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 12,
+    "name": "nsnovelties Realistic 7\" Dildo, 5.2\" Vibrator & 4.2\" Butt Plug Set",
+    "slug": "nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set",
+    "price": 74.99,
+    "originalPrice": 74.99,
+    "image": "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/main.webp",
+    "images": [
+      "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/main.webp",
+      "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/1.webp",
+      "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/2.webp",
+      "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/3.webp",
+      "/images/products/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set/4.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Ever heard that good things come in threes?\n\nThis vibrant kit of pleasure products includes a realistic silicone dildo, featuring a smooth head, textured shaft for another dimension of sensation, and a strong suction cup base for hands-free play.\n\nThe included powerful ABS vibrator boasts a classic cylindrical design and gently angled head for comfortable penetration and external massage.\n\nRounding out the set is a stylish silicone butt plug, featuring a slim, tapered shape for easy insertion and comfortable wear plus a convenient retrieval finger loop at the bottom of the secure curved base.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Ever heard that good things come in threes?</p><p>This vibrant kit of pleasure products includes a realistic silicone dildo, featuring a smooth head, textured shaft for another dimension of sensation, and a strong suction cup base for hands-free play.</p><p>The included powerful ABS vibrator boasts a classic cylindrical design and gently angled head for comfortable penetration and external massage.</p><p>Rounding out the set is a stylish silicone butt plug, featuring a slim, tapered shape for easy insertion and comfortable wear plus a convenient retrieval finger loop at the bottom of the secure curved base.</p> </div> </div> <div",
+    "features": [
+      "Realistic silicone dildo",
+      "Dildo has suction cup base for hands-free play",
+      "Powerful ABS cylindrical vibrator",
+      "Silicone butt plug",
+      "Plug is tapered for ease of use & comfort",
+      "Plug has retrieval finger loop"
+    ],
+    "specs": {
+      "Total Length": "7\" (17.78cm)",
+      "Insertable Length": "5.5\" (13.97cm)",
+      "Width": "1.7\" (4.31cm)"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1633NSN",
+      "sku": "263828",
+      "color": "Purple",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/224597/nsnovelties-realistic-7-dildo-5-2-vibrator-4-2-butt-plug-set",
+      "isOnSale": "false",
+      "saveAmount": "$20.00 - 21% Off",
+      "rewardDollars": "3.75"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 13,
+    "name": "Creature Cocks Tenta Cock 9.5\" Luminous Silicone Tentacle Monster Dildo",
+    "slug": "Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo",
+    "price": 97.99,
+    "originalPrice": 97.99,
+    "image": "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/main.webp",
+    "images": [
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/main.webp",
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/1.webp",
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/2.webp",
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/3.webp",
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/4.webp",
+      "/images/products/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo/5.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "creature-cocks",
+    "productLineId": "",
+    "description": "You weren't concerned when something brushed past your leg. At first.\n\nMake your monstrous dreams a reality with this glow-in-the-dark tentacle dildo! Crafted from plush, premium silicone wrapped around a firm core for stability, this fantasy dildo features a unique blend of orange, purple, and blue colouration during the day, and stunning green at night if the dildo has been exposed to sunshine or UV light! It has a tapered tip for easy insertion, two rows of sculpted suckers and thick ridges along the sides to provide extra sensation as you move on it.\n\nThe strong suction cup base easily sticks to just about any flat, smooth surface for hands-free fun, and also makes the dildo compatible with most harnesses for partnered pleasure. However you play and whatever you're imagining, use plenty of water-based lube prior to insertion and reapply as needed. Once you're done, clean your tentacled playmate with warm soapy water and/or anti-bacterial toy spray.\n\nYou don't quite know how long you spent writhing in delight, wrapped in the tentacles of your cephalopod lover, but when they finally left and you thought to check your oxygen gauge, you were running on empty. Had they known? You think they must. And you'll be back to learn more about your underwater lover...",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>You weren't concerned when something brushed past your leg. At first.</p><p>Make your monstrous dreams a reality with this glow-in-the-dark tentacle dildo! Crafted from plush, premium silicone wrapped around a firm core for stability, this fantasy dildo features a unique blend of orange, purple, and blue colouration during the day, and stunning green at night if the dildo has been exposed to sunshine or UV light! It has a tapered tip for easy insertion, two rows of sculpted suckers and thick ridges along the sides to provide extra sensation as you move on it.<br></p><p>The strong suction cup base easily sticks to just about any flat, smooth surface for hands-free fun, and also makes the dildo compatible with most harnesses for partnered pleasure. However you play and whatever you're imagining, use plenty of water-based lube prior to insertion and reapply as needed. Once you're done, clean your tentacled playmate with warm soapy water and/or anti-bacterial toy spray.</p><p>You don't quite know how long you spent writhing in delight, wrapped in the tentacles of your cephalopod lover, but when they finally left and you thought to check your oxygen gauge, you were running on empty. Had they known? You think they must. And you'll be back to learn more about your underwater lover...</p> </div> </div> <div",
+    "features": [
+      "Glow in the dark tentacle dildo",
+      "Premium, silicone design wrapped around a firm core",
+      "Tapered tip for easy entry",
+      "Features 2 rows of sculpted suckers",
+      "Delicately textured cephalopod skin with deep pleasure ridges",
+      "Flared suction cup base for hands-free play",
+      "Compatible with most harnesses",
+      "For all your tentacle lover fantasies",
+      "Waterproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "8.3\" (21.1cm)",
+      "Width": "1.75\" (4.4cm)",
+      "Girth": "5.5\" (14cm)",
+      "Material": "Body-safe, phthalate-free, silicone"
+    },
+    "params": {
+      "brand": "Creature Cocks",
+      "code": "T0015CRK",
+      "sku": "283249",
+      "color": "MULTI",
+      "material": "Body-safe, phthalate-free, silicone",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/236777/Creature-Cock-Tenta-Cock-Glow-In-The-Dark-Silicone-Dildo",
+      "isOnSale": "false",
+      "saveAmount": "$28.00 - 22% Off",
+      "rewardDollars": "4.90"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 14,
+    "name": "Curious Candy Lollipop 8.3\" Realistic Dildo with Suction Cup Base",
+    "slug": "Curious-Candy-Lollipop-Dildo",
+    "price": 39.99,
+    "originalPrice": 39.99,
+    "image": "/images/products/Curious-Candy-Lollipop-Dildo/main.webp",
+    "images": [
+      "/images/products/Curious-Candy-Lollipop-Dildo/main.webp",
+      "/images/products/Curious-Candy-Lollipop-Dildo/1.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "curious-candy",
+    "productLineId": "",
+    "description": "Enjoy some sweet, sweet loving with Curious Candy's Lollipop Dildo range!\n\nAvailable in 3 fun colours and sculpted from real-feel material, the Lollipop Dildos are firm enough to give you a solid ride, but with enough yield to conform to your body and feel great in your hand. They also feature a realistic sculp with a pronounced head and distinct veins that provide amazing erotic textures as you grip it inside. The Lollipop Dildo also has a secure, suction cup base, so it can be mounted to most harnesses, or the smooth, flat surface of your choice for hands free fun. Ideally suited for vaginal use, the Lollipop Dildo can be used anally if secured via it's suction cup to a suitable surface first.\n\nHowever you choose to play, add a liberal coating of water-based lubricant to the dildo and yourself before insertion, and clean your lollipop once you're done with warm water and mild soap and/or antibacterial toy cleaner.\n\nWant a hefty treat that's a bit more fun than boring old 'flesh' tones? Have a taste of this Lollipop...",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Enjoy some sweet, sweet loving with Curious Candy's Lollipop Dildo range!</p><p>Available in 3 fun colours and sculpted from real-feel material, the Lollipop Dildos are firm enough to give you a solid ride, but with enough yield to conform to your body and feel great in your hand. They also feature a realistic sculp with a pronounced head and distinct veins that provide amazing erotic textures as you grip it inside. The Lollipop Dildo also has a secure, suction cup base, so it can be mounted to most harnesses, or the smooth, flat surface of your choice for hands free fun. Ideally suited for vaginal use, the Lollipop Dildo can be used anally if secured via it's suction cup to a suitable surface first.</p><p>However you choose to play, add a liberal coating of water-based lubricant to the dildo and yourself before insertion, and clean your lollipop once you're done with warm water and mild soap and/or antibacterial toy cleaner. </p><p>Want a hefty treat that's a bit more fun than boring old 'flesh' tones? Have a taste of this Lollipop...</p> </div> </div> <div",
+    "features": [
+      "Realistically sculpted dildo",
+      "Available in 3 fun colours",
+      "Crafted from soft, real-feel material",
+      "Suction cup base for hands free play",
+      "Compatible with most harnesses",
+      "Pronounced head",
+      "Veiny, pleasure textured shaft",
+      "Waterproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "&nbsp;7.5\" (19.1cm)",
+      "Width": "2.4\" (6cm)",
+      "Girth": "5.7\" (14.4cm)",
+      "Material": "* Suction cup base for hands free play"
+    },
+    "params": {
+      "brand": "Curious Candy",
+      "code": "T0024CSCY",
+      "sku": "283119",
+      "color": "Blue",
+      "material": "* Suction cup base for hands free play",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/236679/Curious-Candy-Lollipop-Dildo",
+      "isOnSale": "false",
+      "saveAmount": "",
+      "rewardDollars": "2.00"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 15,
+    "name": "Adam and Eve 8\" Realistic Jelly Feel Dildo",
+    "slug": "adam-and-eve-8-realistic-jelly-feel-dildo",
+    "price": 42.99,
+    "originalPrice": 42.99,
+    "image": "/images/products/adam-and-eve-8-realistic-jelly-feel-dildo/main.webp",
+    "images": [
+      "/images/products/adam-and-eve-8-realistic-jelly-feel-dildo/main.webp",
+      "/images/products/adam-and-eve-8-realistic-jelly-feel-dildo/1.webp",
+      "/images/products/adam-and-eve-8-realistic-jelly-feel-dildo/2.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Long, thick and flexible with nothing to hide!\n\nThis realistic looking dildo with a pronounced head and balls has a wonderful jelly-like feel you can enjoy in the bed, bath and beyond.\n\nFeatures stimulating veined textures on the shaft and a strong suction cup base for hands-free play when placed on a smooth, flat surface.\n\nCrafted from high transparency TPE with no phthalates or latex for peace of mind, it's best used with your favourite water-based lubricant and washed with toy cleaner and warm water.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Long, thick and flexible with nothing to hide!</p><p>This realistic looking dildo with a pronounced head and balls has a wonderful jelly-like feel you can enjoy in the bed, bath and beyond.</p><p>Features stimulating veined textures on the shaft and a strong suction cup base for hands-free play when placed on a smooth, flat surface.</p><p>Crafted from high transparency TPE with no phthalates or latex for peace of mind, it's best used with your favourite water-based lubricant and washed with toy cleaner and warm water.</p> </div> </div> <div",
+    "features": [
+      "Realistic appearance",
+      "Jelly-like feel with veined textures",
+      "Firm yet flexible shaft",
+      "Pronounced head & balls",
+      "Strong suction cup base",
+      "Waterproof",
+      "High transparency TPE",
+      "No phthalates or latex",
+      "5-year warranty"
+    ],
+    "specs": {
+      "Insertable Length": "6\" (15.2 cm)",
+      "Width": "3.5\" (8.9 cm)"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1087AEVE",
+      "sku": "280635",
+      "color": "Transparent",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/229872/adam-and-eve-8-realistic-jelly-feel-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$12.00 - 21% Off",
+      "rewardDollars": "2.15"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 16,
+    "name": "nsnovelties Super Stroker Remote Controlled 14.5\" Heated Thrusting Vibrator with Suction Cup Base",
+    "slug": "NS-Novelties-Renegade-Super-Stroker",
+    "price": 204.99,
+    "originalPrice": 204.99,
+    "image": "/images/products/NS-Novelties-Renegade-Super-Stroker/main.webp",
+    "images": [
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/main.webp",
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/1.webp",
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/2.webp",
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/3.webp",
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/4.webp",
+      "/images/products/NS-Novelties-Renegade-Super-Stroker/5.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Get the hot pounding you crave with the Super Stroker by Renegade.\n\nFeaturing a 7 inch shaft with a long range of motion, this dildo is basically a mini sex machine. Use it by itself, with a partner, or screw it into its suction cup stand for hands free pleasure on any smooth surface. Crafted from silky smooth silicone and with a realistic, sculpted glans in classic black you'll want plenty off water-based lube as you explore the 3 speeds of thrusting and vibration, 7 vibration patterns and the heating function that warms your Super Stroker stud up to real body temperature for a truly fulfilling finish.\n\nControl all the action from the included wireless remote, whether you're holding it yourself or handing it over to a partner. Once you're done, clean your Super Stroker with anti-bacterial toy cleaner and a damp cloth, and allow to dry fully before storing it away for next time.\n\nTake your play to Super with Renegade. Are you up for the challenge?",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Get the hot pounding you crave with the Super Stroker by Renegade.</p><p>Featuring a 7 inch shaft with a long range of motion, this dildo is basically a mini sex machine. Use it by itself, with a partner, or screw it into its suction cup stand for hands free pleasure on any smooth surface. Crafted from silky smooth silicone and with a realistic, sculpted glans in classic black you'll want plenty off water-based lube as you explore the 3 speeds of thrusting and vibration, 7 vibration patterns and the heating function that warms your Super Stroker stud up to real body temperature for a truly fulfilling finish.</p><p>Control all the action from the included wireless remote, whether you're holding it yourself or handing it over to a partner. Once you're done, clean your Super Stroker with anti-bacterial toy cleaner and a damp cloth, and allow to dry fully before storing it away for next time.</p><p>Take your play to Super with Renegade. Are you up for the challenge?</p> </div> </div> <div",
+    "features": [
+      "Heated, thrusting & vibrating dildo",
+      "Suction cup stand turns the toy into a mini sex machine",
+      "3x thrusting & vibration speeds",
+      "7x vibration patterns",
+      "Warms to body temperature",
+      "Sculpted shaft and glans",
+      "Silky smooth form",
+      "Wireless remote control",
+      "USB rechargeable (toy only)",
+      "Use with water-based lubricant",
+      "Remote requires 1x A23 battery (included)"
+    ],
+    "specs": {
+      "Insertable Length": "7\" (17.8cm)",
+      "Width": "2.3\" (5.8cm)",
+      "Diameter": "2.7\" (6.9cm)",
+      "Material": "Silicone, ABS plastic"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1791NSN",
+      "sku": "281193",
+      "color": "Black",
+      "material": "Silicone, ABS plastic",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/235451/NS-Novelties-Renegade-Super-Stroker",
+      "isOnSale": "false",
+      "saveAmount": "$53.00 - 20% Off",
+      "rewardDollars": "10.25"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 17,
+    "name": "Adam and Eve Adam&#39;s Cock 10\" Realistic Textured Dildo with Suction Cup Base",
+    "slug": "adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base",
+    "price": 39.99,
+    "originalPrice": 79.99,
+    "image": "/images/products/adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base/main.webp",
+    "images": [
+      "/images/products/adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base/main.webp",
+      "/images/products/adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base/1.webp",
+      "/images/products/adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base/2.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Get an experience just like the real thing!\n\nThis realistic dildo is complete with a veined textured shaft, a pronounced head, and sculpted balls. Made with flexible PVC, Adam's cock is flexible enough to be a comfortable ride, but firm enough ready to rock your world.\n\nThe suction cup base attaches easily to any smooth, flat surface for an amazing hands-free ride, and also makes it harness compatible for pegging or partnered play. For best results use with plenty of your favourite lube, and cleanse with anti-bacterial toy spray before and after use.\n\nWant an affordable, realistic experience that you can use with any lube at all? Try Adam.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Get an experience just like the real thing!</p><p>This realistic dildo is complete with a veined textured shaft, a pronounced head, and sculpted balls. Made with flexible PVC, Adam's cock is flexible enough to be a comfortable ride, but firm enough ready to rock your world.</p><p> </p><p>The suction cup base attaches easily to any smooth, flat surface for an amazing hands-free ride, and also makes it harness compatible for pegging or partnered play. For best results use with plenty of your favourite lube, and cleanse with anti-bacterial toy spray before and after use.</p><p>Want an affordable, realistic experience that you can use with any lube at all? Try Adam.</p> </div> </div> <div",
+    "features": [
+      "Realistic dildo",
+      "Veined and textured shaft",
+      "Pronounced head",
+      "Sturdy suction cup base for hands free fun",
+      "Compatible with most harnesses",
+      "Flexes to fit your body",
+      "Waterproof",
+      "Compatible with all lubricants&nbsp;"
+    ],
+    "specs": {
+      "Total Length": "10\" (25.4cm)",
+      "Insertable Length": "8\" (20.3cm)",
+      "Width": "1.75\" (4.4cm)",
+      "Material": "PVC"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1175AEVE",
+      "sku": "282892",
+      "color": "Light Skin",
+      "material": "PVC",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/233849/adam-and-eve-realistic-10-textured-dildo-with-suction-cup-base",
+      "isOnSale": "true",
+      "saveAmount": "$60.00 - 60% Off",
+      "rewardDollars": "2.00"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 18,
+    "name": "Pipedream King Cock Elite Dual Density Vibrating 8\" Silicone Dildo",
+    "slug": "pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo",
+    "price": 176.99,
+    "originalPrice": 176.99,
+    "image": "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/main.webp",
+    "images": [
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/main.webp",
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/1.webp",
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/2.webp",
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/3.webp",
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/4.webp",
+      "/images/products/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo/5.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "pipedream",
+    "productLineId": "",
+    "description": "What sounds more fun than this vibrating lifelike ride?\n\nWith soft outer skin wrapped around a hard inner shaft, the King Cock is the erection that never quits. The dual density construction, skin-like texture and detailing gives you the look and feel of a real penis, and the solid suction cup has been designed for superior adherence, giving you a safe, secure mount before you do.\n\nOnce you have it where you want it, apply liberally with water-based lubricant and select one of ten different vibration modes with a single button push. Then ride until you're satisfied.\n\nThe King Cock Elite also works as a strap-on, and is compatible with the Pipedream Body Dock and most traditional harnesses for use during partnered play.\n\nAfter use, clean with warm water and antibacterial toy cleaner.\n\nSo when you want a handy, versatile cock on demand, grab this King and enjoy. Wherever you decide to attach it.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>What sounds more fun than this vibrating lifelike ride? </p><p>With soft outer skin wrapped around a hard inner shaft, the King Cock is the erection that never quits. The dual density construction, skin-like texture and detailing gives you the look and feel of a real penis, and the solid suction cup has been designed for superior adherence, giving you a safe, secure mount before you do. </p><p>Once you have it where you want it, apply liberally with water-based lubricant and select one of ten different vibration modes with a single button push. Then ride until you're satisfied. </p><p> The King Cock Elite also works as a strap-on, and is compatible with the Pipedream Body Dock and most traditional harnesses for use during partnered play. </p><p> After use, clean with warm water and antibacterial toy cleaner. </p><p> So when you want a handy, versatile cock on demand, grab this King and enjoy. Wherever you decide to attach it. <br></p> </div> </div> <div",
+    "features": [
+      "Dual density: soft skin & stiff shaft",
+      "Lifelike textures & detailing",
+      "10 vibration modes (3 speeds + 7 functions)",
+      "Single button vibration control",
+      "Flared base with suction cup",
+      "Suitable for vaginal & anal use",
+      "For solo or partnered play",
+      "Strap-on harness compatible (harness not included)",
+      "USB rechargeable",
+      "Waterproof (IPX 6)",
+      "Use with water-based lube"
+    ],
+    "specs": {
+      "Total Length": "8.7\" (22 cm)",
+      "Insertable Length": "8\" (20.3 cm)",
+      "Width": "2.1\" (5.4 cm)"
+    },
+    "params": {
+      "brand": "Pipedream",
+      "code": "T2750PIPM",
+      "sku": "278877",
+      "color": "Light Skin",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/234101/pipedream-king-cock-elite-dual-density-vibrating-8-silicone-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$44.00 - 19% Off",
+      "rewardDollars": "8.85"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 19,
+    "name": "Adam and Eve 10\" Suction Base Realistic Silicone Dildo",
+    "slug": "adam-and-eve-realistic-10-silicone-dildo-with-suction-base",
+    "price": 79.99,
+    "originalPrice": 79.99,
+    "image": "/images/products/adam-and-eve-realistic-10-silicone-dildo-with-suction-base/main.webp",
+    "images": [
+      "/images/products/adam-and-eve-realistic-10-silicone-dildo-with-suction-base/main.webp",
+      "/images/products/adam-and-eve-realistic-10-silicone-dildo-with-suction-base/1.webp",
+      "/images/products/adam-and-eve-realistic-10-silicone-dildo-with-suction-base/2.webp",
+      "/images/products/adam-and-eve-realistic-10-silicone-dildo-with-suction-base/3.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "So much better than the real thing!\n\nThis high-grade silicone dildo has a realistic look and feel, with its pronounced head, veined textured shaft and smooth balls.\n\nThe strong suction cup base allows for incredible hands-free play when the mood strikes.\n\nSilky smooth and pliable for comfort and ease of use, non-porous for hygiene and latex-free, making it perfect for those with sensitivities or allergies.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>So much better than the real thing!</p><p>This high-grade silicone dildo has a realistic look and feel, with its pronounced head, veined textured shaft and smooth balls.</p><p>The strong suction cup base allows for incredible hands-free play when the mood strikes.</p><p>Silky smooth and pliable for comfort and ease of use, non-porous for hygiene and latex-free, making it perfect for those with sensitivities or allergies.</p> </div> </div> <div",
+    "features": [
+      "Realistic look & feel",
+      "Pronounced head",
+      "Veined textured shaft",
+      "Smooth balls",
+      "Strong suction cup base",
+      "High-grade silicone",
+      "Silky smooth & pliable",
+      "Non-porous & odourless",
+      "Latex-free"
+    ],
+    "specs": {
+      "Insertable Length": "7.5\" (19.1 cm)",
+      "Width": "3\" (7.6 cm)"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1084AEVE",
+      "sku": "280860",
+      "color": "Light Skin",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/229869/adam-and-eve-realistic-10-silicone-dildo-with-suction-base",
+      "isOnSale": "false",
+      "saveAmount": "$20.00 - 20% Off",
+      "rewardDollars": "4.00"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 20,
+    "name": "nsnovelties 6.7\" Realistic Soft Silicone Dildo With Suction Base",
+    "slug": "6-7-realistic-soft-silicone-dildo-with-suction-base",
+    "price": 47.99,
+    "originalPrice": 47.99,
+    "image": "/images/products/6-7-realistic-soft-silicone-dildo-with-suction-base/main.webp",
+    "images": [
+      "/images/products/6-7-realistic-soft-silicone-dildo-with-suction-base/main.webp",
+      "/images/products/6-7-realistic-soft-silicone-dildo-with-suction-base/1.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Enjoy the delicate touch of one of the softest realistic dildos.\n\nMade from soft medical-grade silicone, this lifelike dildo features wonderfully massaging veins on the flexible shaft and a pronounced phallic head that is made to satisfy.\n\nAlso features a strong suction cup base for hands-free play when mounted to a suitable flat dry surface.\n\nFor best results, use with water-based lubricant, sanitise with toy cleaner and store without direct contact with other toys.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Enjoy the delicate touch of one of the softest realistic dildos. </p><p> Made from soft medical-grade silicone, this lifelike dildo features wonderfully massaging veins on the flexible shaft and a pronounced phallic head that is made to satisfy. </p><p>Also features a strong suction cup base for hands-free play when mounted to a suitable flat dry surface.</p><p> For best results, use with water-based lubricant, sanitise with toy cleaner and store without direct contact with other toys.</p> </div> </div> <div",
+    "features": [
+      "Realistic head, shaft & balls",
+      "Massaging veins",
+      "Flexible",
+      "Soft",
+      "Body-safe & phthalate-free silicone"
+    ],
+    "specs": {
+      "Insertable Length": "5.2\" (13.2 cm)",
+      "Width": "2.1\" (5.3 cm)"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1589NSN",
+      "sku": "276359",
+      "color": "Pink",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/219895/6-7-realistic-soft-silicone-dildo-with-suction-base",
+      "isOnSale": "false",
+      "saveAmount": "$12.00 - 20% Off",
+      "rewardDollars": "2.40"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 21,
+    "name": "Wild Secrets Desire 6.9\" Silicone Dildo with Suction Base",
+    "slug": "Desire-6-9-Silicone-Dildo-With-Suction-Base",
+    "price": 27.99,
+    "originalPrice": 69.9,
+    "image": "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/main.webp",
+    "images": [
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/main.webp",
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/1.webp",
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/2.webp",
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/3.webp",
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/4.webp",
+      "/images/products/Desire-6-9-Silicone-Dildo-With-Suction-Base/5.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "wild-secrets",
+    "productLineId": "",
+    "description": "Get total satisfaction and fulfilment you've always desired...\n\nThis versatile silicone dildo is crafted from silky smooth, body-safe silicone, moulded into a delicious, firm yet flexible design.\n\nPerfect for solo or partnered play, the Desire can be used for both vaginal or anal penetration. It features a rounded tip for easier insertion, and a firm, slightly pliable, curved shaft to gently find the g-spot or prostate with ease, all while conforming to your body's curves. For best results, we recommend coating it with your favourite water-based lubricant before use. Once you're done, wash with warm water and mild soap, and then cleanse with anti-bacterial toy cleaner.\n\nThe sturdy suction base allows you to enjoy it hands-free, as well as providing safety during anal play. It also allows the desire to work with most strap on harnesses for even more versatile play.\n\nIndulge in your desires with Wild Secrets today...",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Get total satisfaction and fulfilment you've always desired... </p><p> This versatile silicone dildo is crafted from silky smooth, body-safe silicone, moulded into a delicious, firm yet flexible design. </p><p> Perfect for solo or partnered play, the Desire can be used for both vaginal or anal penetration. It features a rounded tip for easier insertion, and a firm, slightly pliable, curved shaft to gently find the g-spot or prostate with ease, all while conforming to your body's curves. For best results, we recommend coating it with your favourite water-based lubricant before use. Once you're done, wash with warm water and mild soap, and then cleanse with anti-bacterial toy cleaner. </p><p> The sturdy suction base allows you to enjoy it hands-free, as well as providing safety during anal play. It also allows the desire to work with most strap on harnesses for even more versatile play. </p><p> Indulge in your desires with Wild Secrets today...<br></p> </div> </div> <div",
+    "features": [
+      "Firm, non-realistic dildo",
+      "Sturdy suction cup base",
+      "Strap-on harness compatible",
+      "Rounded tip for easier insertion",
+      "Smooth, slightly pliable texture",
+      "Suitable for vaginal or anal penetration",
+      "For solo or coupled play",
+      "Waterproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Width": "3.2\" (8 cm)"
+    },
+    "params": {
+      "brand": "Wild Secrets",
+      "code": "T0017WILD",
+      "sku": "276506",
+      "color": "Purple",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/232899/Desire-6-9-Silicone-Dildo-With-Suction-Base",
+      "isOnSale": "true",
+      "saveAmount": "$42.00 - 60% Off",
+      "rewardDollars": "1.40"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 22,
+    "name": "Adam and Eve Kosmic Kraken 5.75\" Remote Controlled Vibrating Grinder Pad",
+    "slug": "Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control",
+    "price": 99.99,
+    "originalPrice": 159.99,
+    "image": "/images/products/Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control/main.webp",
+    "images": [
+      "/images/products/Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control/main.webp",
+      "/images/products/Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control/1.webp",
+      "/images/products/Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control/2.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "From the depths of your wildest fantasies comes the Kosmic Kraken, a creature made to thrill and please like no other.\n\nCrafted from super plush, liquid silicone, this tentacled toy features a slender tip for easy insertion, and sculpted pleasure ridges to tease and please every nerve as you sink down upon its form. The curved arch of its design has also been placed right where it'll hit your G-Spot or prostate for waves of pleasure.\n\nAnd with both the tentacle and the grinding pad lined with oversized suckers, you'll get both internal and external stimulation on your clitoris or perineum for that dual-stimulation you know you crave. Just make sure you're using plenty of water-based lube, and hit that remote to unleash 10 deep, rumbling vibration modes, ranging from steady speeds to pulsing patterns. Or hand over the remote to your partner and let them enjoy the show.\n\nAnd yes, the Kraken is fully waterproof so you can take it into the shower, or bath, for fully submerged play and really live out your fantasy of being taken by a monster from the deep!\n\nDare you sail the high seas?",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>From the depths of your wildest fantasies comes the Kosmic Kraken, a creature made to thrill and please like no other. </p><p>Crafted from super plush, liquid silicone, this tentacled toy features a slender tip for easy insertion, and sculpted pleasure ridges to tease and please every nerve as you sink down upon its form. The curved arch of its design has also been placed right where it'll hit your G-Spot or prostate for waves of pleasure.</p><p>And with both the tentacle and the grinding pad lined with oversized suckers, you'll get both internal <span style=\"font-style: italic;\">and</span> external stimulation on your clitoris or perineum for that dual-stimulation you know you crave. Just make sure you're using plenty of water-based lube, and hit that remote to unleash 10 deep, rumbling vibration modes, ranging from steady speeds to pulsing patterns. Or hand over the remote to your partner and let them enjoy the show. </p><p>And yes, the Kraken is fully waterproof so you can take it into the shower, or bath, for fully submerged play and really live out your fantasy of being taken by a monster from the deep!</p><p> Dare you sail the high seas? </p> </div> </div> <div",
+    "features": [
+      "Fantasy kraken-inspired vibrating grinder pad",
+      "Insertable ridged tentacle for G-Spot or prostate stimulation",
+      "Textured grinding pad lined with large “suckers” for clitoral & perineal play",
+      "10x deep vibration modes: steady speeds & pulsing patterns",
+      "Hands-free fun",
+      "Remote control",
+      "Ultra plush, liquid silicone build",
+      "Fully waterproof",
+      "USB rechargeable",
+      "Holds up to 90 mins of charge time"
+    ],
+    "specs": {
+      "Total Length": "5.75\" (14.6 cm)",
+      "Insertable Length": "4.5\" (11.4 cm)",
+      "Total Width(?": "5.75\" (14.6 cm)",
+      "Material": "Liquid silicone, ABS plastic"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1426AEVE",
+      "sku": "284377",
+      "color": "Blue",
+      "material": "Liquid silicone, ABS plastic",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/237510/Adam-and-Eve-Kosmic-Kraken-Vibrating-Grinder-with-Remote-Control",
+      "isOnSale": "true",
+      "saveAmount": "$100.00 - 50% Off",
+      "rewardDollars": "5.00"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 23,
+    "name": "nsnovelties Colours Pleasures 7\" Vibrating Dildo",
+    "slug": "NS-Novelties-Colours-Pleasures-7-Inch-Vibrating-Dildo",
+    "price": 112.99,
+    "originalPrice": 112.99,
+    "image": "/images/products/NS-Novelties-Colours-Pleasures-7-Inch-Vibrating-Dildo/main.webp",
+    "images": [
+      "/images/products/NS-Novelties-Colours-Pleasures-7-Inch-Vibrating-Dildo/main.webp",
+      "/images/products/NS-Novelties-Colours-Pleasures-7-Inch-Vibrating-Dildo/1.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "nsnovelties",
+    "productLineId": "",
+    "description": "Ready for more? We sure hope so.....\n\nThe vibrating Colours Pleasures range of dildos from NS Novelties is the erection that never quits! These vibrant, smooth yet firm dildos feature a suction cup base for hands-free fun and can be mounted on a dry, flat surface or a compatible harness.\n\nExplore 3 powerful speeds of vibration and 7 patterns and let the fun begin!  For best results, apply a generous amount of  water-based lube before use. Once you're done wash in warm, soapy water and sanitise with antibacterial toy cleaner. Allow to dry fully before storage.\n\nNote that NS Novelties listed size refers to insertable length, not total toy length.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Ready for more? We sure hope so.....</p><p>The vibrating Colours Pleasures range of dildos from NS Novelties is the erection that never quits! These vibrant, smooth yet firm dildos feature a suction cup base for hands-free fun and can be mounted on a dry, flat surface or a compatible harness. </p><p> Explore 3 powerful speeds of vibration and 7 patterns and let the fun begin! For best results, apply a generous amount of water-based lube before use. Once you're done wash in warm, soapy water and sanitise with antibacterial toy cleaner. Allow to dry fully before storage.</p><p><span style=\"font-style: italic;\">Note that NS Novelties listed size refers to insertable length, not total toy length.</span></p> </div> </div> <div",
+    "features": [
+      "Vibrantly coloured",
+      "Realistic design",
+      "Smooth yet firm",
+      "Suction cup base",
+      "3x speed vibrations",
+      "7x vibration patterns",
+      "USB rechargeable",
+      "Splashproof",
+      "Use with water-based lubricant"
+    ],
+    "specs": {
+      "Insertable Length": "7\" (17.8cm)",
+      "Width": "3.15\" (8cm)"
+    },
+    "params": {
+      "brand": "nsnovelties",
+      "code": "T1740NSN",
+      "sku": "279850",
+      "color": "Purple",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/234784/NS-Novelties-Colours-Pleasures-7-Inch-Vibrating-Dildo",
+      "isOnSale": "false",
+      "saveAmount": "$27.00 - 19% Off",
+      "rewardDollars": "5.65"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 24,
+    "name": "Calexotics Size Queen 10\" Flexible Dildo",
+    "slug": "california-exotic-size-queen-10-flexible-dildo",
+    "price": 69.99,
+    "originalPrice": 69.99,
+    "image": "/images/products/california-exotic-size-queen-10-flexible-dildo/main.webp",
+    "images": [
+      "/images/products/california-exotic-size-queen-10-flexible-dildo/main.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "calexotics",
+    "productLineId": "",
+    "description": "If you like it big, you'll love this Size Queen 10 inch dildo.\n\nMade from flexible materials for easy positioning, with a firm, lifelike feel, the huge shaft will fill you right up.\n\nEnjoy the sensations of the realistic head and veined textures as you hold the sturdy suction cup base or mount it onto a flat surface, like bathroom tiles, for hands-free play.\n\nFor best results, use with water-based lubricant and sanitise with toy cleaner.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>If you like it big, you'll love this Size Queen 10 inch dildo.</p><p>Made from flexible materials for easy positioning, with a firm, lifelike feel, the huge shaft will fill you right up.</p><p>Enjoy the sensations of the realistic head and veined textures as you hold the sturdy suction cup base or mount it onto a flat surface, like bathroom tiles, for hands-free play.</p><p>For best results, use with water-based lubricant and sanitise with toy cleaner.</p> </div> </div> <div",
+    "features": [
+      "Firm, lifelike feel",
+      "Flexes for positioning",
+      "Sturdy suction cup base",
+      "Waterproof",
+      "Unscented",
+      "Fits most harnesses",
+      "Body-safe, phthalate-free TPR"
+    ],
+    "specs": {
+      "Insertable Length": "10\" (25.5 cm)",
+      "Width": "2\" (5 cm)"
+    },
+    "params": {
+      "brand": "Calexotics",
+      "code": "T2389CAEC",
+      "sku": "276730",
+      "color": "Purple",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/232983/california-exotic-size-queen-10-flexible-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$17.00 - 19% Off",
+      "rewardDollars": "3.50"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 25,
+    "name": "Calexotics Size Queen 6\" Flexible Dildo",
+    "slug": "california-exotic-size-queen-6-flexible-dildo",
+    "price": 29.99,
+    "originalPrice": 29.99,
+    "image": "/images/products/california-exotic-size-queen-6-flexible-dildo/main.webp",
+    "images": [
+      "/images/products/california-exotic-size-queen-6-flexible-dildo/main.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "calexotics",
+    "productLineId": "",
+    "description": "It might be on the smaller side, but this Size Queen dildo is thick enough to satisfy.\n\nMade from flexible materials for easy positioning, with a firm, lifelike feel, the 1.5 inch wide shaft will deliver an comfortably full feeling.\n\nEnjoy the sensations of the realistic head and veined textures as you hold the sturdy suction cup base or mount it onto a flat surface, like bathroom tiles, for hands-free play.\n\nFor best results, use with water-based lubricant and sanitise with toy cleaner.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>It might be on the smaller side, but this Size Queen dildo is thick enough to satisfy. </p><p> Made from flexible materials for easy positioning, with a firm, lifelike feel, the 1.5 inch wide shaft will deliver an comfortably full feeling. </p><p> Enjoy the sensations of the realistic head and veined textures as you hold the sturdy suction cup base or mount it onto a flat surface, like bathroom tiles, for hands-free play. </p><p> For best results, use with water-based lubricant and sanitise with toy cleaner. </p> </div> </div> <div",
+    "features": [
+      "Firm, lifelike feel",
+      "Flexes for positioning",
+      "Sturdy suction cup base&nbsp;",
+      "Waterproof",
+      "Unscented",
+      "Fits most harnesses",
+      "Body-safe, phthalate-free TPR"
+    ],
+    "specs": {
+      "Insertable Length": "6\" (15.25 cm)",
+      "Width": "1.67\" (4.24 cm)"
+    },
+    "params": {
+      "brand": "Calexotics",
+      "code": "T2387CAEC",
+      "sku": "276722",
+      "color": "Pink",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/232981/california-exotic-size-queen-6-flexible-dildo",
+      "isOnSale": "false",
+      "saveAmount": "$8.00 - 21% Off",
+      "rewardDollars": "1.50"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 26,
+    "name": "Adam and Eve Sunset Dreams 11\" Double Ended Dong",
+    "slug": "Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong",
+    "price": 67.99,
+    "originalPrice": 67.99,
+    "image": "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/main.webp",
+    "images": [
+      "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/main.webp",
+      "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/1.webp",
+      "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/2.webp",
+      "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/3.webp",
+      "/images/products/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong/4.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "adam-and-eve",
+    "productLineId": "",
+    "description": "Set the mood for passion with the Sunset Bliss Double-Ended Dong, designed to ignite unforgettable experiences whether you’re flying solo or sharing the fun.\n\nIts stunning sunset-inspired colours glow with sensual energy, while the lifelike texture and realistic detailing promise toe-curling satisfaction with every thrust.\n\nFeaturing two realistic heads, this versatile toy knows how to please from both ends. The larger side is sculpted to hit the G-Spot with deep, indulgent strokes, while the slimmer end loves to explore the P-Spot with pinpoint precision.\n\nThe sensually curved shaft can follow your body’s natural contours for solo pleasure - or straighten it out for thrilling partner play. However you use it, its firm-yet-flexible build adapts to every fantasy, delivering double the bliss.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Set the mood for passion with the Sunset Bliss Double-Ended Dong, designed to ignite unforgettable experiences whether you’re flying solo or sharing the fun.</p><p> Its stunning sunset-inspired colours glow with sensual energy, while the lifelike texture and realistic detailing promise toe-curling satisfaction with every thrust. Featuring two realistic heads, this versatile toy knows how to please from both ends. The larger side is sculpted to hit the G-Spot with deep, indulgent strokes, while the slimmer end loves to explore the P-Spot with pinpoint precision. </p><p>The sensually curved shaft can follow your body’s natural contours for solo pleasure - or straighten it out for thrilling partner play. However you use it, its firm-yet-flexible build adapts to every fantasy, delivering double the bliss.</p> </div> </div> <div",
+    "features": [
+      "Double-ended design with 2 realistic heads",
+      "Large side crafted for G-Spot indulgence",
+      "Slimmer side designed for P-Spot exploration",
+      "Veined shaft adds lifelike texture",
+      "Sensually curved for natural body alignment",
+      "Flexible yet firm for versatile play",
+      "Perfect for solo use or sharing with a partner",
+      "Gorgeous sunset-inspired colours",
+      "Waterproof for steamy shower or bath sessions"
+    ],
+    "specs": {
+      "Insertable Length": "6\" (15.2 cm)",
+      "Diameter": "1.75\" (4.4 cm)",
+      "Material": "TPE"
+    },
+    "params": {
+      "brand": "Adam and Eve",
+      "code": "T1445AEVE",
+      "sku": "284482",
+      "color": "Pink/Purple",
+      "material": "TPE",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/237583/Adam-and-Eve-Sunset-Dreams-Double-Ended-Dong",
+      "isOnSale": "false",
+      "saveAmount": "$17.00 - 20% Off",
+      "rewardDollars": "3.40"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
+  },
+  {
+    "id": 27,
+    "name": "Doc Johnson Prince Yahshua 10.5” Realistic Cock",
+    "slug": "doc-johnson-prince-yahshua-10-5-realistic-cock",
+    "price": 102.99,
+    "originalPrice": 102.99,
+    "image": "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/main.webp",
+    "images": [
+      "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/main.webp",
+      "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/1.webp",
+      "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/2.webp",
+      "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/3.webp",
+      "/images/products/doc-johnson-prince-yahshua-10-5-realistic-cock/4.webp"
+    ],
+    "category": "adult-toys",
+    "brand": "doc-johnson",
+    "productLineId": "",
+    "description": "Get a whole 10\" of Prince!\n\nMolded directly from Prince Yahshua himself this realistic dong has his signature curve and lifelike detailing. If you're after something big then this is the dong for you, with a huge 6.5\" girth. Made using Ultraskyn for the most lifelike feel.\n\nWith a removable vac-u-lock compatible suction cup for use in a harness or on any smooth flat surface.",
+    "fullDescription": "<div class=\"content\" data-product-description-target=\"content\"> <p>Get a whole 10\" of Prince!</p><p>Molded directly from Prince Yahshua himself this realistic dong has his signature curve and lifelike detailing. If you're after something big then this is the dong for you, with a huge 6.5\" girth. Made using Ultraskyn for the most lifelike feel.</p><p>With a removable vac-u-lock compatible suction cup for use in a harness or on any smooth flat surface. </p> </div> </div> <div",
+    "features": [
+      "Molded directly from&nbsp;Prince Yahshua",
+      "Made using lifelike Ultraskyn",
+      "Curved",
+      "Realistic detailing",
+      "Firm yet flexible",
+      "Removable suction cup",
+      "Vac-u-lock compatible",
+      "Phthalate free",
+      "Made in America"
+    ],
+    "specs": {
+      "Insertable Length": "8.1\"",
+      "Width": "2\""
+    },
+    "params": {
+      "brand": "Doc Johnson",
+      "code": "T1723DOJ",
+      "sku": "247292",
+      "color": "Dark Skin",
+      "material": "",
+      "sourceUrl": "https://www.wildsecrets.com.au/p/212057/doc-johnson-prince-yahshua-10-5-realistic-cock",
+      "isOnSale": "false",
+      "saveAmount": "$26.00 - 20% Off",
+      "rewardDollars": "5.15"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviews": 0
   }
 ]

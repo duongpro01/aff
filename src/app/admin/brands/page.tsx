@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, Pencil, Trash2, X, Image as ImageIcon } from 'lucide-react';
-import brandsData from '@/data/brands.json';
+const brandsData: any[] = [];
 
 type Brand = {
   id: number;

@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import { Search, X, ArrowLeftRight, Check } from 'lucide-react';
-import products from '@/data/products.json';
 import type { Product } from '@/data/types';
 
-const allProducts = products as Product[];
+// Products will be passed via window or fetched - for now read inline
+const allProducts: Product[] = [];
 const brands = [...new Set(allProducts.map((p) => p.brand))];
 
 function formatPrice(price: number): string {

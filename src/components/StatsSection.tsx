@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Package, Users, Award, ThumbsUp } from 'lucide-react';
 
 const stats = [
-  { icon: Package, target: 500, suffix: '+', label: 'Sản phẩm' },
-  { icon: Users, target: 10000, suffix: '+', label: 'Khách hàng' },
-  { icon: Award, target: 50, suffix: '+', label: 'Thương hiệu' },
-  { icon: ThumbsUp, target: 99, suffix: '%', label: 'Hài lòng' },
+  { icon: Package, target: 1000, suffix: '+', label: 'Products' },
+  { icon: Users, target: 50000, suffix: '+', label: 'Customers' },
+  { icon: Award, target: 100, suffix: '+', label: 'Brands' },
+  { icon: ThumbsUp, target: 99, suffix: '%', label: 'Satisfaction' },
 ];
 
 function formatNumber(n: number): string {

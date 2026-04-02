@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Plus, Pencil, Trash2, X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
-import postsData from '@/data/posts.json';
+const postsData: any[] = [];
 
 type Post = {
   id: number;

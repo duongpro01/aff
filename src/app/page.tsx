@@ -7,6 +7,8 @@ import TestimonialSection from '@/components/TestimonialSection';
 import NewsSection from '@/components/NewsSection';
 import FAQSection from '@/components/FAQSection';
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   return (
     <>

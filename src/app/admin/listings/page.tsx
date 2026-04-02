@@ -2,9 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import { Eye, CheckCircle, XCircle, Trash2, X, Image as ImageIcon, Phone, MessageCircle } from 'lucide-react';
-import listingsData from '@/data/listings.json';
+const listingsData: any[] = [];
 
-type Listing = (typeof listingsData)[number] & { [key: string]: any };
+type Listing = any;
 
 const statusConfig: Record<string, { label: string; color: string }> = {
   pending: { label: 'Chờ duyệt', color: 'bg-yellow-100 text-yellow-700' },

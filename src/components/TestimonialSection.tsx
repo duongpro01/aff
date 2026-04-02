@@ -7,32 +7,32 @@ import 'swiper/css';
 
 const testimonials = [
   {
-    name: 'Nguyễn Văn Minh',
-    initials: 'NM',
-    color: 'bg-blue-500',
-    rating: 5,
-    text: 'Mình mua vợt Selkirk ở YeuPick, hàng chính hãng và giao rất nhanh. Nhân viên tư vấn nhiệt tình, giúp mình chọn được cây vợt phù hợp với trình độ.',
-  },
-  {
-    name: 'Trần Thị Hương',
-    initials: 'TH',
+    name: 'Sarah M.',
+    initials: 'SM',
     color: 'bg-pink-500',
     rating: 5,
-    text: 'Giá cả hợp lý, nhiều chương trình khuyến mãi hấp dẫn. Đặc biệt chính sách đổi trả rất thoải mái, mình rất yên tâm khi mua hàng tại đây.',
+    text: 'Great selection and fast discreet shipping. The product quality exceeded my expectations. Will definitely be ordering again!',
   },
   {
-    name: 'Lê Hoàng Nam',
-    initials: 'LN',
+    name: 'James R.',
+    initials: 'JR',
+    color: 'bg-blue-500',
+    rating: 5,
+    text: 'Excellent customer service and the best prices I\'ve found online. The packaging was completely discreet which I really appreciated.',
+  },
+  {
+    name: 'Emily K.',
+    initials: 'EK',
+    color: 'bg-purple-500',
+    rating: 5,
+    text: 'Love the variety of brands available. Free shipping over $69 is a great deal. My order arrived faster than expected!',
+  },
+  {
+    name: 'Michael T.',
+    initials: 'MT',
     color: 'bg-green-500',
     rating: 5,
-    text: 'YeuPick có đầy đủ phụ kiện từ grip, bóng đến túi đựng vợt. Mình mua nguyên bộ ở đây luôn, chất lượng tuyệt vời và giá tốt hơn nhiều nơi khác.',
-  },
-  {
-    name: 'Phạm Quốc Đạt',
-    initials: 'PĐ',
-    color: 'bg-orange-500',
-    rating: 5,
-    text: 'Đã mua 3 cây vợt tại YeuPick cho cả gia đình. Dịch vụ chăm sóc khách hàng rất tốt, luôn theo dõi và hỏi thăm sau khi mua. Chắc chắn sẽ quay lại!',
+    text: 'Bought as a gift and the quality is amazing. Afterpay option made it easy to manage. Highly recommend this store!',
   },
 ];
 
@@ -41,7 +41,7 @@ export default function TestimonialSection() {
     <section className="bg-[var(--gray-50)] py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="mb-12 text-center text-3xl font-bold text-[var(--foreground)]">
-          Khách hàng nói gì?
+          What Our Customers Say
         </h2>
 
         <Swiper

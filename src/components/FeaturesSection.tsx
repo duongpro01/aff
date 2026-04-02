@@ -2,34 +2,34 @@ import { Shield, Award, Truck, MessageCircle, RefreshCw, Tag } from 'lucide-reac
 
 const features = [
   {
-    title: 'Hàng chính hãng 100%',
-    description: 'Cam kết tất cả sản phẩm đều là hàng chính hãng, nhập khẩu trực tiếp từ nhà sản xuất.',
+    title: '100% Authentic',
+    description: 'All products are genuine and sourced directly from authorized distributors.',
     icon: Shield,
   },
   {
-    title: 'Bảo hành chính hãng',
-    description: 'Chế độ bảo hành theo chính sách của nhà sản xuất, hỗ trợ nhanh chóng.',
-    icon: Award,
+    title: 'Best Price Guarantee',
+    description: 'We match any lower price from Australian retailers. Shop with confidence.',
+    icon: Tag,
   },
   {
-    title: 'Ship toàn quốc',
-    description: 'Giao hàng nhanh chóng trên toàn quốc, miễn phí ship cho đơn hàng từ 500K.',
+    title: 'Free Shipping',
+    description: 'Free discreet shipping on all orders over A$69. Express delivery available.',
     icon: Truck,
   },
   {
-    title: 'Tư vấn chuyên nghiệp',
-    description: 'Đội ngũ tư vấn am hiểu pickleball, giúp bạn chọn sản phẩm phù hợp nhất.',
+    title: 'Expert Support',
+    description: 'Our friendly team is available via phone, email, and live chat to help you.',
     icon: MessageCircle,
   },
   {
-    title: 'Đổi trả dễ dàng',
-    description: 'Chính sách đổi trả linh hoạt trong 7 ngày nếu sản phẩm lỗi từ nhà sản xuất.',
+    title: 'Easy Returns',
+    description: '30-day return policy on unopened items. Hassle-free refund process.',
     icon: RefreshCw,
   },
   {
-    title: 'Giá tốt nhất',
-    description: 'Cam kết giá cạnh tranh nhất thị trường, hoàn tiền chênh lệch nếu tìm thấy rẻ hơn.',
-    icon: Tag,
+    title: 'Top Quality Brands',
+    description: 'Curated selection from 100+ premium brands you know and trust.',
+    icon: Award,
   },
 ];
 
@@ -38,7 +38,7 @@ export default function FeaturesSection() {
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10 text-foreground">
-          Tại sao chọn YeuPick?
+          Why Shop With Us
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => {

@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Plus, Search, Tag } from 'lucide-react';
-import listingsData from '@/data/listings.json';
+const listingsData: any[] = [];
 
 const PROVINCES = [
   'TP.HCM', 'Hà Nội', 'Đà Nẵng', 'Hải Phòng', 'Cần Thơ',

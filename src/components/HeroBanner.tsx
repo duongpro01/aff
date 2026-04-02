@@ -11,19 +11,19 @@ import 'swiper/css/navigation';
 
 const slides = [
   {
-    title: 'Vợt Pickleball Chính Hãng',
-    subtitle: 'Khám phá bộ sưu tập vợt từ các thương hiệu hàng đầu thế giới',
-    gradient: 'from-primary to-primary-light',
+    title: 'Adult Toys & Accessories',
+    subtitle: 'Premium products from top brands worldwide',
+    gradient: 'from-purple-900 to-pink-700',
   },
   {
-    title: 'Trang Bị Tốt Nhất Cho Bạn',
-    subtitle: 'Giày, phụ kiện và quần áo pickleball chất lượng cao',
-    gradient: 'from-accent to-amber-600',
-  },
-  {
-    title: 'Chơi Pickleball Cùng YeuPick',
-    subtitle: 'Giá tốt nhất - Bảo hành chính hãng - Ship toàn quốc',
+    title: 'Discreet & Fast Delivery',
+    subtitle: 'Free shipping on orders over A$69',
     gradient: 'from-gray-900 to-gray-700',
+  },
+  {
+    title: 'Best Price Guarantee',
+    subtitle: 'Shop with confidence - we match any price',
+    gradient: 'from-rose-700 to-red-900',
   },
 ];
 
@@ -41,21 +41,12 @@ export default function HeroBanner() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div
-              className={`relative flex items-center justify-center h-screen min-h-[600px] bg-gradient-to-br ${slide.gradient}`}
-            >
+            <div className={`relative flex items-center justify-center h-screen min-h-[600px] bg-gradient-to-br ${slide.gradient}`}>
               <div className="text-center text-white px-4 max-w-3xl mx-auto">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  {slide.title}
-                </h1>
-                <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90">
-                  {slide.subtitle}
-                </p>
-                <Link
-                  href="/products"
-                  className="inline-block bg-white text-primary font-semibold px-8 py-4 rounded-lg text-lg hover:bg-gray-100 transition-colors"
-                >
-                  Mua sắm ngay
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{slide.title}</h1>
+                <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90">{slide.subtitle}</p>
+                <Link href="/products" className="inline-block bg-white text-purple-900 font-semibold px-8 py-4 rounded-lg text-lg hover:bg-gray-100 transition-colors">
+                  Shop Now
                 </Link>
               </div>
             </div>

@@ -5,34 +5,28 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'Làm sao chọn vợt pickleball phù hợp?',
-    answer:
-      'Việc chọn vợt phụ thuộc vào trình độ, phong cách chơi và ngân sách của bạn. Người mới nên chọn vợt có mặt rộng, trọng lượng trung bình (7.5-8.2 oz). Bạn có thể liên hệ đội ngũ tư vấn của YeuPick để được hỗ trợ chọn vợt phù hợp nhất.',
+    question: 'Is my order discreet?',
+    answer: 'Yes! All orders are shipped in plain, unmarked packaging with no indication of the contents. Your bank statement will show a generic business name.',
   },
   {
-    question: 'Chính sách bảo hành như thế nào?',
-    answer:
-      'Tất cả sản phẩm tại YeuPick đều được bảo hành theo chính sách của nhà sản xuất. Vợt pickleball được bảo hành từ 6-12 tháng tùy thương hiệu. Chúng tôi hỗ trợ khách hàng trong suốt quá trình bảo hành.',
+    question: 'What is your shipping policy?',
+    answer: 'We offer free shipping on orders over A$69. Standard delivery takes 2-7 business days. Express delivery (1-3 business days) is also available.',
   },
   {
-    question: 'Thời gian giao hàng bao lâu?',
-    answer:
-      'Đơn hàng nội thành TP.HCM được giao trong 1-2 ngày. Các tỉnh thành khác từ 2-5 ngày làm việc. Với đơn hàng trên 500.000đ, bạn được miễn phí giao hàng toàn quốc.',
+    question: 'Can I return a product?',
+    answer: 'We accept returns within 30 days for unopened items in original packaging. For hygiene reasons, opened intimate products cannot be returned unless faulty.',
   },
   {
-    question: 'Có hỗ trợ đổi trả không?',
-    answer:
-      'YeuPick hỗ trợ đổi trả trong vòng 7 ngày kể từ ngày nhận hàng nếu sản phẩm bị lỗi từ nhà sản xuất hoặc không đúng mô tả. Sản phẩm đổi trả cần còn nguyên tem mác và chưa qua sử dụng.',
+    question: 'What payment methods do you accept?',
+    answer: 'We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and Buy Now Pay Later options including Afterpay, Zip, and Klarna.',
   },
   {
-    question: 'Thanh toán bằng những hình thức nào?',
-    answer:
-      'Chúng tôi chấp nhận nhiều hình thức thanh toán: chuyển khoản ngân hàng, ví điện tử (MoMo, ZaloPay, VNPay), thanh toán khi nhận hàng (COD), và thanh toán qua thẻ tín dụng/ghi nợ.',
+    question: 'Do you offer a price match guarantee?',
+    answer: 'Yes! If you find a lower price on an identical product from an Australian retailer, we will match it. Simply contact our customer service team.',
   },
   {
-    question: 'Sản phẩm có bảo đảm chính hãng không?',
-    answer:
-      'Tất cả sản phẩm tại YeuPick đều là hàng chính hãng 100%, được nhập khẩu trực tiếp từ nhà sản xuất hoặc nhà phân phối ủy quyền. Mỗi sản phẩm đều có tem chống hàng giả và giấy chứng nhận xuất xứ.',
+    question: 'Are all products authentic?',
+    answer: 'All products are 100% authentic and sourced directly from manufacturers or authorized distributors. We never sell counterfeit items.',
   },
 ];
 
@@ -47,7 +41,7 @@ export default function FAQSection() {
     <section className="py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <h2 className="mb-12 text-center text-3xl font-bold text-[var(--foreground)]">
-          Câu hỏi thường gặp
+          Frequently Asked Questions
         </h2>
 
         <div className="space-y-3">

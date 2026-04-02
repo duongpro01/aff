@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import postsData from '@/data/posts.json';
+import { getPosts } from '@/lib/data';
+const postsData = getPosts();
 
 interface Post {
   id: number;

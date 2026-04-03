@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Satisfyer",
+    "slug": "satisfyer",
+    "image": "",
+    "description": "Satisfyer is a global leader in sexual wellness, known for innovative air-pulse technology and affordable luxury pleasure products.",
+    "content": "<p>Satisfyer is one of the world's most popular sexual wellness brands, renowned for bringing air-pulse stimulation technology to the mainstream market. With a wide range of vibrators, couples' toys, and app-controlled devices, Satisfyer combines cutting-edge innovation with accessible pricing.</p>"
+  },
+  {
+    "id": 2,
+    "name": "We-Vibe",
+    "slug": "we-vibe",
+    "image": "",
+    "description": "We-Vibe specializes in premium couples' vibrators and app-connected intimate products designed for shared pleasure.",
+    "content": "<p>We-Vibe is a pioneer in couples' pleasure technology, best known for their wearable vibrators that can be controlled via the We-Connect app from anywhere in the world. Their products are designed with body-safe silicone and whisper-quiet motors for discreet, powerful stimulation.</p>"
+  },
+  {
+    "id": 3,
+    "name": "Womanizer",
+    "slug": "womanizer",
+    "image": "",
+    "description": "Womanizer invented Pleasure Air Technology, offering clitoral stimulators that deliver touchless orgasms.",
+    "content": "<p>Womanizer revolutionized the pleasure industry by inventing Pleasure Air Technology — a contactless clitoral stimulation method that uses gentle air waves. Their products are designed with medical-grade silicone and feature multiple intensity levels for personalized pleasure.</p>"
+  },
+  {
+    "id": 4,
+    "name": "Lelo",
+    "slug": "lelo",
+    "image": "",
+    "description": "LELO is a Swedish luxury brand crafting beautifully designed, high-performance intimate products since 2003.",
+    "content": "<p>LELO is the world's leading designer brand for intimate lifestyle products. Founded in Stockholm in 2003, LELO creates luxurious vibrators, couples' rings, and personal massagers that combine elegant Scandinavian design with powerful technology.</p>"
+  },
+  {
+    "id": 5,
+    "name": "Le Wand",
+    "slug": "le-wand",
+    "image": "",
+    "description": "Le Wand offers premium rechargeable wand massagers with powerful vibrations and elegant, body-safe designs.",
+    "content": "<p>Le Wand is a modern take on the classic wand massager, offering powerful rechargeable vibration with a sleek, contemporary aesthetic. Their products feature flexible heads, multiple vibration patterns, and premium body-safe materials.</p>"
+  },
+  {
+    "id": 6,
+    "name": "Pipedream",
+    "slug": "pipedream",
+    "image": "",
+    "description": "Pipedream Products is a leading manufacturer of adult novelties, toys, and intimate accessories for all preferences.",
+    "content": "<p>Pipedream Products has been a major name in the adult industry for over 25 years. They offer a massive range of products from realistic toys and fantasy items to lingerie and accessories, with well-known sub-brands like King Cock and Fetish Fantasy.</p>"
+  },
+  {
+    "id": 7,
+    "name": "Calexotics",
+    "slug": "calexotics",
+    "image": "",
+    "description": "CalExotics (California Exotic Novelties) is one of the largest adult product manufacturers, offering diverse and innovative pleasure products.",
+    "content": "<p>CalExotics has been creating innovative pleasure products since 1994. Based in California, they offer thousands of products across categories including vibrators, couples' toys, and bondage accessories, known for colorful designs and body-safe materials.</p>"
+  },
+  {
+    "id": 8,
+    "name": "Lovense",
+    "slug": "lovense",
+    "image": "",
+    "description": "Lovense specializes in high-tech, app-controlled intimate toys designed for long-distance relationships and interactive play.",
+    "content": "<p>Lovense is a leader in teledildonics and app-controlled pleasure products. Their Bluetooth-enabled toys can be controlled remotely from anywhere in the world, making them perfect for long-distance couples and interactive experiences.</p>"
+  },
+  {
+    "id": 9,
+    "name": "JimmyJane",
+    "slug": "jimmyjane",
+    "image": "",
+    "description": "Jimmyjane creates beautifully designed pleasure products that blend luxury aesthetics with powerful performance.",
+    "content": "<p>Jimmyjane is known for its sleek, modern designs and premium materials. Their collection includes vibrators, massagers, and intimate accessories that prioritize both form and function with whisper-quiet motors and medical-grade silicone.</p>"
+  },
+  {
+    "id": 10,
+    "name": "Fun Factory",
+    "slug": "fun-factory",
+    "image": "",
+    "description": "Fun Factory is a German brand creating colorful, body-safe vibrators and toys with award-winning designs since 1996.",
+    "content": "<p>Fun Factory has been designing and manufacturing pleasure products in Bremen, Germany since 1996. Known for their bold colors, ergonomic shapes, and medical-grade silicone, their products are 100% body-safe and built to last.</p>"
+  },
+  {
+    "id": 11,
+    "name": "Adam and Eve",
+    "slug": "adam-and-eve",
+    "image": "",
+    "description": "Adam & Eve is one of America's most recognized adult brands, offering a wide range of toys, lingerie, and wellness products.",
+    "content": "<p>Adam & Eve has been a trusted name in adult products for decades. They offer an extensive catalog of vibrators, couples' toys, lingerie, and personal care items at accessible price points for beginners and experienced users alike.</p>"
+  },
+  {
+    "id": 12,
+    "name": "Magic Wand",
+    "slug": "magic-wand",
+    "image": "",
+    "description": "Magic Wand (formerly Hitachi) is the iconic wand massager brand trusted for deep, powerful vibrations since the 1960s.",
+    "content": "<p>The Magic Wand is one of the most iconic pleasure products ever made. Originally produced by Hitachi, this powerful wand massager has been a bestseller for decades, known for its intense vibrations and reliable performance.</p>"
+  },
+  {
+    "id": 13,
+    "name": "Arcwave",
+    "slug": "arcwave",
+    "image": "",
+    "description": "Arcwave brings Pleasure Air Technology to male pleasure products, offering innovative stimulators from the makers of Womanizer.",
+    "content": "<p>Arcwave is a male pleasure brand from the same company behind Womanizer. They've adapted the revolutionary Pleasure Air Technology for male anatomy, creating products like the Arcwave Ion that deliver unique pulsating sensations.</p>"
+  },
+  {
+    "id": 14,
+    "name": "Playful",
+    "slug": "playful",
+    "image": "",
+    "description": "Playful offers fun, affordable pleasure products with playful designs perfect for those exploring their desires.",
+    "content": "<p>Playful is a brand focused on making pleasure accessible and fun. Their range of vibrators, couples' toys, and accessories feature playful designs and approachable pricing, ideal for beginners and those looking to add variety.</p>"
+  },
+  {
+    "id": 15,
+    "name": "Lickgasm",
+    "slug": "lickgasm",
+    "image": "",
+    "description": "Lickgasm specializes in tongue-like stimulation toys that mimic oral sensations for unique clitoral pleasure.",
+    "content": "<p>Lickgasm creates innovative products that simulate the sensation of oral stimulation. Using flickering tongue-like mechanisms and vibration, their toys offer a unique experience that sets them apart from traditional vibrators.</p>"
+  }
+]

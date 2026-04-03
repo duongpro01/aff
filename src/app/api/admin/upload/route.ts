@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic';
+
+const UPLOAD_BASE = path.join(process.cwd(), 'public', 'images');
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -15,7 +19,10 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadDir = path.join(process.cwd(), 'public/images', directory);
+    const uploadDir = path.resolve(UPLOAD_BASE, directory);
+    if (!uploadDir.startsWith(UPLOAD_BASE)) {
+      return NextResponse.json({ error: 'Invalid directory' }, { status: 400 });
+    }
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }

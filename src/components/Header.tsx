@@ -10,11 +10,16 @@ interface HeaderProps {
 }
 
 const brands = [
-  { name: 'Joola', href: '/joola' },
-  { name: 'Selkirk', href: '/selkirk' },
-  { name: 'Head', href: '/head' },
-  { name: 'CRBN', href: '/crbn' },
-  { name: 'Paddletek', href: '/paddletek' },
+  { name: 'Satisfyer', href: '/satisfyer' },
+  { name: 'We-Vibe', href: '/we-vibe' },
+  { name: 'Womanizer', href: '/womanizer' },
+  { name: 'Lelo', href: '/lelo' },
+  { name: 'Lovense', href: '/lovense' },
+  { name: 'Le Wand', href: '/le-wand' },
+  { name: 'Pipedream', href: '/pipedream' },
+  { name: 'Calexotics', href: '/calexotics' },
+  { name: 'Fun Factory', href: '/fun-factory' },
+  { name: 'Magic Wand', href: '/magic-wand' },
 ];
 
 const tools = [
@@ -28,14 +33,14 @@ const tools = [
 ];
 
 const dummyProducts = [
-  'Vợt Joola Ben Johns Hyperion 3',
-  'Vợt Selkirk Vanguard Power Air',
-  'Vợt CRBN 1X Power Series',
-  'Vợt Head Radical Tour',
-  'Vợt Paddletek Bantam EX-L',
-  'Bóng Franklin X-40',
-  'Giày Court Nike Vapor Pro',
-  'Túi đựng vợt Joola Tour Elite',
+  'Satisfyer Pro 2 Generation 3',
+  'We-Vibe Sync Couples Vibrator',
+  'Womanizer Premium 2',
+  'Lelo Sona 2 Cruise',
+  'Lovense Lush 3',
+  'Le Wand Petite Rechargeable',
+  'Pipedream King Cock Elite',
+  'Fun Factory Stronic G',
 ];
 
 export default function Header({ cartCount: cartCountProp }: HeaderProps) {

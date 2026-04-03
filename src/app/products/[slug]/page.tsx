@@ -14,6 +14,11 @@ function getProducts() {
   return JSON.parse(fs.readFileSync(file, 'utf-8'));
 }
 
+function getCategories() {
+  const file = path.join(process.cwd(), 'src/data/categories.json');
+  return JSON.parse(fs.readFileSync(file, 'utf-8'));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const products = getProducts();
@@ -32,7 +37,17 @@ export default async function ProductDetailPage({ params }: Props) {
   const product = products.find((p: any) => p.slug === slug);
   if (!product) notFound();
 
-  const relatedProducts = products.filter((p: any) => p.category === product.category && p.id !== product.id).slice(0, 4);
+  // Find the category for breadcrumb
+  const categories = getCategories();
+  const category = categories.find((c: any) => c.slug === product.category);
+
+  // Related: same category first, then same brand, shuffled, up to 12
+  const sameCat = products.filter((p: any) => p.category === product.category && p.id !== product.id);
+  const sameBrand = products.filter((p: any) => p.brand === product.brand && p.category !== product.category && p.id !== product.id);
+  const pool = [...sameCat, ...sameBrand];
+  // Shuffle deterministically by product id
+  pool.sort((a: any, b: any) => ((a.id * 7 + product.id) % 97) - ((b.id * 7 + product.id) % 97));
+  const relatedProducts = pool.slice(0, 12);
 
   return (
     <>
@@ -46,11 +61,16 @@ export default async function ProductDetailPage({ params }: Props) {
         "offers": {
           "@type": "Offer",
           "price": product.price,
-          "priceCurrency": "AUD",
+          "priceCurrency": "USD",
           "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
         }
       })}} />
-      <ProductDetailClient product={product} relatedProducts={relatedProducts} />
+      <ProductDetailClient
+        product={product}
+        relatedProducts={relatedProducts}
+        categoryName={category?.name}
+        categorySlug={category?.slug}
+      />
     </>
   );
 }

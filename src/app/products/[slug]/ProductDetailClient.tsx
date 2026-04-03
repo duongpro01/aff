@@ -30,11 +30,13 @@ interface Product {
 interface Props {
   product: Product;
   relatedProducts: Product[];
+  categoryName?: string;
+  categorySlug?: string;
 }
 
 const formatPrice = (price: number) => '$' + price.toFixed(2);
 
-export default function ProductDetailClient({ product, relatedProducts }: Props) {
+export default function ProductDetailClient({ product, relatedProducts, categoryName, categorySlug }: Props) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
@@ -76,6 +78,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
         <Link href="/" style={{ color: '#6b7280', textDecoration: 'none' }}>Home</Link>
         <ChevronRight size={14} />
         <Link href="/products" style={{ color: '#6b7280', textDecoration: 'none' }}>Products</Link>
+        {categoryName && categorySlug && (
+          <>
+            <ChevronRight size={14} />
+            <Link href={`/products?category=${categorySlug}`} style={{ color: '#6b7280', textDecoration: 'none' }}>{categoryName}</Link>
+          </>
+        )}
         <ChevronRight size={14} />
         <span style={{ color: '#111827', fontWeight: 500 }}>{product.name}</span>
       </nav>
@@ -401,7 +409,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Props)
         <div style={{ marginBottom: 48 }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, color: '#111827', marginBottom: 20 }}>You May Also Like</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="related-products-grid">
-            {relatedProducts.map((p: any) => (
+            {relatedProducts.slice(0, 12).map((p: any) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

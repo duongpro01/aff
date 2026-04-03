@@ -1,5 +1,6 @@
 import HeroBanner from '@/components/HeroBanner';
 import CategorySection from '@/components/CategorySection';
+import BrandSection from '@/components/BrandSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import ProductSection from '@/components/ProductSection';
 import StatsSection from '@/components/StatsSection';
@@ -14,6 +15,7 @@ export default function HomePage() {
     <>
       <HeroBanner />
       <CategorySection />
+      <BrandSection />
       <FeaturesSection />
       <ProductSection />
       <StatsSection />

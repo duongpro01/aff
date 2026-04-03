@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Vibrators",
+    "slug": "vibrators",
+    "image": "",
+    "description": "Explore our collection of vibrators including bullet, rabbit, G-spot, wand massagers and more from top brands.",
+    "content": "<p>From discreet bullet vibrators to powerful wand massagers, our vibrator collection covers every preference and experience level. Choose from clitoral, G-spot, rabbit, and couples' vibrators made with body-safe materials.</p>"
+  },
+  {
+    "id": 2,
+    "name": "Dildos & Strap Ons",
+    "slug": "dongs-dildos-strapons",
+    "image": "",
+    "description": "Shop dildos, dongs, glass toys and strap-on harness kits in a variety of sizes, shapes and materials.",
+    "content": "<p>Our dildos and strap-ons range includes realistic, fantasy, glass, and silicone options. From beginner-friendly sizes to adventurous shapes, find the perfect toy with or without a harness system.</p>"
+  },
+  {
+    "id": 3,
+    "name": "Anal Toys",
+    "slug": "anal-toys",
+    "image": "",
+    "description": "Discover anal toys including butt plugs, beads, prostate massagers and training kits for safe, comfortable play.",
+    "content": "<p>Explore our curated selection of anal toys designed for comfort and pleasure. Includes butt plugs, anal beads, prostate massagers, training kits, and douches — all made with body-safe materials and flared bases for safety.</p>"
+  },
+  {
+    "id": 4,
+    "name": "Bondage & Fetish",
+    "slug": "fetish-bondage",
+    "image": "",
+    "description": "Browse bondage and fetish gear including restraints, blindfolds, whips, paddles, and BDSM starter kits.",
+    "content": "<p>From beginner bondage sets to advanced fetish gear, our collection includes handcuffs, restraints, blindfolds, gags, whips, paddles, nipple stimulators, and sex furniture for couples exploring BDSM.</p>"
+  },
+  {
+    "id": 5,
+    "name": "Lubes & Essentials",
+    "slug": "lubes-essentials",
+    "image": "",
+    "description": "Stock up on lubricants, toy cleaners, massage oils and intimate essentials for a better experience.",
+    "content": "<p>Essential products for every toy box — water-based, silicone, and hybrid lubricants, toy cleaners, massage oils and candles, arousal gels, and personal care items to enhance your intimate moments.</p>"
+  },
+  {
+    "id": 6,
+    "name": "Lingerie",
+    "slug": "lingerie",
+    "image": "",
+    "description": "Shop sexy lingerie, costumes, bodysuits and intimate apparel in a range of sizes and styles.",
+    "content": "<p>Feel confident and sexy with our lingerie collection featuring babydolls, bodysuits, corsets, stockings, costumes, and more. Available in a wide range of sizes to flatter every body type.</p>"
+  },
+  {
+    "id": 7,
+    "name": "His Toys",
+    "slug": "his-toys",
+    "image": "",
+    "description": "Male pleasure products including strokers, masturbators, cock rings, pumps, and prostate toys.",
+    "content": "<p>Explore our range of toys designed for male pleasure — from realistic strokers and vibrating masturbators to cock rings, penis pumps, prostate massagers, and sleeves from trusted brands.</p>"
+  },
+  {
+    "id": 8,
+    "name": "Her Toys",
+    "slug": "her-toys",
+    "image": "",
+    "description": "Female pleasure products including vibrators, kegel balls, pumps, and accessories for every desire.",
+    "content": "<p>Discover our curated selection of toys for women — vibrators, kegel exercisers, bullet stimulators, female pumps, and accessories designed for clitoral, G-spot, and blended stimulation.</p>"
+  },
+  {
+    "id": 9,
+    "name": "Couples Toys",
+    "slug": "couples-toys",
+    "image": "",
+    "description": "Toys designed for couples including wearable vibrators, remote-control toys, and shared pleasure accessories.",
+    "content": "<p>Enhance your connection with toys made for two — wearable vibrators, app-controlled couples' toys, double-ended dildos, bondage kits, and more to enjoy together.</p>"
+  }
+]

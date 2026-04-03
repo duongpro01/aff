@@ -13,6 +13,7 @@ type CrawlItem = {
   url: string;
   image: string;
   slug?: string;
+  category?: string;
   alreadyImported?: boolean;
 };
 
@@ -54,9 +55,43 @@ export default function AdminCrawl() {
   const [importProgress, setImportProgress] = useState({ current: 0, total: 0, success: 0, failed: 0, skipped: 0, images: 0, startTime: 0 });
   const cancelRef = useRef(false);
 
+  // Single product import state
+  const [importingProduct, setImportingProduct] = useState(false);
+
+  const isProductUrl = (u: string) => /wildsecrets\.com\.au\/p\/\d+\//.test(u);
+
   const addLog = (msg: string) => {
     const time = new Date().toLocaleTimeString('vi-VN');
     setLogs((prev) => [...prev, `[${time}] ${msg}`]);
+  };
+
+  // ===== IMPORT SINGLE PRODUCT URL =====
+  const importSingleProduct = async () => {
+    if (!url) { addLog('Lỗi: Vui lòng nhập URL'); return; }
+    setImportingProduct(true);
+    addLog(`Đang import sản phẩm: ${url}`);
+
+    try {
+      const res = await fetch('/api/admin/crawl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'import-product-url', url: url.trim() }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (data.skipped) {
+          addLog(`⏭ Sản phẩm đã tồn tại: ${data.name} (${data.slug})`);
+        } else {
+          addLog(`✓ Import thành công: ${data.name} — ${data.brand} — $${data.price} — ${data.images} ảnh, ${data.features} features`);
+        }
+      } else {
+        addLog(`✗ Lỗi: ${data.error || 'Import thất bại'}`);
+      }
+    } catch (err) {
+      addLog(`✗ Lỗi: ${err instanceof Error ? err.message : 'Lỗi kết nối'}`);
+    } finally {
+      setImportingProduct(false);
+    }
   };
 
   // ===== CHECK CATEGORY =====
@@ -159,7 +194,7 @@ export default function AdminCrawl() {
         const res = await fetch('/api/admin/crawl', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'import-one', items: [item] }),
+          body: JSON.stringify({ action: 'import-one', items: [item], sourcePageUrl: url }),
         });
         const data = await res.json();
 
@@ -238,18 +273,21 @@ export default function AdminCrawl() {
               type="url"
               value={url}
               onChange={(e) => { setUrl(e.target.value); setCategoryInfo(null); }}
-              placeholder="https://www.wildsecrets.com.au/dongs-dildos-strapons"
+              placeholder="URL danh mục hoặc sản phẩm — vd: /vibrators hoặc /p/236593/..."
               className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm"
             />
             <button
-              onClick={checkCategory}
-              disabled={checking || !url}
-              className="flex items-center gap-1.5 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 disabled:opacity-50 whitespace-nowrap"
+              onClick={isProductUrl(url) ? importSingleProduct : checkCategory}
+              disabled={(isProductUrl(url) ? importingProduct : checking) || !url}
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap disabled:opacity-50 ${isProductUrl(url) ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
             >
-              {checking ? <Loader2 size={14} className="animate-spin" /> : <Info size={14} />}
-              Check
+              {(isProductUrl(url) ? importingProduct : checking) ? <Loader2 size={14} className="animate-spin" /> : isProductUrl(url) ? <Import size={14} /> : <Info size={14} />}
+              {isProductUrl(url) ? 'Import' : 'Check'}
             </button>
           </div>
+          {isProductUrl(url) && (
+            <p className="text-xs text-green-600 font-medium">Link sản phẩm — nhấn &quot;Import sản phẩm này&quot; để nhập trực tiếp</p>
+          )}
         </div>
 
         {/* Quick URLs */}
@@ -301,16 +339,26 @@ export default function AdminCrawl() {
         {/* Crawl buttons (when no category info) */}
         {!categoryInfo && (
           <div className="flex gap-3">
-            <button onClick={() => handleCrawl('one')} disabled={crawling || !url}
-              className="flex items-center gap-1.5 px-4 py-2 bg-[#262260] text-white rounded-lg text-sm font-medium hover:bg-[#1e1b4b] disabled:opacity-50">
-              {crawling ? <Loader2 size={16} className="animate-spin" /> : <Play size={16} />}
-              Crawl 1 trang
-            </button>
-            <button onClick={() => handleCrawl('all')} disabled={crawling || !url}
-              className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-50">
-              {crawling ? <Loader2 size={16} className="animate-spin" /> : <PlayCircle size={16} />}
-              Crawl tất cả
-            </button>
+            {isProductUrl(url) ? (
+              <button onClick={importSingleProduct} disabled={importingProduct || !url}
+                className="flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 disabled:opacity-50">
+                {importingProduct ? <Loader2 size={16} className="animate-spin" /> : <Import size={16} />}
+                Import sản phẩm này
+              </button>
+            ) : (
+              <>
+                <button onClick={() => handleCrawl('one')} disabled={crawling || !url}
+                  className="flex items-center gap-1.5 px-4 py-2 bg-[#262260] text-white rounded-lg text-sm font-medium hover:bg-[#1e1b4b] disabled:opacity-50">
+                  {crawling ? <Loader2 size={16} className="animate-spin" /> : <Play size={16} />}
+                  Crawl 1 trang
+                </button>
+                <button onClick={() => handleCrawl('all')} disabled={crawling || !url}
+                  className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-50">
+                  {crawling ? <Loader2 size={16} className="animate-spin" /> : <PlayCircle size={16} />}
+                  Crawl tất cả
+                </button>
+              </>
+            )}
           </div>
         )}
 

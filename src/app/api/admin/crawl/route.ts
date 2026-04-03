@@ -15,10 +15,53 @@ interface CrawlItem {
   url: string;
   image: string;
   slug?: string;
+  category?: string;
 }
 
 interface ImportItem extends CrawlItem {
   slug: string;
+}
+
+// Map wildsecrets URL paths to local category slugs
+const URL_CATEGORY_MAP: Record<string, string> = {
+  'vibrators': 'vibrators',
+  'dongs-dildos-strapons': 'dongs-dildos-strapons',
+  'anal-toys': 'anal-toys',
+  'bondage': 'fetish-bondage',
+  'lubes-essentials': 'lubes-essentials',
+  'lingerie': 'lingerie',
+  'his-toys': 'his-toys',
+  'her-toys': 'her-toys',
+  'couples-toys': 'couples-toys',
+};
+
+// Keyword-based category detection from product name (no trailing \b — match prefixes like vibrat→vibrator)
+const CATEGORY_KEYWORDS: [RegExp, string][] = [
+  [/\b(vibrat|vibe\b|wand\b|massager|bullet|stimulat|pulse)/i, 'vibrators'],
+  [/\b(dildo|dong\b|strap.?on)/i, 'dongs-dildos-strapons'],
+  [/\b(anal|butt\s*plug|prostate|beads\b)/i, 'anal-toys'],
+  [/\b(bondage|restraint|whip\b|paddle|blindfold|gag\b|fetish|handcuff|collar\b|clamp)/i, 'fetish-bondage'],
+  [/\b(stroker|masturbat|cock\s*ring|penis\b|sleeve\b)/i, 'his-toys'],
+  [/\b(kegel|ben\s*wa|egg\b|clitor)/i, 'her-toys'],
+  [/\b(couple|remote.?control|app.?control|wearable)/i, 'couples-toys'],
+  [/\b(lingerie|babydoll|bodysuit|stocking|costume|corset|bra\b|panty|panties|thong)/i, 'lingerie'],
+  [/\b(lube\b|lubricant|cleaner|douche|wash\b)/i, 'lubes-essentials'],
+];
+
+function detectCategory(productName: string, sourcePageUrl?: string): string {
+  // 1. Try matching from the crawl source page URL (category page)
+  if (sourcePageUrl) {
+    const urlPath = sourcePageUrl.replace(/https?:\/\/[^/]+/, '').replace(/^\//, '').split('/')[0].split('?')[0];
+    if (URL_CATEGORY_MAP[urlPath]) return URL_CATEGORY_MAP[urlPath];
+  }
+
+  // 2. Keyword match from product name
+  for (const [pattern, cat] of CATEGORY_KEYWORDS) {
+    if (pattern.test(productName)) return cat;
+  }
+
+  // 3. Default
+  return 'vibrators';
 }
 
 function getProductsFile() {
@@ -99,7 +142,9 @@ function parseWildSecretsProducts(html: string, startId: number): CrawlItem[] {
     const dontPayMatch = block.match(/Don(?:'|&#x27;|&apos;)?t pay\s*<span>\$([\d,.]+)<\/span>/i);
     const originalPrice = dontPayMatch ? parseFloat(dontPayMatch[1].replace(',', '')) : undefined;
 
-    const urlMatch = block.match(/product-url-value="([^"]+)"/);
+    // Try product-url-value first, fallback to <a href="/p/...">
+    const urlMatch = block.match(/product-url-value="([^"]+)"/)
+      || block.match(/href="(\/p\/\d+\/[^"]+)"/);
     const productPath = urlMatch ? urlMatch[1] : '';
     const productUrl = productPath ? `${baseUrl}${productPath}` : '';
     const slug = extractSlug(productUrl);
@@ -376,7 +421,7 @@ async function downloadProductImages(slug: string, imageUrls: string[]): Promise
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { url, crawlAll, action, items: importItems } = body;
+    const { url, crawlAll, action, items: importItems, sourcePageUrl } = body;
 
     // =================== IMPORT ONE ITEM ===================
     if (action === 'import-one' && importItems?.[0]) {
@@ -427,7 +472,7 @@ export async function POST(request: NextRequest) {
           originalPrice: finalOriginalPrice,
           image: localImages[0] || item.image,
           images: localImages.length > 0 ? localImages : [item.image],
-          category: 'adult-toys',
+          category: item.category || detectCategory(productName, sourcePageUrl),
           brand: productBrand.toLowerCase().replace(/\s+/g, '-'),
           productLineId: '',
           description: detail?.description || `${productName} - ${productBrand}`,
@@ -470,6 +515,90 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // =================== IMPORT SINGLE PRODUCT URL ===================
+    if (action === 'import-product-url' && url) {
+      if (!url.includes('wildsecrets.com.au')) {
+        return NextResponse.json({ error: 'Chỉ hỗ trợ wildsecrets.com.au' }, { status: 400 });
+      }
+
+      const slug = extractSlug(url);
+      if (!slug) {
+        return NextResponse.json({ error: 'Không thể trích xuất slug từ URL. URL phải có dạng /p/ID/slug' }, { status: 400 });
+      }
+
+      const productsFile = getProductsFile();
+      const products = fs.existsSync(productsFile)
+        ? JSON.parse(fs.readFileSync(productsFile, 'utf-8'))
+        : [];
+
+      const existing = products.find((p: { slug: string }) => p.slug === slug);
+      if (existing) {
+        return NextResponse.json({ success: true, skipped: true, slug, name: existing.name, message: 'Sản phẩm đã tồn tại' });
+      }
+
+      try {
+        const detail = await fetchProductDetail(url);
+        if (!detail || !detail.brand) {
+          return NextResponse.json({ error: 'Không thể lấy thông tin sản phẩm. URL có thể không hợp lệ hoặc sản phẩm đã bị gỡ.' }, { status: 400 });
+        }
+
+        const allImageUrls = detail.images.length > 0 ? detail.images : [];
+        const localImages = await downloadProductImages(slug, allImageUrls);
+
+        const maxId = products.reduce((max: number, p: { id: number }) => Math.max(max, p.id || 0), 0);
+
+        const product = {
+          id: maxId + 1,
+          name: detail.name,
+          slug,
+          price: detail.salePrice || detail.price,
+          originalPrice: detail.originalPrice || detail.price,
+          image: localImages[0] || '',
+          images: localImages,
+          category: detectCategory(detail.name),
+          brand: detail.brand.toLowerCase().replace(/\s+/g, '-'),
+          productLineId: '',
+          description: detail.description || `${detail.name} - ${detail.brand}`,
+          fullDescription: detail.fullDescription || '',
+          features: detail.features || [],
+          specs: detail.specs || {},
+          params: {
+            brand: detail.brand,
+            code: detail.itemCode || '',
+            sku: detail.sku || '',
+            color: detail.color || '',
+            material: detail.specs?.['Material'] || '',
+            sourceUrl: url,
+            isOnSale: detail.isOnSale ? 'true' : 'false',
+            saveAmount: detail.saveAmount || '',
+            rewardDollars: detail.rewardDollars || '',
+          },
+          inStock: detail.inStock ?? true,
+          rating: 4.5,
+          reviews: 0,
+        };
+
+        products.push(product);
+        fs.writeFileSync(productsFile, JSON.stringify(products, null, 2), 'utf-8');
+
+        return NextResponse.json({
+          success: true,
+          slug,
+          name: detail.name,
+          brand: detail.brand,
+          price: product.price,
+          images: localImages.length,
+          features: detail.features?.length || 0,
+          totalProducts: products.length,
+        });
+      } catch (err) {
+        return NextResponse.json({
+          success: false,
+          error: err instanceof Error ? err.message : 'Unknown error',
+        }, { status: 500 });
+      }
+    }
+
     // =================== CHECK CATEGORY (info only) ===================
     if (action === 'check-category' && url) {
       if (!url.includes('wildsecrets.com.au')) {
@@ -477,16 +606,25 @@ export async function POST(request: NextRequest) {
       }
 
       const html = await fetchHtml(url);
+      const isBrandPage = url.includes('/brand/');
+
+      // Category pages use data attributes; brand pages use "X of Y pages" text
       const categoryIdMatch = html.match(/data-category-category-id-value="(\d+)"/);
-      const totalPagesMatch = html.match(/data-category-pagination-total-pages-value="(\d+)"/);
+      const totalPagesMatch = html.match(/data-category-pagination-total-pages-value="(\d+)"/)
+        || html.match(/(\d+)\s+of\s+(\d+)\s+pages/);
       const pageSizeMatch = html.match(/data-category-sorting-current-page-size-value="(\d+)"/);
       const titleMatch = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
 
-      const categoryId = categoryIdMatch ? categoryIdMatch[1] : '';
-      const totalPages = totalPagesMatch ? parseInt(totalPagesMatch[1], 10) : 1;
+      const categoryId = categoryIdMatch ? categoryIdMatch[1] : (isBrandPage ? 'brand' : '');
+      const totalPages = totalPagesMatch
+        ? parseInt(totalPagesMatch[2] || totalPagesMatch[1], 10)
+        : 1;
       const pageSize = pageSizeMatch ? parseInt(pageSizeMatch[1], 10) : 24;
       const title = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, '').trim() : '';
-      const totalProducts = (totalPages - 1) * pageSize + pageSize; // estimate
+
+      // Count products on current page for better estimate
+      const productCount = (html.match(/class="product product-brief"/g) || []).length;
+      const estimatedProducts = productCount > 0 ? (totalPages - 1) * productCount + productCount : totalPages * pageSize;
 
       if (!categoryId) {
         return NextResponse.json({ error: 'Không tìm thấy category trên trang này' }, { status: 400 });
@@ -497,8 +635,9 @@ export async function POST(request: NextRequest) {
         categoryId,
         title,
         totalPages,
-        pageSize,
-        estimatedProducts: totalProducts,
+        pageSize: productCount || pageSize,
+        estimatedProducts,
+        isBrandPage,
       });
     }
 
@@ -511,45 +650,59 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Chỉ hỗ trợ wildsecrets.com.au' }, { status: 400 });
     }
 
-    // Step 1: Fetch the category page to get categoryId & totalPages
+    // Step 1: Fetch the page to get pagination info
     const html = await fetchHtml(url);
+    const isBrandPage = url.includes('/brand/');
 
     const categoryIdMatch = html.match(/data-category-category-id-value="(\d+)"/);
-    const totalPagesMatch = html.match(/data-category-pagination-total-pages-value="(\d+)"/);
+    const totalPagesMatch = html.match(/data-category-pagination-total-pages-value="(\d+)"/)
+      || html.match(/(\d+)\s+of\s+(\d+)\s+pages/);
     const pageSizeMatch = html.match(/data-category-sorting-current-page-size-value="(\d+)"/);
 
-    const categoryId = categoryIdMatch ? categoryIdMatch[1] : '';
-    const totalPages = totalPagesMatch ? parseInt(totalPagesMatch[1], 10) : 1;
+    const categoryId = categoryIdMatch ? categoryIdMatch[1] : (isBrandPage ? 'brand' : '');
+    const totalPages = totalPagesMatch
+      ? parseInt(totalPagesMatch[2] || totalPagesMatch[1], 10)
+      : 1;
     const pageSize = pageSizeMatch ? parseInt(pageSizeMatch[1], 10) : 24;
 
     if (!categoryId) {
       return NextResponse.json({ error: 'Không tìm thấy category ID trên trang này' }, { status: 400 });
     }
 
-    // crawlAll = true -> all pages, crawlAll = number -> specific page, false -> page 0
-    let startPage = 0;
-    let endPage = 1;
+    // crawlAll = true -> all pages, crawlAll = number -> specific page, false -> page 0/1
+    let startPage = isBrandPage ? 1 : 0;
+    let endPage = isBrandPage ? 2 : 1;
     if (crawlAll === true) {
-      endPage = totalPages;
+      startPage = isBrandPage ? 1 : 0;
+      endPage = isBrandPage ? totalPages + 1 : totalPages;
     } else if (typeof crawlAll === 'number') {
-      startPage = crawlAll;
-      endPage = crawlAll + 1;
+      // Frontend sends 0-indexed page numbers; brand pages are 1-indexed
+      startPage = isBrandPage ? crawlAll + 1 : crawlAll;
+      endPage = startPage + 1;
     }
 
     const allItems: CrawlItem[] = [];
-    const baseApiUrl = 'https://www.wildsecrets.com.au/Category/FilterProducts';
 
     for (let page = startPage; page < endPage; page++) {
       try {
-        const apiUrl = `${baseApiUrl}?id=${categoryId}&currentPage=${page}&recordsPerPage=${pageSize}`;
-        const raw = await fetchHtml(apiUrl);
+        let pageHtml: string;
 
-        let pageHtml = raw;
-        try {
-          const json = JSON.parse(raw);
-          pageHtml = json.productsHtml || '';
-        } catch {
-          // not JSON, use raw
+        if (isBrandPage) {
+          // Brand pages: fetch HTML directly with ?page=N (1-indexed)
+          const sep = url.includes('?') ? '&' : '?';
+          const pageUrl = page === 1 ? url : `${url}${sep}page=${page}`;
+          pageHtml = await fetchHtml(pageUrl);
+        } else {
+          // Category pages: use FilterProducts API (0-indexed)
+          const apiUrl = `https://www.wildsecrets.com.au/Category/FilterProducts?id=${categoryId}&currentPage=${page}&recordsPerPage=${pageSize}`;
+          const raw = await fetchHtml(apiUrl);
+          pageHtml = raw;
+          try {
+            const json = JSON.parse(raw);
+            pageHtml = json.productsHtml || '';
+          } catch {
+            // not JSON, use raw
+          }
         }
 
         const pageItems = parseWildSecretsProducts(pageHtml, allItems.length + 1);
@@ -559,15 +712,19 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Deduplicate by code
+    // Deduplicate by code or slug (code can be empty for brand pages)
     const seen = new Set<string>();
     const unique = allItems.filter(item => {
-      if (seen.has(item.code)) return false;
-      seen.add(item.code);
+      const key = item.code || item.slug || item.url || item.name;
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
 
-    unique.forEach((item, idx) => { item.id = idx + 1; });
+    unique.forEach((item, idx) => {
+      item.id = idx + 1;
+      item.category = detectCategory(item.name, url);
+    });
 
     // Mark items that already exist in products.json
     const productsFile = getProductsFile();

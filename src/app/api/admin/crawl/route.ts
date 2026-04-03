@@ -103,10 +103,294 @@ async function downloadImage(imageUrl: string, savePath: string): Promise<boolea
   }
 }
 
-// Extract slug from Wild Secrets product URL: /p/236795/some-slug -> some-slug
+// Supported domains
+const SUPPORTED_DOMAINS = ['wildsecrets.com.au', 'bedaring.com.au'];
+
+function isSupportedDomain(url: string): boolean {
+  return SUPPORTED_DOMAINS.some(domain => url.includes(domain));
+}
+
+function getDomain(url: string): string {
+  if (url.includes('wildsecrets.com.au')) return 'wildsecrets';
+  if (url.includes('bedaring.com.au')) return 'bedaring';
+  return '';
+}
+
+// Extract slug from product URL
 function extractSlug(productUrl: string): string {
-  const match = productUrl.match(/\/p\/\d+\/(.+?)(?:\?|$)/);
-  return match ? match[1] : '';
+  // Wild Secrets: /p/236795/some-slug -> some-slug
+  const wsMatch = productUrl.match(/\/p\/\d+\/(.+?)(?:\?|$)/);
+  if (wsMatch) return wsMatch[1];
+
+  // BeDaring: /product-name.html -> product-name
+  const bdMatch = productUrl.match(/\/([^/]+)\.html(?:\?|$)/);
+  if (bdMatch) return bdMatch[1];
+
+  return '';
+}
+
+// Decode HTML entities
+function decodeHtmlEntities(str: string): string {
+  return str
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&#039;/g, "'")
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x20;/g, ' ')
+    .replace(/&nbsp;/g, ' ');
+}
+
+// Parse products from BeDaring (Magento 2)
+function parseBeDaringProducts(html: string, startId: number): CrawlItem[] {
+  const items: CrawlItem[] = [];
+  const baseUrl = 'https://www.bedaring.com.au';
+
+  // Split by product-item-info to separate products
+  const productBlocks = html.split('class="product-item-info"');
+
+  for (let i = 1; i < productBlocks.length; i++) {
+    const block = productBlocks[i];
+
+    // Only process actual product grid items
+    if (!block.includes('data-container="product-grid"')) continue;
+
+    // Extract product ID
+    const idMatch = block.match(/data-product-id="(\d+)"/);
+    if (!idMatch) continue;
+    const productId = idMatch[1];
+
+    // Extract product URL
+    const urlMatch = block.match(/href="(https?:\/\/www\.bedaring\.com\.au\/[^"]+\.html)"/);
+    const productUrl = urlMatch ? urlMatch[1] : '';
+
+    // Extract product name from product-item-link
+    const nameMatch = block.match(/class="product-item-link"[^>]*href="[^"]*"[^>]*>\s*([^<]+)\s*<\/a>/);
+    let name = '';
+    if (nameMatch) {
+      name = decodeHtmlEntities(nameMatch[1].trim());
+    } else {
+      // Fallback: get from alt attribute
+      const altMatch = block.match(/alt="([^"]+)"/);
+      if (altMatch) {
+        name = decodeHtmlEntities(altMatch[1]);
+      }
+    }
+
+    // Extract image
+    const imgMatch = block.match(/src="(https?:\/\/www\.bedaring\.com\.au\/media\/catalog\/product[^"]+)"/);
+    const image = imgMatch ? imgMatch[1] : '';
+
+    // Extract price from data-price-amount
+    const priceMatch = block.match(/data-price-amount="([0-9.]+)"/);
+    const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+
+    // Extract original price if on sale
+    let originalPrice: number | undefined;
+    const oldPriceMatch = block.match(/old-price[\s\S]*?data-price-amount="([0-9.]+)"/);
+    if (oldPriceMatch) {
+      originalPrice = parseFloat(oldPriceMatch[1]);
+    }
+
+    const slug = extractSlug(productUrl);
+
+    if (name && productUrl) {
+      items.push({
+        id: startId + items.length,
+        name,
+        brand: '', // BeDaring doesn't show brand in listing
+        code: productId,
+        price,
+        originalPrice: originalPrice && originalPrice > price ? originalPrice : undefined,
+        url: productUrl,
+        image,
+        slug,
+      });
+    }
+  }
+
+  return items;
+}
+
+// Fetch BeDaring product detail page
+async function fetchBeDaringProductDetail(productUrl: string): Promise<ProductDetail | null> {
+  try {
+    const html = await fetchHtml(productUrl);
+
+    // ===== 1. PRODUCT NAME (from h1) =====
+    const h1Match = html.match(/<h1[^>]*class="page-title"[^>]*>[\s\S]*?<span[^>]*>([^<]+)<\/span>/i)
+      || html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const name = h1Match
+      ? decodeHtmlEntities(h1Match[1].replace(/<[^>]+>/g, '').trim())
+      : '';
+
+    // ===== 2. BRAND (BeDaring doesn't have clear brand field, try to extract from name) =====
+    // Could also look in structured data
+    let brand = '';
+    const schemaMatch = html.match(/"brand"\s*:\s*\{\s*"@type"\s*:\s*"Brand"\s*,\s*"name"\s*:\s*"([^"]+)"/);
+    if (schemaMatch) {
+      brand = schemaMatch[1];
+    }
+
+    // ===== 3. PRICE (from data-price-amount or price span) =====
+    const priceAmountMatch = html.match(/data-price-amount="([0-9.]+)"/);
+    const price = priceAmountMatch ? parseFloat(priceAmountMatch[1]) : 0;
+
+    // Check for special/sale price
+    let originalPrice = price;
+    let salePrice = price;
+    let isOnSale = false;
+
+    // Look for old-price (original price when on sale)
+    const oldPriceMatch = html.match(/class="old-price"[\s\S]*?data-price-amount="([0-9.]+)"/);
+    if (oldPriceMatch) {
+      originalPrice = parseFloat(oldPriceMatch[1]);
+      isOnSale = originalPrice > price;
+      salePrice = price;
+    }
+
+    // ===== 4. IMAGES (from gallery JSON or img tags) =====
+    const images: string[] = [];
+
+    // Try to find gallery data (Magento uses mage/gallery/gallery)
+    const galleryMatch = html.match(/\[data-gallery-role=gallery-placeholder\][\s\S]*?"data"\s*:\s*(\[[\s\S]*?\])\s*,/);
+    if (galleryMatch) {
+      try {
+        const galleryData = JSON.parse(galleryMatch[1]);
+        for (const img of galleryData) {
+          if (img.full || img.img) {
+            const imgUrl = img.full || img.img;
+            if (!images.includes(imgUrl)) images.push(imgUrl);
+          }
+        }
+      } catch { /* ignore */ }
+    }
+
+    // Fallback: find all product images from media/catalog/product
+    if (images.length === 0) {
+      const imgRegex = /src="(https?:\/\/www\.bedaring\.com\.au\/media\/catalog\/product[^"]+)"/gi;
+      let m;
+      const seen = new Set<string>();
+      while ((m = imgRegex.exec(html)) !== null) {
+        // Skip cache/small thumbnails, prefer larger images
+        const url = m[1];
+        // Normalize URL to avoid duplicates with different cache paths
+        const baseUrl = url.replace(/\/cache\/[^/]+\//, '/');
+        if (!seen.has(baseUrl) && !url.includes('/placeholder/')) {
+          seen.add(baseUrl);
+          images.push(url);
+        }
+      }
+    }
+
+    // ===== 5. DESCRIPTION =====
+    let description = '';
+    let fullDescription = '';
+
+    // Find description tab content
+    const descMatch = html.match(/id="description"[^>]*>([\s\S]*?)<\/div>\s*<\/div>\s*(?:<div|$)/i);
+    if (descMatch) {
+      fullDescription = descMatch[1].trim();
+      // Clean text version
+      description = fullDescription
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    // Alternative: look for product.info.description
+    if (!description) {
+      const altDescMatch = html.match(/class="product attribute description"[\s\S]*?<div[^>]*class="value"[^>]*>([\s\S]*?)<\/div>/i);
+      if (altDescMatch) {
+        fullDescription = altDescMatch[1].trim();
+        description = fullDescription.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+    }
+
+    // ===== 6. FEATURES (from description bullet points) =====
+    const features: string[] = [];
+    const liRegex = /<li[^>]*>([^<]+)<\/li>/gi;
+    let liMatch;
+    const descSection = fullDescription || html;
+    while ((liMatch = liRegex.exec(descSection)) !== null) {
+      const text = decodeHtmlEntities(liMatch[1].trim());
+      if (text && text.length > 3 && !features.includes(text)) {
+        features.push(text);
+      }
+    }
+
+    // ===== 7. SPECS (Material, Size, etc.) =====
+    const specs: Record<string, string> = {};
+
+    // Look for additional attributes table
+    const attrTableMatch = html.match(/class="additional-attributes"[\s\S]*?<tbody>([\s\S]*?)<\/tbody>/i);
+    if (attrTableMatch) {
+      const rowRegex = /<tr[^>]*>[\s\S]*?<th[^>]*>([^<]+)<\/th>[\s\S]*?<td[^>]*>([^<]+)<\/td>/gi;
+      let rowMatch;
+      while ((rowMatch = rowRegex.exec(attrTableMatch[1])) !== null) {
+        const key = decodeHtmlEntities(rowMatch[1].trim());
+        const value = decodeHtmlEntities(rowMatch[2].trim());
+        if (key && value) specs[key] = value;
+      }
+    }
+
+    // Extract specs from description text
+    const specPatterns = [
+      /Material[:\s]+([^,.\n<]+)/i,
+      /Length[:\s]+([^,.\n<]+)/i,
+      /Width[:\s]+([^,.\n<]+)/i,
+      /Diameter[:\s]+([^,.\n<]+)/i,
+      /Batteries?[:\s]+([^,.\n<]+)/i,
+    ];
+    for (const pattern of specPatterns) {
+      const match = description.match(pattern);
+      if (match && match[1]) {
+        const key = pattern.source.split('[')[0];
+        if (!specs[key]) specs[key] = match[1].trim();
+      }
+    }
+
+    // ===== 8. SKU =====
+    const skuMatch = html.match(/SKU[:\s]*<[^>]*>([^<]+)/i)
+      || html.match(/"sku"\s*:\s*"([^"]+)"/);
+    const sku = skuMatch ? skuMatch[1].trim() : '';
+
+    // ===== 9. ITEM CODE =====
+    const itemCodeMatch = html.match(/data-product-id="(\d+)"/);
+    const itemCode = itemCodeMatch ? itemCodeMatch[1] : '';
+
+    // ===== 10. STOCK =====
+    const inStock = html.includes('schema.org/InStock') || html.includes('In stock');
+
+    return {
+      name,
+      brand,
+      description,
+      fullDescription,
+      features,
+      images,
+      specs,
+      price: originalPrice,
+      salePrice,
+      originalPrice,
+      isOnSale,
+      saveAmount: isOnSale ? `$${(originalPrice - salePrice).toFixed(2)}` : '',
+      itemCode,
+      rewardDollars: '',
+      color: '',
+      sku,
+      inStock,
+    };
+  } catch (err) {
+    console.error('Error fetching BeDaring product detail:', err);
+    return null;
+  }
 }
 
 // Parse products from Wild Secrets FilterProducts API response
@@ -443,8 +727,11 @@ export async function POST(request: NextRequest) {
       }
 
       try {
-        // Fetch product detail
-        const detail = await fetchProductDetail(item.url);
+        // Fetch product detail based on domain
+        const itemDomain = getDomain(item.url);
+        const detail = itemDomain === 'bedaring'
+          ? await fetchBeDaringProductDetail(item.url)
+          : await fetchProductDetail(item.url);
 
         // Collect image URLs
         const allImageUrls: string[] = [];
@@ -517,13 +804,13 @@ export async function POST(request: NextRequest) {
 
     // =================== IMPORT SINGLE PRODUCT URL ===================
     if (action === 'import-product-url' && url) {
-      if (!url.includes('wildsecrets.com.au')) {
-        return NextResponse.json({ error: 'Chỉ hỗ trợ wildsecrets.com.au' }, { status: 400 });
+      if (!isSupportedDomain(url)) {
+        return NextResponse.json({ error: 'Chỉ hỗ trợ: ' + SUPPORTED_DOMAINS.join(', ') }, { status: 400 });
       }
 
       const slug = extractSlug(url);
       if (!slug) {
-        return NextResponse.json({ error: 'Không thể trích xuất slug từ URL. URL phải có dạng /p/ID/slug' }, { status: 400 });
+        return NextResponse.json({ error: 'Không thể trích xuất slug từ URL. URL phải có dạng /p/ID/slug (WildSecrets) hoặc /product-name.html (BeDaring)' }, { status: 400 });
       }
 
       const productsFile = getProductsFile();
@@ -537,8 +824,14 @@ export async function POST(request: NextRequest) {
       }
 
       try {
-        const detail = await fetchProductDetail(url);
-        if (!detail || !detail.brand) {
+        // Fetch product detail based on domain
+        const urlDomain = getDomain(url);
+        const detail = urlDomain === 'bedaring'
+          ? await fetchBeDaringProductDetail(url)
+          : await fetchProductDetail(url);
+
+        // BeDaring may not have brand, so check name instead
+        if (!detail || !detail.name) {
           return NextResponse.json({ error: 'Không thể lấy thông tin sản phẩm. URL có thể không hợp lệ hoặc sản phẩm đã bị gỡ.' }, { status: 400 });
         }
 
@@ -601,14 +894,40 @@ export async function POST(request: NextRequest) {
 
     // =================== CHECK CATEGORY (info only) ===================
     if (action === 'check-category' && url) {
-      if (!url.includes('wildsecrets.com.au')) {
-        return NextResponse.json({ error: 'Chỉ hỗ trợ wildsecrets.com.au' }, { status: 400 });
+      if (!isSupportedDomain(url)) {
+        return NextResponse.json({ error: 'Chỉ hỗ trợ: ' + SUPPORTED_DOMAINS.join(', ') }, { status: 400 });
       }
 
+      const domain = getDomain(url);
       const html = await fetchHtml(url);
-      const isBrandPage = url.includes('/brand/');
 
-      // Category pages use data attributes; brand pages use "X of Y pages" text
+      if (domain === 'bedaring') {
+        // BeDaring (Magento 2): Items <span>1</span>-<span>48</span> of <span>510</span>
+        const totalMatch = html.match(/Items\s*<span[^>]*>(\d+)<\/span>-<span[^>]*>(\d+)<\/span>\s*of\s*<span[^>]*>(\d+)<\/span>/i);
+        const titleMatch = html.match(/<title>([^<]+)<\/title>/);
+
+        const pageSize = totalMatch ? parseInt(totalMatch[2], 10) : 48;
+        const totalItems = totalMatch ? parseInt(totalMatch[3], 10) : 0;
+        const totalPages = Math.ceil(totalItems / pageSize);
+        const title = titleMatch ? titleMatch[1].split('-')[0].trim() : '';
+
+        // Count products on current page
+        const productCount = (html.match(/data-container="product-grid"/g) || []).length;
+
+        return NextResponse.json({
+          success: true,
+          categoryId: 'bedaring',
+          title,
+          totalPages,
+          pageSize: productCount || pageSize,
+          estimatedProducts: totalItems || productCount * totalPages,
+          isBrandPage: false,
+          domain: 'bedaring',
+        });
+      }
+
+      // Wild Secrets
+      const isBrandPage = url.includes('/brand/');
       const categoryIdMatch = html.match(/data-category-category-id-value="(\d+)"/);
       const totalPagesMatch = html.match(/data-category-pagination-total-pages-value="(\d+)"/)
         || html.match(/(\d+)\s+of\s+(\d+)\s+pages/);
@@ -638,6 +957,7 @@ export async function POST(request: NextRequest) {
         pageSize: productCount || pageSize,
         estimatedProducts,
         isBrandPage,
+        domain: 'wildsecrets',
       });
     }
 
@@ -646,12 +966,98 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 });
     }
 
-    if (!url.includes('wildsecrets.com.au')) {
-      return NextResponse.json({ error: 'Chỉ hỗ trợ wildsecrets.com.au' }, { status: 400 });
+    if (!isSupportedDomain(url)) {
+      return NextResponse.json({ error: 'Chỉ hỗ trợ: ' + SUPPORTED_DOMAINS.join(', ') }, { status: 400 });
     }
+
+    const domain = getDomain(url);
 
     // Step 1: Fetch the page to get pagination info
     const html = await fetchHtml(url);
+
+    // ===== BEDARING CRAWL =====
+    if (domain === 'bedaring') {
+      // BeDaring uses ?p=1, ?p=2, etc (1-indexed)
+      // Pattern: Items <span>1</span>-<span>48</span> of <span>510</span>
+      const totalMatch = html.match(/Items\s*<span[^>]*>(\d+)<\/span>-<span[^>]*>(\d+)<\/span>\s*of\s*<span[^>]*>(\d+)<\/span>/i);
+      const pageSize = totalMatch ? parseInt(totalMatch[2], 10) : 48;
+      const totalItems = totalMatch ? parseInt(totalMatch[3], 10) : 0;
+      const totalPages = Math.ceil(totalItems / pageSize) || 1;
+
+      let startPage = 1;
+      let endPage = 2;
+      if (crawlAll === true) {
+        startPage = 1;
+        endPage = totalPages + 1;
+      } else if (typeof crawlAll === 'number') {
+        startPage = crawlAll + 1; // Frontend sends 0-indexed
+        endPage = startPage + 1;
+      }
+
+      const allItems: CrawlItem[] = [];
+
+      for (let page = startPage; page < endPage; page++) {
+        try {
+          let pageHtml: string;
+          if (page === 1) {
+            pageHtml = html; // Use already fetched first page
+          } else {
+            const sep = url.includes('?') ? '&' : '?';
+            const pageUrl = `${url}${sep}p=${page}`;
+            pageHtml = await fetchHtml(pageUrl);
+          }
+
+          const pageItems = parseBeDaringProducts(pageHtml, allItems.length + 1);
+          allItems.push(...pageItems);
+        } catch (err) {
+          console.error(`Error fetching page ${page}:`, err);
+        }
+      }
+
+      // Deduplicate
+      const seen = new Set<string>();
+      const unique = allItems.filter(item => {
+        const key = item.code || item.slug || item.url;
+        if (!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      unique.forEach((item, idx) => {
+        item.id = idx + 1;
+        item.category = detectCategory(item.name, url);
+      });
+
+      // Mark items that already exist
+      const productsFile = getProductsFile();
+      const existingProducts = fs.existsSync(productsFile)
+        ? JSON.parse(fs.readFileSync(productsFile, 'utf-8'))
+        : [];
+      const existingSlugs = new Set(existingProducts.map((p: { slug: string }) => p.slug));
+
+      const itemsWithStatus = unique.map(item => ({
+        ...item,
+        alreadyImported: existingSlugs.has(item.slug || ''),
+      }));
+
+      const newCount = itemsWithStatus.filter(i => !i.alreadyImported).length;
+      const existingCount = itemsWithStatus.filter(i => i.alreadyImported).length;
+
+      return NextResponse.json({
+        success: true,
+        count: unique.length,
+        newCount,
+        existingCount,
+        pages: endPage - startPage,
+        totalPages,
+        categoryId: 'bedaring',
+        pageSize,
+        items: itemsWithStatus,
+        domain: 'bedaring',
+      });
+    }
+
+    // ===== WILDSECRETS CRAWL =====
     const isBrandPage = url.includes('/brand/');
 
     const categoryIdMatch = html.match(/data-category-category-id-value="(\d+)"/);
@@ -751,6 +1157,7 @@ export async function POST(request: NextRequest) {
       categoryId,
       pageSize,
       items: itemsWithStatus,
+      domain: 'wildsecrets',
     });
   } catch (error) {
     return NextResponse.json(

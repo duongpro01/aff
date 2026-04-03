@@ -270,13 +270,13 @@ export default function ProductDetailClient({ product, relatedProducts, category
           </div>
 
           {/* Source Link */}
-          {sourceUrl && (
+          {/* {sourceUrl && (
             <div style={{ marginTop: 16, fontSize: 12 }}>
               <a href={sourceUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'underline' }}>
                 View on Wild Secrets
               </a>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

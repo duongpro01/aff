@@ -92,6 +92,8 @@ export const crawlSources: CrawlSource[] = [
       { label: 'Silicone Dolls', url: 'https://www.joylovedolls.com/collections/silicone-sex-dolls' },
       { label: 'TPE Dolls', url: 'https://www.joylovedolls.com/collections/tpe-sex-dolls' },
       { label: 'Torsos', url: 'https://www.joylovedolls.com/collections/sex-doll-torso' },
+      { label: 'Pocket Pussy', url: 'https://www.joylovedolls.com/collections/porn-stars-pocket-pussy' },
+      { label: 'Male Masturbators', url: 'https://www.joylovedolls.com/collections/male-masturbators' },
     ],
 
     suggestedBrands: [

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronRight, Minus, Plus, ShoppingCart, Check, Truck, Shield, Clock, CreditCard, Package } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Minus, Plus, ShoppingCart, Check, Truck, Shield, Clock, CreditCard, Package } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import DollCard from '@/components/DollCard';
 
@@ -111,7 +111,7 @@ export default function DollDetailClient({ doll, relatedDolls, categoryName, cat
         {/* ===== LEFT: Image Gallery ===== */}
         <div style={{ minWidth: 0 }}>
           {/* Main Image */}
-          <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-3 bg-gray-100">
+          <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-3 bg-gray-100 group">
             {galleryImages[activeImage] ? (
               <Image
                 src={galleryImages[activeImage]}
@@ -127,9 +127,34 @@ export default function DollDetailClient({ doll, relatedDolls, categoryName, cat
               </div>
             )}
             {discount > 0 && (
-              <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg">
+              <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg z-10">
                 -{discount}% OFF
               </span>
+            )}
+
+            {/* Navigation Arrows */}
+            {galleryImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => setActiveImage(prev => prev === 0 ? galleryImages.length - 1 : prev - 1)}
+                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100 z-10 cursor-pointer border border-gray-200"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={20} className="text-gray-700" />
+                </button>
+                <button
+                  onClick={() => setActiveImage(prev => prev === galleryImages.length - 1 ? 0 : prev + 1)}
+                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-hover:opacity-100 z-10 cursor-pointer border border-gray-200"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={20} className="text-gray-700" />
+                </button>
+
+                {/* Image Counter */}
+                <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-md z-10">
+                  {activeImage + 1} / {galleryImages.length}
+                </div>
+              </>
             )}
           </div>
 

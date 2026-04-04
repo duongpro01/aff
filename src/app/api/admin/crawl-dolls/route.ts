@@ -91,6 +91,21 @@ function extractCollectionHandle(url: string): string {
 }
 
 // Fetch products from Shopify JSON API
+// Supported product types (not just SEX DOLL)
+const SUPPORTED_PRODUCT_TYPES = [
+  'SEX DOLL',
+  'Dolls & Masturbators',
+  'TORSO',
+  'Sex Torso',
+];
+
+function isValidProductType(productType: string): boolean {
+  if (!productType) return false;
+  const lower = productType.toLowerCase();
+  return SUPPORTED_PRODUCT_TYPES.some(t => t.toLowerCase() === lower)
+    || /doll|torso|masturbator|stroker/i.test(productType);
+}
+
 // Map collection handles to tag/vendor filters
 function getCollectionFilter(handle: string): (product: any) => boolean {
   const filters: Record<string, (p: any) => boolean> = {
@@ -103,11 +118,18 @@ function getCollectionFilter(handle: string): (product: any) => boolean {
     'sex-robots': (p) => p.tags?.some((t: string) => /robot/i.test(t)),
     'premium-dolls': (p) => p.tags?.some((t: string) => /premium/i.test(t)),
     'torso': (p) => p.tags?.some((t: string) => /torso/i.test(t)),
+    'sex-doll-torso': (p) => /torso/i.test(p.product_type || '') || p.tags?.some((t: string) => /torso/i.test(t)),
+    // Masturbators / Pocket Pussy collections
+    'porn-stars-pocket-pussy': (p) => /masturbator|stroker/i.test(p.product_type || ''),
+    'pocket-pussy': (p) => /masturbator|stroker|pocket/i.test(p.product_type || p.title || ''),
+    'male-masturbators': (p) => /masturbator|stroker/i.test(p.product_type || ''),
     // Brand-specific collections
     'wm-doll': (p) => /wm\s*doll/i.test(p.vendor || ''),
+    'wm-dolls': (p) => /wm\s*doll/i.test(p.vendor || ''),
     'irontech-doll': (p) => /irontech/i.test(p.vendor || ''),
     'zelex-doll': (p) => /zelex/i.test(p.vendor || ''),
     'starpery-doll': (p) => /starpery/i.test(p.vendor || ''),
+    'starpery': (p) => /starpery/i.test(p.vendor || ''),
     'sedoll': (p) => /sedoll/i.test(p.vendor || ''),
     'real-lady': (p) => /real\s*lady/i.test(p.vendor || ''),
     'game-lady': (p) => /game\s*lady/i.test(p.vendor || ''),
@@ -123,27 +145,51 @@ function getCollectionFilter(handle: string): (product: any) => boolean {
     const handleWords = handle.replace(/-/g, ' ').toLowerCase();
     const vendor = (p.vendor || '').toLowerCase();
     const tags = (p.tags || []).map((t: string) => t.toLowerCase()).join(' ');
-    return vendor.includes(handleWords) || tags.includes(handleWords);
+    const productType = (p.product_type || '').toLowerCase();
+    return vendor.includes(handleWords) || tags.includes(handleWords) || productType.includes(handleWords);
   };
 }
 
 async function fetchShopifyProducts(collectionHandle: string, page: number = 1): Promise<any[]> {
   const baseUrl = 'https://www.joylovedolls.com';
-  // Use /products.json (collection-specific endpoint is disabled)
-  const apiUrl = `${baseUrl}/products.json?page=${page}&limit=250`;
+
+  // Try collection-specific endpoint first (if available)
+  const collectionApiUrl = `${baseUrl}/collections/${collectionHandle}/products.json?page=${page}&limit=250`;
+  const globalApiUrl = `${baseUrl}/products.json?page=${page}&limit=250`;
 
   try {
-    const data = await fetchJson(apiUrl);
+    let data: any;
+    let useCollectionEndpoint = false;
+
+    // Try collection endpoint first
+    try {
+      const collectionRes = await fetchUrl(collectionApiUrl, 'application/json');
+      if (collectionRes.ok) {
+        data = await collectionRes.json();
+        useCollectionEndpoint = true;
+      }
+    } catch {
+      // Fall back to global endpoint
+    }
+
+    // Fall back to global products.json
+    if (!data) {
+      data = await fetchJson(globalApiUrl);
+    }
+
     const allProducts = data.products || [];
 
-    // Filter out non-doll products and hidden products
-    const dolls = allProducts.filter((p: any) =>
-      p.product_type === 'SEX DOLL' || /doll|torso/i.test(p.product_type || '')
-    );
+    // If using collection endpoint, products are already filtered by Shopify
+    if (useCollectionEndpoint) {
+      return allProducts;
+    }
+
+    // Filter by valid product types
+    const validProducts = allProducts.filter((p: any) => isValidProductType(p.product_type));
 
     // Apply collection-specific filter
     const filter = getCollectionFilter(collectionHandle);
-    const filtered = dolls.filter(filter);
+    const filtered = validProducts.filter(filter);
 
     return filtered;
   } catch (err) {
@@ -755,6 +801,111 @@ export async function POST(request: NextRequest) {
           images: localImages.length,
           features: detail?.features?.length || 0,
           totalDolls: dolls.length,
+        });
+      } catch (err) {
+        return NextResponse.json({
+          success: false,
+          slug,
+          error: err instanceof Error ? err.message : 'Unknown error',
+        });
+      }
+    }
+
+    // =================== IMPORT SINGLE PRODUCT URL ===================
+    if (action === 'import-product-url' && url) {
+      if (!url.includes('joylovedolls.com/products/')) {
+        return NextResponse.json({
+          success: false,
+          error: 'URL must be a JoyLoveDolls product page'
+        }, { status: 400 });
+      }
+
+      // Extract slug from URL
+      const slugMatch = url.match(/\/products\/([^/?]+)/);
+      const slug = slugMatch ? slugMatch[1] : '';
+
+      if (!slug) {
+        return NextResponse.json({ success: false, error: 'Could not extract product slug' });
+      }
+
+      const dollsFile = getDollsFile();
+      const dolls = fs.existsSync(dollsFile)
+        ? JSON.parse(fs.readFileSync(dollsFile, 'utf-8'))
+        : [];
+
+      // Check if already exists
+      const existing = dolls.findIndex((d: { slug: string }) => d.slug === slug);
+      if (existing >= 0) {
+        return NextResponse.json({
+          success: true,
+          skipped: true,
+          name: dolls[existing].name,
+          slug,
+        });
+      }
+
+      try {
+        // Fetch product detail
+        const detail = await fetchDollDetail(url);
+
+        if (!detail || !detail.name) {
+          return NextResponse.json({ success: false, error: 'Could not fetch product details' });
+        }
+
+        // Collect image URLs
+        const allImageUrls: string[] = detail.images || [];
+
+        // Download images
+        const localImages = await downloadDollImages(slug, allImageUrls);
+
+        const dollName = detail.name;
+        const dollBrand = detail.brand || extractBrand(dollName);
+        const finalPrice = detail.price || 0;
+        const finalOriginalPrice = detail.originalPrice || finalPrice;
+
+        const maxId = dolls.reduce((max: number, d: { id: number }) => Math.max(max, d.id || 0), 0);
+
+        const material = detail.material || extractMaterial(dollName);
+        const height = detail.height || extractHeight(dollName);
+        const cupSize = detail.cupSize || extractCupSize(dollName);
+        const bodyType = detail.bodyType || extractBodyType(dollName);
+        const category = detail.category || detectCategory(dollName, material, bodyType);
+
+        dolls.push({
+          id: maxId + 1,
+          name: dollName,
+          slug,
+          price: finalPrice,
+          originalPrice: finalOriginalPrice,
+          image: localImages[0] || '',
+          images: localImages,
+          brand: dollBrand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '').replace(/^-+/, ''),
+          category,
+          material,
+          height,
+          weight: detail.specs?.['Weight'] || '',
+          cupSize,
+          bodyType,
+          description: detail.description || `${dollName}`,
+          fullDescription: detail.fullDescription || '',
+          features: detail.features || [],
+          specs: detail.specs || {},
+          inStock: detail.inStock ?? true,
+          sourceUrl: url,
+          rating: 4.5,
+          reviews: 0,
+        });
+
+        fs.writeFileSync(dollsFile, JSON.stringify(dolls, null, 2), 'utf-8');
+
+        return NextResponse.json({
+          success: true,
+          name: dollName,
+          slug,
+          brand: dollBrand,
+          price: finalPrice,
+          images: localImages.length,
+          features: detail.features?.length || 0,
         });
       } catch (err) {
         return NextResponse.json({

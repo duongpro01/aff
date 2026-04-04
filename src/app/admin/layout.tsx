@@ -39,9 +39,8 @@ const navGroups: NavGroup[] = [
     title: 'San pham',
     items: [
       { href: '/admin/products', label: 'Products', icon: Package },
-      { href: '/admin/brands', label: 'Brands', icon: Award },
       { href: '/admin/dolls', label: 'Sex Dolls', icon: Heart },
-      { href: '/admin/doll-brands', label: 'Doll Brands', icon: Award },
+      { href: '/admin/brands', label: 'All Brands', icon: Award },
     ],
   },
   {

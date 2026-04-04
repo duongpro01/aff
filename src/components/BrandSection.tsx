@@ -8,22 +8,22 @@ export default function BrandSection() {
   if (brands.length === 0) return null;
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-10 sm:py-12 md:py-16 px-3 sm:px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-4 text-foreground">Top Brands</h2>
-        <p className="text-center text-gray-500 mb-10">Trusted brands, authentic products</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-4 text-foreground">Top Brands</h2>
+        <p className="text-center text-gray-500 text-sm sm:text-base mb-6 sm:mb-8 md:mb-10">Trusted brands, authentic products</p>
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
           {brands.map((brand) => (
             <Link key={brand.slug} href={`/${brand.slug}`} className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-5 text-center transition-all duration-300 group-hover:shadow-lg group-hover:border-purple-300 group-hover:-translate-y-1 h-full flex flex-col items-center justify-center gap-3">
+              <div className="bg-white border border-gray-200 rounded-lg sm:rounded-xl p-2.5 sm:p-4 md:p-5 text-center transition-all duration-300 group-hover:shadow-lg group-hover:border-purple-300 group-hover:-translate-y-1 h-full flex flex-col items-center justify-center gap-1.5 sm:gap-2 md:gap-3">
                 {brand.image ? (
-                  <img src={brand.image} alt={brand.name} className="h-12 w-auto object-contain" />
+                  <img src={brand.image} alt={brand.name} className="h-8 sm:h-10 md:h-12 w-auto object-contain" />
                 ) : (
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-sm sm:text-lg md:text-xl font-bold shadow-md">
                     {brand.name.charAt(0).toUpperCase()}
                   </div>
                 )}
-                <h3 className="font-semibold text-sm text-gray-800 group-hover:text-purple-700 transition-colors">{brand.name}</h3>
+                <h3 className="font-semibold text-[10px] sm:text-xs md:text-sm text-gray-800 group-hover:text-purple-700 transition-colors truncate w-full">{brand.name}</h3>
               </div>
             </Link>
           ))}

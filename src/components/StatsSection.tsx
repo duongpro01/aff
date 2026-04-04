@@ -59,21 +59,21 @@ export default function StatsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="bg-primary py-16 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <section ref={sectionRef} className="bg-primary py-10 sm:py-12 md:py-16 text-white">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-4">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <div key={stat.label} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10">
-                  <Icon className="h-7 w-7" />
+                <div className="mx-auto mb-2 sm:mb-3 md:mb-4 flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-white/10">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
                 </div>
-                <div className="text-3xl font-bold sm:text-4xl">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                   {formatNumber(counts[i])}
                   {stat.suffix}
                 </div>
-                <div className="mt-1 text-sm text-white/80">{stat.label}</div>
+                <div className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-white/80">{stat.label}</div>
               </div>
             );
           })}

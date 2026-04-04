@@ -38,9 +38,9 @@ const testimonials = [
 
 export default function TestimonialSection() {
   return (
-    <section className="bg-[var(--gray-50)] py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-12 text-center text-3xl font-bold text-[var(--foreground)]">
+    <section className="bg-[var(--gray-50)] py-10 sm:py-12 md:py-16">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+        <h2 className="mb-6 sm:mb-8 md:mb-12 text-center text-xl sm:text-2xl md:text-3xl font-bold text-[var(--foreground)]">
           What Our Customers Say
         </h2>
 
@@ -57,26 +57,26 @@ export default function TestimonialSection() {
         >
           {testimonials.map((t) => (
             <SwiperSlide key={t.name}>
-              <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <Quote className="mb-4 h-8 w-8 text-primary/20" />
-                <p className="mb-6 text-sm leading-relaxed text-[var(--gray-600)]">
+              <div className="rounded-xl sm:rounded-2xl bg-white p-4 sm:p-5 md:p-6 shadow-sm h-full">
+                <Quote className="mb-3 sm:mb-4 h-6 w-6 sm:h-8 sm:w-8 text-primary/20" />
+                <p className="mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed text-[var(--gray-600)]">
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white ${t.color}`}
+                    className={`flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full text-xs sm:text-sm font-bold text-white ${t.color}`}
                   >
                     {t.initials}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-[var(--foreground)]">
+                    <div className="text-xs sm:text-sm font-semibold text-[var(--foreground)]">
                       {t.name}
                     </div>
                     <div className="flex gap-0.5">
                       {Array.from({ length: t.rating }).map((_, i) => (
                         <Star
                           key={i}
-                          className="h-3.5 w-3.5 fill-[var(--warning)] text-[var(--warning)]"
+                          className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-[var(--warning)] text-[var(--warning)]"
                         />
                       ))}
                     </div>

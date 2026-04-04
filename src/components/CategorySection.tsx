@@ -33,19 +33,19 @@ export default function CategorySection() {
   if (categories.length === 0) return null;
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-10 sm:py-12 md:py-16 px-3 sm:px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10 text-foreground">Categories</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-10 text-foreground">Categories</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-4 md:gap-6">
           {categories.map((cat) => {
             const Icon = iconMap[cat.slug] || Sparkles;
             const gradient = gradientMap[cat.slug] || 'from-gray-500 to-gray-700';
             return (
               <Link key={cat.slug} href={`/products?category=${cat.slug}`} className="group">
-                <div className={`bg-gradient-to-br ${gradient} rounded-xl p-6 text-white text-center transition-transform duration-300 group-hover:scale-105 h-full flex flex-col items-center justify-center gap-3`}>
-                  <Icon size={36} strokeWidth={1.5} />
-                  <h3 className="font-semibold text-base">{cat.name}</h3>
-                  <p className="text-xs opacity-90 leading-snug line-clamp-2">{cat.description}</p>
+                <div className={`bg-gradient-to-br ${gradient} rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 text-white text-center transition-transform duration-300 group-hover:scale-105 h-full flex flex-col items-center justify-center gap-1.5 sm:gap-2 md:gap-3`}>
+                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9" strokeWidth={1.5} />
+                  <h3 className="font-semibold text-xs sm:text-sm md:text-base">{cat.name}</h3>
+                  <p className="text-[10px] sm:text-xs opacity-90 leading-snug line-clamp-2 hidden sm:block">{cat.description}</p>
                 </div>
               </Link>
             );

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "All Dolls",
+    "slug": "all-dolls",
+    "description": "Browse our complete collection of premium sex dolls"
+  },
+  {
+    "id": 2,
+    "name": "TPE Dolls",
+    "slug": "tpe-dolls",
+    "description": "Soft and realistic TPE material sex dolls"
+  },
+  {
+    "id": 3,
+    "name": "Silicone Dolls",
+    "slug": "silicone-dolls",
+    "description": "Premium silicone sex dolls with ultra-realistic features"
+  },
+  {
+    "id": 4,
+    "name": "Curvy & BBW",
+    "slug": "curvy-bbw",
+    "description": "Curvy and BBW body type sex dolls"
+  },
+  {
+    "id": 5,
+    "name": "Petite",
+    "slug": "petite",
+    "description": "Petite and slim body type sex dolls"
+  },
+  {
+    "id": 6,
+    "name": "Big Bust",
+    "slug": "big-bust",
+    "description": "Large cup size sex dolls"
+  },
+  {
+    "id": 7,
+    "name": "Anime",
+    "slug": "anime",
+    "description": "Anime and fantasy style sex dolls"
+  },
+  {
+    "id": 8,
+    "name": "Torso",
+    "slug": "torso",
+    "description": "Sex doll torsos for compact storage"
+  },
+  {
+    "id": 9,
+    "name": "Male Dolls",
+    "slug": "male-dolls",
+    "description": "Male sex dolls"
+  },
+  {
+    "id": 10,
+    "name": "Sex Robots",
+    "slug": "sex-robots",
+    "description": "AI-powered interactive sex robots"
+  }
+]

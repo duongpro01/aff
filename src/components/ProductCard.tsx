@@ -45,97 +45,48 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="product-card" style={{
-      borderRadius: 12,
-      overflow: 'hidden',
-      backgroundColor: '#fff',
-      border: '1px solid #e5e7eb',
-      transition: 'box-shadow 0.2s ease',
-      position: 'relative',
-    }}>
-      <Link href={`/products/${product.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-        <div className="product-image" style={{
-          position: 'relative',
-          aspectRatio: '1',
-          overflow: 'hidden',
-          backgroundColor: '#f9fafb',
-        }}>
+    <div className="product-card rounded-lg sm:rounded-xl overflow-hidden bg-white border border-gray-200 relative">
+      <Link href={`/products/${product.slug}`} className="no-underline text-inherit block">
+        <div className="product-image relative aspect-square overflow-hidden bg-gray-50">
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            style={{
-              objectFit: 'cover',
-              transition: 'transform 0.3s ease',
-            }}
+            className="object-cover transition-transform duration-300"
           />
           {discount > 0 && (
-            <span style={{
-              position: 'absolute',
-              top: 8,
-              left: 8,
-              backgroundColor: '#ef4444',
-              color: '#fff',
-              fontSize: 12,
-              fontWeight: 700,
-              padding: '2px 8px',
-              borderRadius: 4,
-            }}>
+            <span className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">
               -{discount}%
             </span>
           )}
           {!product.inStock && (
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-              fontWeight: 600,
-              fontSize: 14,
-            }}>
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white font-semibold text-xs sm:text-sm">
               Out of Stock
             </div>
           )}
         </div>
 
-        <div style={{ padding: '12px 14px' }}>
+        <div className="p-2 sm:p-3">
           {product.brand && (
-            <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 4 }}>
+            <div className="text-[10px] sm:text-xs text-gray-500 mb-0.5 sm:mb-1 truncate">
               {product.brand}
             </div>
           )}
-          <h3 style={{
-            fontSize: 14,
-            fontWeight: 600,
-            color: '#111827',
-            margin: '0 0 6px',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            lineHeight: 1.4,
-          }}>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-900 mb-1 sm:mb-1.5 line-clamp-2 leading-snug min-h-[2.5em] sm:min-h-[2.75em]">
             {product.name}
           </h3>
 
-          <div style={{ marginBottom: 6 }}>
+          <div className="mb-1 sm:mb-1.5">
             <StarRating rating={product.rating} reviews={product.reviews} size="sm" />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 10 }}>
-            <span style={{ fontSize: 16, fontWeight: 700, color: '#dc2626' }}>
+          <div className="flex items-baseline gap-1.5 sm:gap-2 mb-2 sm:mb-2.5">
+            <span className="text-sm sm:text-base font-bold text-red-600">
               {formatPrice(product.price)}
             </span>
             {product.originalPrice && product.originalPrice > product.price && (
-              <span style={{
-                fontSize: 13,
-                color: '#9ca3af',
-                textDecoration: 'line-through',
-              }}>
+              <span className="text-[10px] sm:text-xs text-gray-400 line-through">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
@@ -143,29 +94,15 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
 
-      <div style={{ padding: '0 14px 12px' }}>
+      <div className="px-2 sm:px-3 pb-2 sm:pb-3">
         <button
           onClick={handleAddToCart}
           disabled={!product.inStock}
-          style={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 6,
-            padding: '8px 0',
-            borderRadius: 8,
-            border: 'none',
-            backgroundColor: product.inStock ? '#2563eb' : '#d1d5db',
-            color: '#fff',
-            fontSize: 14,
-            fontWeight: 600,
-            cursor: product.inStock ? 'pointer' : 'not-allowed',
-            transition: 'background-color 0.2s ease',
-          }}
+          className={`w-full flex items-center justify-center gap-1.5 py-2 sm:py-2.5 rounded-md sm:rounded-lg border-none text-white text-xs sm:text-sm font-semibold transition-colors ${product.inStock ? 'bg-blue-600 hover:bg-blue-700 cursor-pointer' : 'bg-gray-300 cursor-not-allowed'}`}
         >
-          <ShoppingCart size={16} />
-          Add to Cart
+          <ShoppingCart size={14} className="sm:w-4 sm:h-4" />
+          <span className="hidden xs:inline">Add to Cart</span>
+          <span className="xs:hidden">Add</span>
         </button>
       </div>
     </div>

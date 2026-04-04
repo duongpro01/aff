@@ -172,3 +172,60 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
 }
+
+/* Custom breakpoint: xs (400px) */
+.xs\:inline { display: none; }
+.xs\:hidden { display: inline; }
+@media (min-width: 400px) {
+  .xs\:inline { display: inline; }
+  .xs\:hidden { display: none; }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Swiper navigation arrows smaller on mobile */
+  .swiper-hero .swiper-button-next,
+  .swiper-hero .swiper-button-prev {
+    transform: scale(0.7);
+  }
+
+  .swiper-hero .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Reduce product card hover effects on mobile (touch devices) */
+  .product-card:hover {
+    transform: none;
+  }
+
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+  }
+}
+
+/* Smooth scrolling for all devices */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

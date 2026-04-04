@@ -42,19 +42,19 @@ const toolLinks = [
 export default function Footer() {
   return (
     <footer className="bg-[#262260] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4 py-8 sm:py-10 md:py-12 lg:px-8">
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:grid-cols-4">
           {/* Column 1: Branding */}
-          <div>
-            <Link href="/" className="text-2xl font-bold tracking-tight">
+          <div className="col-span-2 sm:col-span-1">
+            <Link href="/" className="text-xl sm:text-2xl font-bold tracking-tight">
               YeuPick
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-white/80">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-white/80">
               YeuPick - Cửa hàng pickleball uy tín hàng đầu Việt Nam. Chuyên
               cung cấp vợt, phụ kiện và trang phục pickleball chính hãng với giá
               tốt nhất.
             </p>
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-4 sm:mt-6 flex items-center gap-3 sm:gap-4">
               <a
                 href="https://facebook.com/yeupick"
                 target="_blank"
@@ -62,7 +62,7 @@ export default function Footer() {
                 aria-label="Facebook"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
               >
-                <FacebookIcon className="h-5 w-5" />
+                <FacebookIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a
                 href="https://youtube.com/@yeupick"
@@ -71,7 +71,7 @@ export default function Footer() {
                 aria-label="YouTube"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
               >
-                <YoutubeIcon className="h-5 w-5" />
+                <YoutubeIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a
                 href="https://x.com/yeupick"
@@ -80,20 +80,20 @@ export default function Footer() {
                 aria-label="Twitter"
                 className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
               >
-                <TwitterIcon className="h-5 w-5" />
+                <TwitterIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-base font-semibold">Liên kết nhanh</h3>
-            <ul className="mt-4 space-y-3">
+            <h3 className="text-sm sm:text-base font-semibold">Liên kết nhanh</h3>
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/80 transition-colors hover:text-white"
+                    className="text-xs sm:text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -104,13 +104,13 @@ export default function Footer() {
 
           {/* Column 3: Tools */}
           <div>
-            <h3 className="text-base font-semibold">Công cụ</h3>
-            <ul className="mt-4 space-y-3">
+            <h3 className="text-sm sm:text-base font-semibold">Công cụ</h3>
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               {toolLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/80 transition-colors hover:text-white"
+                    className="text-xs sm:text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -120,30 +120,30 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Contact */}
-          <div>
-            <h3 className="text-base font-semibold">Liên hệ</h3>
-            <ul className="mt-4 space-y-4">
-              <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/60" />
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="text-sm sm:text-base font-semibold">Liên hệ</h3>
+            <ul className="mt-3 sm:mt-4 space-y-3 sm:space-y-4">
+              <li className="flex items-start gap-2 sm:gap-3">
+                <Mail className="mt-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white/60" />
                 <a
                   href="mailto:contact@yeupick.com"
-                  className="text-sm text-white/80 transition-colors hover:text-white"
+                  className="text-xs sm:text-sm text-white/80 transition-colors hover:text-white break-all"
                 >
                   contact@yeupick.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/60" />
+              <li className="flex items-start gap-2 sm:gap-3">
+                <Phone className="mt-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white/60" />
                 <a
                   href="tel:0909000000"
-                  className="text-sm text-white/80 transition-colors hover:text-white"
+                  className="text-xs sm:text-sm text-white/80 transition-colors hover:text-white"
                 >
                   0909 xxx xxx
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/60" />
-                <span className="text-sm text-white/80">
+              <li className="flex items-start gap-2 sm:gap-3">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white/60" />
+                <span className="text-xs sm:text-sm text-white/80">
                   Quận 1, TP. Hồ Chí Minh, Việt Nam
                 </span>
               </li>
@@ -154,8 +154,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-white/60">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-5 lg:px-8">
+          <p className="text-center text-xs sm:text-sm text-white/60">
             &copy; 2024 YeuPick. Tất cả quyền được bảo lưu.
           </p>
         </div>

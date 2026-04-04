@@ -14,16 +14,50 @@ import {
   LogOut,
   Menu,
   X,
+  Heart,
 } from 'lucide-react';
 
-const navLinks = [
-  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/products', label: 'Sản phẩm', icon: Package },
-  { href: '/admin/brands', label: 'Thương hiệu', icon: Award },
-  { href: '/admin/posts', label: 'Bài viết', icon: FileText },
-  { href: '/admin/listings', label: 'Tin thanh lý', icon: ShoppingBag },
-  { href: '/admin/crawl', label: 'Crawl dữ liệu', icon: Download },
-  { href: '/admin/seo', label: 'SEO', icon: Search },
+type NavItem = {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ size?: number }>;
+};
+
+type NavGroup = {
+  title: string;
+  items: NavItem[];
+};
+
+const navGroups: NavGroup[] = [
+  {
+    title: '',
+    items: [
+      { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+    ],
+  },
+  {
+    title: 'San pham',
+    items: [
+      { href: '/admin/products', label: 'Products', icon: Package },
+      { href: '/admin/brands', label: 'Brands', icon: Award },
+      { href: '/admin/dolls', label: 'Sex Dolls', icon: Heart },
+      { href: '/admin/doll-brands', label: 'Doll Brands', icon: Award },
+    ],
+  },
+  {
+    title: 'Noi dung',
+    items: [
+      { href: '/admin/posts', label: 'Bai viet', icon: FileText },
+      { href: '/admin/listings', label: 'Tin thanh ly', icon: ShoppingBag },
+    ],
+  },
+  {
+    title: 'Cong cu',
+    items: [
+      { href: '/admin/crawl', label: 'Import du lieu', icon: Download },
+      { href: '/admin/seo', label: 'SEO', icon: Search },
+    ],
+  },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -35,7 +69,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return pathname.startsWith(href);
   };
 
-  const currentPage = navLinks.find((l) => isActive(l.href));
+  const allNavItems = navGroups.flatMap((g) => g.items);
+  const currentPage = allNavItems.find((l) => isActive(l.href));
 
   return (
     <div className="min-h-screen flex bg-gray-100">
@@ -64,26 +99,37 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            const active = isActive(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  active
-                    ? 'bg-indigo-500 text-white'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                <Icon size={18} />
-                {link.label}
-              </Link>
-            );
-          })}
+        <nav className="flex-1 py-4 px-3 space-y-4 overflow-y-auto">
+          {navGroups.map((group, groupIdx) => (
+            <div key={groupIdx}>
+              {group.title && (
+                <h3 className="px-4 mb-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
+                  {group.title}
+                </h3>
+              )}
+              <div className="space-y-1">
+                {group.items.map((link) => {
+                  const Icon = link.icon;
+                  const active = isActive(link.href);
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setSidebarOpen(false)}
+                      className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                        active
+                          ? 'bg-indigo-500 text-white'
+                          : 'text-white/70 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      <Icon size={18} />
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </nav>
 
         {/* Logout */}

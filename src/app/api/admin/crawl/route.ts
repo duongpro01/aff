@@ -68,6 +68,10 @@ function getProductsFile() {
   return path.join(process.cwd(), 'src', 'data', 'products.json');
 }
 
+function getBrandsFile() {
+  return path.join(process.cwd(), 'src', 'data', 'brands.json');
+}
+
 // Use getter to prevent Turbopack from tracing dynamic file paths
 function getImagesDir() {
   const dir = ['public', 'images', 'products'].join(path.sep);
@@ -452,6 +456,151 @@ function parseWildSecretsProducts(html: string, startId: number): CrawlItem[] {
   return items;
 }
 
+interface BrandDetail {
+  name: string;
+  slug: string;
+  description: string;
+  content: string;
+  sourceUrl: string;
+}
+
+// Parse brand content from Wild Secrets brand page
+async function fetchBrandContent(brandUrl: string): Promise<BrandDetail | null> {
+  try {
+    const html = await fetchHtml(brandUrl);
+
+    // Extract brand name from h1
+    const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const name = h1Match
+      ? h1Match[1].replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&').trim()
+      : '';
+
+    // Extract slug from URL: /brand/brand-slug/1234
+    const slugMatch = brandUrl.match(/\/brand\/([^/]+)\/\d+/);
+    const slug = slugMatch ? slugMatch[1] : '';
+
+    if (!name || !slug) return null;
+
+    // Extract SEO content from seo-content section
+    let description = '';
+    let content = '';
+
+    // Find seo-content section
+    const seoContentStart = html.indexOf('data-controller="seo-content"');
+    if (seoContentStart > 0) {
+      const seoSection = html.substring(seoContentStart, seoContentStart + 20000);
+
+      // Find the toggle button and get content after it
+      const toggleIdx = seoSection.indexOf('seo-content#toggle');
+      if (toggleIdx > 0) {
+        // Get content between toggle and "Read more Read less"
+        let contentSection = seoSection.substring(0, toggleIdx);
+
+        // Remove the opening wrapper
+        const contentMatch = seoSection.match(/class="[^"]*seo-content[^"]*"[^>]*>([\s\S]*?)seo-content#toggle/);
+        if (contentMatch) {
+          contentSection = contentMatch[1];
+        }
+
+        // Clean and format the content
+        // Extract text paragraphs
+        const paragraphs: string[] = [];
+        const headings: { level: number; text: string }[] = [];
+
+        // Extract headings
+        const h2Regex = /<h2[^>]*>([^<]+)<\/h2>/gi;
+        const h3Regex = /<h3[^>]*>([^<]+)<\/h3>/gi;
+        let match;
+
+        while ((match = h3Regex.exec(contentSection)) !== null) {
+          headings.push({ level: 3, text: decodeHtmlEntities(match[1].trim()) });
+        }
+
+        // Extract paragraphs
+        const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/gi;
+        while ((match = pRegex.exec(contentSection)) !== null) {
+          let text = match[1]
+            .replace(/<[^>]+>/g, '')
+            .replace(/&nbsp;/g, ' ')
+            .replace(/&amp;/g, '&')
+            .replace(/&#39;/g, "'")
+            .replace(/&quot;/g, '"')
+            .replace(/\s+/g, ' ')
+            .trim();
+          if (text && text.length > 10) {
+            paragraphs.push(text);
+          }
+        }
+
+        // Build description (first 2-3 sentences)
+        if (paragraphs.length > 0) {
+          const firstPara = paragraphs[0];
+          const sentences = firstPara.match(/[^.!?]+[.!?]+/g) || [firstPara];
+          description = sentences.slice(0, 2).join(' ').trim();
+          if (description.length > 200) {
+            description = description.substring(0, 197) + '...';
+          }
+        }
+
+        // Build HTML content
+        const htmlParts: string[] = [];
+        let currentIdx = 0;
+
+        for (const para of paragraphs) {
+          // Check if there's a heading before this paragraph
+          // Simple approach: just wrap paragraphs and headings
+          htmlParts.push(`<p>${para}</p>`);
+        }
+
+        // Add headings back with proper structure
+        // This is simplified - just wrap content in HTML
+        content = contentSection
+          .replace(/<a[^>]*>([^<]*)<\/a>/gi, '$1') // Remove links
+          .replace(/Read more\s*Read less/gi, '')
+          .replace(/class="[^"]*"/gi, '')
+          .replace(/data-[^=]*="[^"]*"/gi, '')
+          .replace(/<br\s*\/?>/gi, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        // Clean up content to proper HTML paragraphs
+        if (paragraphs.length > 0) {
+          content = paragraphs.map(p => `<p>${p}</p>`).join('\n');
+          // Add back headings
+          for (const h of headings) {
+            const hTag = h.level === 2 ? 'h2' : 'h3';
+            // Try to insert headings at appropriate places (simplified)
+            content = content.replace(
+              new RegExp(`<p>([^<]*${h.text.split(' ')[0]}[^<]*)</p>`, 'i'),
+              `<${hTag}>${h.text}</${hTag}><p>$1</p>`
+            );
+          }
+        }
+      }
+    }
+
+    // Fallback: try to get meta description
+    if (!description) {
+      const metaMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i)
+        || html.match(/<meta\s+content="([^"]+)"\s+name="description"/i);
+      if (metaMatch) {
+        description = decodeHtmlEntities(metaMatch[1]);
+      }
+    }
+
+    return {
+      name,
+      slug,
+      description: description || `${name} products available at YeuPick.`,
+      content: content || `<p>${name} products available at YeuPick.</p>`,
+      sourceUrl: brandUrl,
+    };
+  } catch (err) {
+    console.error('Error fetching brand content:', err);
+    return null;
+  }
+}
+
 interface ProductDetail {
   name: string;
   brand: string;
@@ -706,6 +855,77 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { url, crawlAll, action, items: importItems, sourcePageUrl } = body;
+
+    // =================== CRAWL BRAND CONTENT ===================
+    if (action === 'crawl-brand-content' && url) {
+      // Validate URL is a Wild Secrets brand page
+      if (!url.includes('wildsecrets.com.au/brand/')) {
+        return NextResponse.json({
+          error: 'URL phải là trang brand của Wild Secrets, ví dụ: https://www.wildsecrets.com.au/brand/pdx/6841'
+        }, { status: 400 });
+      }
+
+      try {
+        const brandDetail = await fetchBrandContent(url);
+        if (!brandDetail || !brandDetail.name) {
+          return NextResponse.json({
+            error: 'Không thể lấy thông tin brand. URL có thể không hợp lệ.'
+          }, { status: 400 });
+        }
+
+        // Load existing brands
+        const brandsFile = getBrandsFile();
+        const brands = fs.existsSync(brandsFile)
+          ? JSON.parse(fs.readFileSync(brandsFile, 'utf-8'))
+          : [];
+
+        // Check if brand already exists
+        const existingIdx = brands.findIndex((b: any) => b.slug === brandDetail.slug);
+
+        if (existingIdx >= 0) {
+          // Update existing brand
+          brands[existingIdx] = {
+            ...brands[existingIdx],
+            name: brandDetail.name,
+            description: brandDetail.description,
+            content: brandDetail.content,
+            sourceUrl: brandDetail.sourceUrl,
+          };
+        } else {
+          // Add new brand
+          const maxId = brands.reduce((max: number, b: any) => Math.max(max, b.id || 0), 0);
+          brands.push({
+            id: maxId + 1,
+            name: brandDetail.name,
+            slug: brandDetail.slug,
+            image: '',
+            description: brandDetail.description,
+            content: brandDetail.content,
+            sourceUrl: brandDetail.sourceUrl,
+          });
+        }
+
+        // Save brands file
+        fs.writeFileSync(brandsFile, JSON.stringify(brands, null, 2), 'utf-8');
+
+        return NextResponse.json({
+          success: true,
+          brand: {
+            name: brandDetail.name,
+            slug: brandDetail.slug,
+            description: brandDetail.description,
+            contentLength: brandDetail.content.length,
+          },
+          isNew: existingIdx < 0,
+          totalBrands: brands.length,
+        });
+      } catch (err) {
+        return NextResponse.json({
+          success: false,
+          error: err instanceof Error ? err.message : 'Unknown error',
+        }, { status: 500 });
+      }
+    }
 
     // =================== IMPORT ONE ITEM ===================
     if (action === 'import-one' && importItems?.[0]) {

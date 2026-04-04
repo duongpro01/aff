@@ -217,13 +217,13 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
             <div className="relative" ref={searchRef}>
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="rounded-full p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                className="rounded-full p-2.5 sm:p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                 aria-label="Tìm kiếm"
               >
                 <Search className="h-5 w-5" />
               </button>
               {searchOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
+                <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[320px] rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     <input
@@ -260,7 +260,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
             {/* Cart */}
             <Link
               href="/cart"
-              className="relative rounded-full p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+              className="relative rounded-full p-2.5 sm:p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               aria-label="Giỏ hàng"
             >
               <ShoppingCart className="h-5 w-5" />
@@ -277,7 +277,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="rounded-full p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors lg:hidden"
+              className="rounded-full p-2.5 sm:p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors lg:hidden"
               aria-label="Menu"
             >
               {mobileMenuOpen ? (

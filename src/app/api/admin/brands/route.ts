@@ -37,6 +37,11 @@ export async function GET(request: NextRequest) {
   }
 }
 
+function stripTransientFields(body: Record<string, unknown>) {
+  const { source, createdAt, updatedAt, ...rest } = body;
+  return rest;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -45,13 +50,12 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const brands = readJsonFile(fileName);
+    const clean = stripTransientFields(body);
 
     const newBrand = {
-      ...body,
+      ...clean,
       id: getNextId(brands),
-      slug: generateSlug(body.name || ''),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      slug: clean.slug || generateSlug((clean.name as string) || ''),
     };
 
     brands.push(newBrand);
@@ -71,16 +75,16 @@ export async function PUT(request: NextRequest) {
 
     const body = await request.json();
     const brands = readJsonFile(fileName);
+    const clean = stripTransientFields(body);
 
-    const idx = brands.findIndex((b: Record<string, unknown>) => b.id === body.id);
+    const idx = brands.findIndex((b: Record<string, unknown>) => b.id === clean.id);
     if (idx === -1) {
       return NextResponse.json({ error: 'Brand not found' }, { status: 404 });
     }
 
     brands[idx] = {
       ...brands[idx],
-      ...body,
-      updatedAt: new Date().toISOString(),
+      ...clean,
     };
     writeJsonFile(fileName, brands);
 

@@ -41,7 +41,7 @@ export default function CategorySection() {
             const Icon = iconMap[cat.slug] || Sparkles;
             const gradient = gradientMap[cat.slug] || 'from-gray-500 to-gray-700';
             return (
-              <Link key={cat.slug} href={`/products?category=${cat.slug}`} className="group">
+              <Link key={cat.slug} href={`/products/${cat.slug}`} className="group">
                 <div className={`bg-gradient-to-br ${gradient} rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 text-white text-center transition-transform duration-300 group-hover:scale-105 h-full flex flex-col items-center justify-center gap-1.5 sm:gap-2 md:gap-3`}>
                   <Icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9" strokeWidth={1.5} />
                   <h3 className="font-semibold text-xs sm:text-sm md:text-base">{cat.name}</h3>

@@ -21,11 +21,13 @@ interface Product {
 
 interface ProductCardProps {
   product: Product;
+  href?: string;
 }
 
 const formatPrice = (price: number) => 'A$' + price.toFixed(2);
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, href }: ProductCardProps) {
+  const productUrl = href || `/products/${product.slug}`;
   const { addToCart } = useCart();
   const discount = product.originalPrice && product.originalPrice > product.price
     ? Math.round((1 - product.price / product.originalPrice) * 100)
@@ -46,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="product-card rounded-lg sm:rounded-xl overflow-hidden bg-white border border-gray-200 relative">
-      <Link href={`/products/${product.slug}`} className="no-underline text-inherit block">
+      <Link href={productUrl} className="no-underline text-inherit block">
         <div className="product-image relative aspect-square overflow-hidden bg-gray-50">
           <Image
             src={product.image}

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getProducts, getBrands, getPosts, getDolls } from '@/lib/data';
+import { getProducts, getBrands, getPosts, getDolls, getCategories } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,12 +9,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const brands = getBrands();
   const posts = getPosts();
   const dolls = getDolls();
+  const categories = getCategories();
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1 },
     { url: `${baseUrl}/products`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
     { url: `${baseUrl}/sex-dolls`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
   ];
+
+  // Category pages: /products/vibrators, /products/anal-toys, etc.
+  const categoryPages = categories.map((c: any) => ({
+    url: `${baseUrl}/products/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.85,
+  }));
 
   const productPages = products.map((p: any) => ({
     url: `${baseUrl}/products/${p.slug}`,
@@ -44,5 +53,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...productPages, ...brandPages, ...postPages, ...dollPages];
+  return [...staticPages, ...categoryPages, ...productPages, ...brandPages, ...postPages, ...dollPages];
 }

@@ -32,9 +32,9 @@ const quickLinks = [
 ];
 
 const categoryLinks = [
-  { label: "Vibrators", href: "/products?category=vibrators" },
-  { label: "Dildos", href: "/products?category=dildos-strap-ons" },
-  { label: "Couples Toys", href: "/products?category=couples-toys" },
+  { label: "Vibrators", href: "/products/vibrators" },
+  { label: "Dildos", href: "/products/dongs-dildos-strapons" },
+  { label: "Couples Toys", href: "/products/couples-toys" },
   { label: "Sex Dolls", href: "/sex-dolls" },
 ];
 

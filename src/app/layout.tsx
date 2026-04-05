@@ -6,6 +6,7 @@ const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viettoy.vn';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${siteName} - Premium Adult Toys & Accessories`,
     template: `%s | ${siteName}`,

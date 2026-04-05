@@ -23,13 +23,7 @@ const brands = [
 ];
 
 const tools = [
-  { name: 'Bảng xếp hạng', href: '/ranking' },
-  { name: 'Tính điểm', href: '/ranking-calculator' },
-  { name: 'Bảng tỷ số', href: '/scoreboard' },
-  { name: 'Giải đấu', href: '/tournaments' },
-  { name: 'Bốc thăm', href: '/boc-tham-pickleball' },
-  { name: 'Bracket', href: '/bracket-builder' },
-  { name: 'So sánh', href: '/so-sanh' },
+  { name: 'Compare', href: '/so-sanh' },
 ];
 
 const dummyProducts = [
@@ -119,7 +113,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               className="text-2xl font-bold tracking-tight"
               style={{ color: '#262260' }}
             >
-              YeuPick
+              VietToy
             </span>
           </Link>
 
@@ -129,7 +123,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               href="/products"
               className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
             >
-              Sản phẩm
+              Products
             </Link>
 
             {/* Brands Dropdown */}
@@ -141,7 +135,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                 }}
                 className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
-                Thương hiệu
+                Brands
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
                     brandsOpen ? 'rotate-180' : ''
@@ -168,14 +162,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               href="/tin-tuc"
               className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
             >
-              Tin tức
-            </Link>
-
-            <Link
-              href="/thanh-ly"
-              className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-            >
-              Thanh lý
+              Blog
             </Link>
 
             {/* Tools Dropdown */}
@@ -187,7 +174,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                 }}
                 className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
-                Công cụ
+                Tools
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
                     toolsOpen ? 'rotate-180' : ''
@@ -218,7 +205,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 className="rounded-full p-2.5 sm:p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                aria-label="Tìm kiếm"
+                aria-label="Search"
               >
                 <Search className="h-5 w-5" />
               </button>
@@ -228,7 +215,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
-                      placeholder="Tìm kiếm sản phẩm..."
+                      placeholder="Search products..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-[#262260] focus:outline-none focus:ring-1 focus:ring-[#262260]"
@@ -248,7 +235,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                         ))
                       ) : (
                         <p className="px-3 py-2 text-sm text-gray-500">
-                          Không tìm thấy sản phẩm nào
+                          No products found
                         </p>
                       )}
                     </div>
@@ -261,7 +248,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
             <Link
               href="/cart"
               className="relative rounded-full p-2.5 sm:p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-              aria-label="Giỏ hàng"
+              aria-label="Cart"
             >
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
@@ -299,7 +286,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               onClick={() => setMobileMenuOpen(false)}
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
             >
-              Sản phẩm
+              Products
             </Link>
 
             {/* Mobile Brands */}
@@ -308,7 +295,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                 onClick={() => setMobileBrandsOpen(!mobileBrandsOpen)}
                 className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
               >
-                Thương hiệu
+                Brands
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
                     mobileBrandsOpen ? 'rotate-180' : ''
@@ -336,15 +323,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
               onClick={() => setMobileMenuOpen(false)}
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
             >
-              Tin tức
-            </Link>
-
-            <Link
-              href="/thanh-ly"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
-            >
-              Thanh lý
+              Blog
             </Link>
 
             {/* Mobile Tools */}
@@ -353,7 +332,7 @@ export default function Header({ cartCount: cartCountProp }: HeaderProps) {
                 onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
                 className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100"
               >
-                Công cụ
+                Tools
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${
                     mobileToolsOpen ? 'rotate-180' : ''

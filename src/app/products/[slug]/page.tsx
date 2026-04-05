@@ -24,10 +24,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const products = getProducts();
   const product = products.find((p: any) => p.slug === slug);
   if (!product) return { title: 'Product not found' };
+
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
+  const title = `${product.name} | ${siteName}`;
+  const description = product.description || `Buy ${product.name} from ${product.brand}. Premium quality with discreet shipping at ${siteName}.`;
+
   return {
-    title: product.name,
-    description: product.description,
-    openGraph: { title: product.name, description: product.description, images: [product.image] },
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: product.image ? [product.image] : [],
+      type: 'website',
+    },
   };
 }
 
@@ -36,6 +46,9 @@ export default async function ProductDetailPage({ params }: Props) {
   const products = getProducts();
   const product = products.find((p: any) => p.slug === slug);
   if (!product) notFound();
+
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viettoy.vn';
 
   // Find the category for breadcrumb
   const categories = getCategories();
@@ -49,27 +62,45 @@ export default async function ProductDetailPage({ params }: Props) {
   pool.sort((a: any, b: any) => ((a.id * 7 + product.id) % 97) - ((b.id * 7 + product.id) % 97));
   const relatedProducts = pool.slice(0, 12);
 
+  // Product schema
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "image": product.image,
+    "brand": { "@type": "Brand", "name": product.brand },
+    "offers": {
+      "@type": "Offer",
+      "price": product.price,
+      "priceCurrency": "USD",
+      "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "seller": { "@type": "Organization", "name": siteName }
+    }
+  };
+
+  // Breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": `${siteUrl}/products` },
+      ...(category ? [{ "@type": "ListItem", "position": 3, "name": category.name, "item": `${siteUrl}/products?category=${category.slug}` }] : []),
+      { "@type": "ListItem", "position": category ? 4 : 3, "name": product.name, "item": `${siteUrl}/products/${product.slug}` },
+    ]
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": product.name,
-        "description": product.description,
-        "image": product.image,
-        "brand": { "@type": "Brand", "name": product.brand },
-        "offers": {
-          "@type": "Offer",
-          "price": product.price,
-          "priceCurrency": "USD",
-          "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
-        }
-      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <ProductDetailClient
         product={product}
         relatedProducts={relatedProducts}
         categoryName={category?.name}
         categorySlug={category?.slug}
+        brandSlug={product.brand}
       />
     </>
   );

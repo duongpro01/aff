@@ -6,9 +6,16 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
+
 export const metadata: Metadata = {
-  title: 'Products',
-  description: 'Browse our full range of premium adult toys and accessories',
+  title: `All Products | ${siteName}`,
+  description: `Browse our full range of premium adult toys and accessories. Vibrators, dildos, couples toys and more from top brands at ${siteName}.`,
+  openGraph: {
+    title: `All Products | ${siteName}`,
+    description: 'Browse our full range of premium adult toys and accessories from top brands.',
+    type: 'website',
+  },
 };
 
 function getData() {

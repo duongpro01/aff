@@ -14,3 +14,4 @@ export function getBrands() { return readJson('brands.json'); }
 export function getCategories() { return readJson('categories.json'); }
 export function getPosts() { return readJson('posts.json'); }
 export function getListings() { return readJson('listings.json'); }
+export function getDolls() { return readJson('dolls.json'); }

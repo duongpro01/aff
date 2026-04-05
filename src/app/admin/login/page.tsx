@@ -45,8 +45,8 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
             <Lock className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">YeuPick Admin</h1>
-          <p className="text-gray-500 mt-1">Đăng nhập để quản lý</p>
+          <h1 className="text-2xl font-bold text-gray-900">VietToy Admin</h1>
+          <p className="text-gray-500 mt-1">Sign in to manage</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">

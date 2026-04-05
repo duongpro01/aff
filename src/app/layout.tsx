@@ -2,19 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viettoy.vn';
+
 export const metadata: Metadata = {
   title: {
-    default: "YeuPick - Cửa hàng Pickleball chính hãng",
-    template: "%s | YeuPick",
+    default: `${siteName} - Premium Adult Toys & Accessories`,
+    template: `%s | ${siteName}`,
   },
-  description: "YeuPick - Cửa hàng Pickleball chính hãng. Vợt, bóng, giày, phụ kiện pickleball từ các thương hiệu hàng đầu: Joola, Selkirk, Head, CRBN.",
-  keywords: ["pickleball", "vợt pickleball", "pickleball việt nam", "yeupick"],
+  description: "Premium adult toys and accessories from top brands like Satisfyer, We-Vibe, Lelo, Lovense. Discreet shipping, authentic products, best prices.",
+  keywords: ["adult toys", "sex toys", "vibrators", "couples toys", "premium adult products", siteName.toLowerCase()],
   openGraph: {
-    title: "YeuPick - Cửa hàng Pickleball chính hãng",
-    description: "Cửa hàng Pickleball chính hãng - Vợt, bóng, giày, phụ kiện",
-    url: "https://yeupick.com",
-    siteName: "YeuPick",
-    locale: "vi_VN",
+    title: `${siteName} - Premium Adult Toys & Accessories`,
+    description: "Premium adult toys and accessories - Authentic products, discreet shipping",
+    url: siteUrl,
+    siteName: siteName,
+    locale: "en_US",
     type: "website",
   },
 };
@@ -25,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    <html lang="en">
       <body className="min-h-screen flex flex-col">
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>

@@ -6,9 +6,16 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy';
+
 export const metadata: Metadata = {
-  title: 'Premium Sex Dolls | YeuPick',
-  description: 'Browse our collection of premium, realistic sex dolls from top brands like WM Doll, Irontech, ZELEX, Starpery, and more. TPE and Silicone dolls available.',
+  title: `Premium Sex Dolls | ${siteName}`,
+  description: `Browse our collection of premium, realistic sex dolls from top brands like WM Doll, Irontech, ZELEX, Starpery, and more. TPE and Silicone dolls available at ${siteName}.`,
+  openGraph: {
+    title: `Premium Sex Dolls | ${siteName}`,
+    description: 'Browse our collection of premium, realistic sex dolls from top brands.',
+    type: 'website',
+  },
 };
 
 function getData() {

@@ -32,11 +32,12 @@ interface Props {
   relatedProducts: Product[];
   categoryName?: string;
   categorySlug?: string;
+  brandSlug?: string;
 }
 
 const formatPrice = (price: number) => '$' + price.toFixed(2);
 
-export default function ProductDetailClient({ product, relatedProducts, categoryName, categorySlug }: Props) {
+export default function ProductDetailClient({ product, relatedProducts, categoryName, categorySlug, brandSlug }: Props) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
@@ -78,10 +79,16 @@ export default function ProductDetailClient({ product, relatedProducts, category
         <Link href="/" className="text-gray-500 no-underline whitespace-nowrap hover:text-gray-700">Home</Link>
         <ChevronRight size={12} className="flex-shrink-0 text-gray-400" />
         <Link href="/products" className="text-gray-500 no-underline whitespace-nowrap hover:text-gray-700">Products</Link>
-        {product.brand && (
+        {categorySlug && categoryName && (
           <>
             <ChevronRight size={12} className="flex-shrink-0 text-gray-400" />
-            <Link href={`/${product.brand}`} className="text-gray-500 no-underline whitespace-nowrap hover:text-gray-700">{brandDisplay}</Link>
+            <Link href={`/products?category=${categorySlug}`} className="text-gray-500 no-underline whitespace-nowrap hover:text-gray-700">{categoryName}</Link>
+          </>
+        )}
+        {brandSlug && (
+          <>
+            <ChevronRight size={12} className="flex-shrink-0 text-gray-400" />
+            <Link href={`/${brandSlug}`} className="text-gray-500 no-underline whitespace-nowrap hover:text-gray-700">{brandDisplay}</Link>
           </>
         )}
         <ChevronRight size={12} className="flex-shrink-0 text-gray-400" />
@@ -166,7 +173,7 @@ export default function ProductDetailClient({ product, relatedProducts, category
         <div style={{ minWidth: 0 }}>
           {/* Brand */}
           <Link
-            href={`/${product.brand}`}
+            href={`/${brandSlug || product.brand}`}
             className="inline-block text-xs sm:text-[13px] text-purple-600 font-semibold mb-1 sm:mb-1.5 uppercase tracking-wide no-underline hover:text-purple-700"
           >
             {brandDisplay}

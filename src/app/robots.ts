@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viettoy.vn';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://yeupick.com/sitemap.xml',
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

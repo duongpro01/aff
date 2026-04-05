@@ -591,8 +591,8 @@ async function fetchBrandContent(brandUrl: string): Promise<BrandDetail | null> 
     return {
       name,
       slug,
-      description: description || `${name} products available at YeuPick.`,
-      content: content || `<p>${name} products available at YeuPick.</p>`,
+      description: description || `${name} products available at ${process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy'}.`,
+      content: content || `<p>${name} products available at ${process.env.NEXT_PUBLIC_SITE_NAME || 'VietToy'}.</p>`,
       sourceUrl: brandUrl,
     };
   } catch (err) {

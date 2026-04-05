@@ -26,17 +26,16 @@ function TwitterIcon({ className }: { className?: string }) {
 }
 
 const quickLinks = [
-  { label: "Sản phẩm", href: "/products" },
-  { label: "Tin tức", href: "/tin-tuc" },
-  { label: "Thanh lý", href: "/thanh-ly" },
-  { label: "So sánh", href: "/so-sanh" },
+  { label: "Products", href: "/products" },
+  { label: "Blog", href: "/tin-tuc" },
+  { label: "Compare", href: "/so-sanh" },
 ];
 
-const toolLinks = [
-  { label: "Bảng xếp hạng", href: "/ranking" },
-  { label: "Tính điểm", href: "/ranking-calculator" },
-  { label: "Giải đấu", href: "/tournaments" },
-  { label: "Bảng tỷ số", href: "/scoreboard" },
+const categoryLinks = [
+  { label: "Vibrators", href: "/products?category=vibrators" },
+  { label: "Dildos", href: "/products?category=dildos-strap-ons" },
+  { label: "Couples Toys", href: "/products?category=couples-toys" },
+  { label: "Sex Dolls", href: "/sex-dolls" },
 ];
 
 export default function Footer() {
@@ -47,16 +46,15 @@ export default function Footer() {
           {/* Column 1: Branding */}
           <div className="col-span-2 sm:col-span-1">
             <Link href="/" className="text-xl sm:text-2xl font-bold tracking-tight">
-              YeuPick
+              VietToy
             </Link>
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-white/80">
-              YeuPick - Cửa hàng pickleball uy tín hàng đầu Việt Nam. Chuyên
-              cung cấp vợt, phụ kiện và trang phục pickleball chính hãng với giá
-              tốt nhất.
+              Premium adult toys and accessories from top brands. Discreet shipping,
+              authentic products, and best prices guaranteed.
             </p>
             <div className="mt-4 sm:mt-6 flex items-center gap-3 sm:gap-4">
               <a
-                href="https://facebook.com/yeupick"
+                href="https://facebook.com/viettoy"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -65,7 +63,7 @@ export default function Footer() {
                 <FacebookIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a
-                href="https://youtube.com/@yeupick"
+                href="https://youtube.com/@viettoy"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
@@ -74,7 +72,7 @@ export default function Footer() {
                 <YoutubeIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a
-                href="https://x.com/yeupick"
+                href="https://x.com/viettoy"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
@@ -87,7 +85,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-sm sm:text-base font-semibold">Liên kết nhanh</h3>
+            <h3 className="text-sm sm:text-base font-semibold">Quick Links</h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -102,11 +100,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Tools */}
+          {/* Column 3: Categories */}
           <div>
-            <h3 className="text-sm sm:text-base font-semibold">Công cụ</h3>
+            <h3 className="text-sm sm:text-base font-semibold">Categories</h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
-              {toolLinks.map((link) => (
+              {categoryLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -121,15 +119,15 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div className="col-span-2 sm:col-span-1">
-            <h3 className="text-sm sm:text-base font-semibold">Liên hệ</h3>
+            <h3 className="text-sm sm:text-base font-semibold">Contact</h3>
             <ul className="mt-3 sm:mt-4 space-y-3 sm:space-y-4">
               <li className="flex items-start gap-2 sm:gap-3">
                 <Mail className="mt-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white/60" />
                 <a
-                  href="mailto:contact@yeupick.com"
+                  href="mailto:contact@viettoy.vn"
                   className="text-xs sm:text-sm text-white/80 transition-colors hover:text-white break-all"
                 >
-                  contact@yeupick.com
+                  contact@viettoy.vn
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
@@ -144,7 +142,7 @@ export default function Footer() {
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="mt-0.5 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white/60" />
                 <span className="text-xs sm:text-sm text-white/80">
-                  Quận 1, TP. Hồ Chí Minh, Việt Nam
+                  District 1, Ho Chi Minh City, Vietnam
                 </span>
               </li>
             </ul>
@@ -156,7 +154,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-5 lg:px-8">
           <p className="text-center text-xs sm:text-sm text-white/60">
-            &copy; 2024 YeuPick. Tất cả quyền được bảo lưu.
+            &copy; 2024 VietToy. All rights reserved.
           </p>
         </div>
       </div>

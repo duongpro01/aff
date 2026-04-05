@@ -28,7 +28,7 @@ export default function ProductSection() {
             <div key={brand} className="mb-8 sm:mb-10 md:mb-12 last:mb-0">
               <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6">
                 <h3 className="text-base sm:text-lg md:text-xl font-semibold text-foreground capitalize">{brand}</h3>
-                <Link href={`/products?brand=${brand}`} className="text-accent hover:text-accent-light font-medium text-xs sm:text-sm transition-colors whitespace-nowrap">
+                <Link href={`/${brand}`} className="text-accent hover:text-accent-light font-medium text-xs sm:text-sm transition-colors whitespace-nowrap">
                   View all ({brandProducts.length}) &rarr;
                 </Link>
               </div>

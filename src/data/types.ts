@@ -13,13 +13,15 @@ export interface Product {
   fullDescription: string;
   features: string[];
   specs: {
-    surface?: string;
-    core?: string;
-    thickness?: string;
-    control?: number;
-    power?: number;
+    size?: string;
+    length?: string;
+    diameter?: string;
     weight?: string;
-    usapaApproved?: boolean;
+    color?: string;
+    power?: string;
+    modes?: string;
+    waterproof?: boolean;
+    rechargeable?: boolean;
   };
   params: {
     brand?: string;

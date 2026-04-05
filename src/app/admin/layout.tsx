@@ -90,7 +90,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Logo */}
         <div className="flex items-center justify-between h-16 px-6 border-b border-white/10">
           <Link href="/admin" className="text-xl font-bold tracking-wide">
-            YeuPick Admin
+            VietToy Admin
           </Link>
           <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
             <X size={20} />

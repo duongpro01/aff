@@ -9,7 +9,7 @@ const allProducts: Product[] = [];
 const brands = [...new Set(allProducts.map((p) => p.brand))];
 
 function formatPrice(price: number): string {
-  return price.toLocaleString('vi-VN') + 'đ';
+  return '$' + price.toLocaleString('en-US');
 }
 
 function ProductSelector({
@@ -75,7 +75,7 @@ function ProductSelector({
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input
           type="text"
-          placeholder="Tim san pham..."
+          placeholder="Search products..."
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -94,7 +94,7 @@ function ProductSelector({
         }}
         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent bg-white"
       >
-        <option value="">Tat ca thuong hieu</option>
+        <option value="">All brands</option>
         {brands.map((b) => (
           <option key={b} value={b}>
             {b.charAt(0).toUpperCase() + b.slice(1)}
@@ -105,7 +105,7 @@ function ProductSelector({
       {isOpen && (
         <div className="border border-gray-200 rounded-lg max-h-60 overflow-y-auto">
           {filtered.length === 0 ? (
-            <p className="text-sm text-gray-500 text-center py-4">Khong tim thay san pham</p>
+            <p className="text-sm text-gray-500 text-center py-4">No products found</p>
           ) : (
             filtered.map((p) => (
               <button
@@ -138,19 +138,19 @@ interface ComparisonRow {
 
 const comparisonRows: ComparisonRow[] = [
   {
-    label: 'Gia',
+    label: 'Price',
     key: 'price',
     getValue: (p) => p.price,
     compare: 'lower',
   },
   {
-    label: 'Thuong hieu',
+    label: 'Brand',
     key: 'brand',
     getValue: (p) => p.params?.brand || p.brand,
     type: 'text',
   },
   {
-    label: 'Danh muc',
+    label: 'Category',
     key: 'category',
     getValue: (p) => p.category,
     type: 'text',
@@ -162,47 +162,33 @@ const comparisonRows: ComparisonRow[] = [
     compare: 'higher',
   },
   {
-    label: 'Surface',
-    key: 'surface',
-    getValue: (p) => p.specs?.surface,
+    label: 'Material',
+    key: 'material',
+    getValue: (p) => p.params?.material,
     type: 'text',
   },
   {
-    label: 'Core',
-    key: 'core',
-    getValue: (p) => p.specs?.core,
+    label: 'Size',
+    key: 'size',
+    getValue: (p) => p.specs?.size,
     type: 'text',
   },
   {
-    label: 'Thickness',
-    key: 'thickness',
-    getValue: (p) => p.specs?.thickness,
+    label: 'Warranty',
+    key: 'warranty',
+    getValue: (p) => p.params?.warranty,
     type: 'text',
   },
   {
-    label: 'Control',
-    key: 'control',
-    getValue: (p) => p.specs?.control,
-    compare: 'higher',
-    type: 'bar',
-  },
-  {
-    label: 'Power',
-    key: 'power',
-    getValue: (p) => p.specs?.power,
-    compare: 'higher',
-    type: 'bar',
-  },
-  {
-    label: 'Weight',
-    key: 'weight',
-    getValue: (p) => p.specs?.weight,
+    label: 'Origin',
+    key: 'origin',
+    getValue: (p) => p.params?.origin,
     type: 'text',
   },
   {
-    label: 'USAPA Approved',
-    key: 'usapa',
-    getValue: (p) => p.specs?.usapaApproved,
+    label: 'In Stock',
+    key: 'inStock',
+    getValue: (p) => p.inStock,
     type: 'boolean',
   },
 ];
@@ -220,7 +206,7 @@ function ComparisonTable({ product1, product2 }: { product1: Product; product2: 
   return (
     <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="grid grid-cols-3 bg-gray-50 border-b border-gray-200 px-4 py-3">
-        <div className="text-sm font-semibold text-gray-500">Thong so</div>
+        <div className="text-sm font-semibold text-gray-500">Specs</div>
         <div className="text-sm font-semibold text-gray-800 text-center line-clamp-1">{product1.name}</div>
         <div className="text-sm font-semibold text-gray-800 text-center line-clamp-1">{product2.name}</div>
       </div>
@@ -249,10 +235,10 @@ function ComparisonTable({ product1, product2 }: { product1: Product; product2: 
               ) : row.type === 'boolean' ? (
                 val1 ? (
                   <span className="inline-flex items-center gap-1 text-success">
-                    <Check className="w-4 h-4" /> Co
+                    <Check className="w-4 h-4" /> Yes
                   </span>
                 ) : (
-                  <span className="text-gray-400">Khong</span>
+                  <span className="text-gray-400">No</span>
                 )
               ) : row.key === 'price' && typeof val1 === 'number' ? (
                 formatPrice(val1)
@@ -278,10 +264,10 @@ function ComparisonTable({ product1, product2 }: { product1: Product; product2: 
               ) : row.type === 'boolean' ? (
                 val2 ? (
                   <span className="inline-flex items-center gap-1 text-success">
-                    <Check className="w-4 h-4" /> Co
+                    <Check className="w-4 h-4" /> Yes
                   </span>
                 ) : (
-                  <span className="text-gray-400">Khong</span>
+                  <span className="text-gray-400">No</span>
                 )
               ) : row.key === 'price' && typeof val2 === 'number' ? (
                 formatPrice(val2)
@@ -306,20 +292,20 @@ export default function ComparePage() {
     <div className="max-w-5xl mx-auto px-4 py-8">
       <div className="flex items-center gap-3 mb-8">
         <ArrowLeftRight className="w-7 h-7 text-primary" />
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">So sanh san pham</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Compare Products</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <ProductSelector
           selected={product1}
           onSelect={setProduct1}
-          label="San pham 1"
+          label="Product 1"
           otherSelectedId={product2?.id ?? null}
         />
         <ProductSelector
           selected={product2}
           onSelect={setProduct2}
-          label="San pham 2"
+          label="Product 2"
           otherSelectedId={product1?.id ?? null}
         />
       </div>
@@ -331,7 +317,7 @@ export default function ComparePage() {
       {(!product1 || !product2) && (
         <div className="mt-12 text-center text-gray-400">
           <ArrowLeftRight className="w-16 h-16 mx-auto mb-4 opacity-30" />
-          <p className="text-lg">Chon 2 san pham de so sanh</p>
+          <p className="text-lg">Select 2 products to compare</p>
         </div>
       )}
     </div>

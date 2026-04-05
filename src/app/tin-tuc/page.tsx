@@ -17,17 +17,17 @@ interface Post {
 
 function categoryBadgeClass(category: string) {
   switch (category) {
-    case 'Hướng dẫn': return 'bg-blue-100 text-blue-800';
+    case 'Guide': return 'bg-blue-100 text-blue-800';
     case 'Review': return 'bg-purple-100 text-purple-800';
-    case 'Tin tức': return 'bg-green-100 text-green-800';
+    case 'News': return 'bg-green-100 text-green-800';
     default: return 'bg-gray-100 text-gray-700';
   }
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('vi-VN', {
-    day: '2-digit',
-    month: '2-digit',
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
     year: 'numeric',
   });
 }
@@ -50,11 +50,11 @@ export default async function TinTucPage({
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Tin tức Pickleball</h1>
-      <p className="text-gray-500 mb-8">Cập nhật tin tức, hướng dẫn và review mới nhất về pickleball</p>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">Blog & Reviews</h1>
+      <p className="text-gray-500 mb-8">Latest news, guides, and reviews about adult toys</p>
 
       {paginatedPosts.length === 0 ? (
-        <p className="text-gray-500 text-center py-12">Chưa có bài viết nào.</p>
+        <p className="text-gray-500 text-center py-12">No posts yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginatedPosts.map(post => (
@@ -91,7 +91,7 @@ export default async function TinTucPage({
               href={`/tin-tuc?page=${currentPage - 1}`}
               className="px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50 transition-colors"
             >
-              Trước
+              Previous
             </Link>
           )}
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
@@ -112,7 +112,7 @@ export default async function TinTucPage({
               href={`/tin-tuc?page=${currentPage + 1}`}
               className="px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50 transition-colors"
             >
-              Sau
+              Next
             </Link>
           )}
         </nav>
